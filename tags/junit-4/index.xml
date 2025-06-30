@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>JUnit 4 on h10i</title>
+    <link>https://h10i.github.io/tags/junit-4/</link>
+    <description>Recent content in JUnit 4 on h10i</description>
+    <generator>Hugo -- 0.147.9</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 01 Sep 2024 10:57:31 +0900</lastBuildDate>
+    <atom:link href="https://h10i.github.io/tags/junit-4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JUnit 4 から JUnit 5 に移行する</title>
+      <link>https://h10i.github.io/posts/2024/09/01/migrating-from-junit-4-to-junit-5/</link>
+      <pubDate>Sun, 01 Sep 2024 10:57:31 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2024/09/01/migrating-from-junit-4-to-junit-5/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;JUnit 4 のテストコードを JUnit 5 に移行する。&lt;/li&gt;
+&lt;li&gt;JUnit 4 のテストコードはそのままにして、新規のテストコードは JUnit 5 で作成する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;前提&#34;&gt;前提&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;JUnit 4&lt;/li&gt;
+&lt;li&gt;JUnit 5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;h3 id=&#34;junit-5-ライブラリの追加&#34;&gt;JUnit 5 ライブラリの追加&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/junit-team/junit5-samples/tree/main/junit5-migration-maven&#34;&gt;junit5-samples/junit5-migration-maven at main · junit-team/junit5-samples&lt;/a&gt; を参考に、&lt;code&gt;pom.xml&lt;/code&gt; を更新する。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

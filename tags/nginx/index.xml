@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>NGINX on h10i</title>
+    <link>https://h10i.github.io/tags/nginx/</link>
+    <description>Recent content in NGINX on h10i</description>
+    <generator>Hugo -- 0.147.9</generator>
+    <language>ja</language>
+    <lastBuildDate>Wed, 24 Apr 2024 23:17:57 +0900</lastBuildDate>
+    <atom:link href="https://h10i.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu 22.04 LTS に NGINX をインストールする</title>
+      <link>https://h10i.github.io/posts/2024/04/24/installing-nginx-on-ubuntu-22.04-lts/</link>
+      <pubDate>Wed, 24 Apr 2024 23:17:57 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2024/04/24/installing-nginx-on-ubuntu-22.04-lts/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 22.04 LTS に NGINX をインストールする。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;前提&#34;&gt;前提&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 22.04 LTS&lt;/li&gt;
+&lt;li&gt;NGINX 1.26.0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;h3 id=&#34;ubuntu-repository-経由&#34;&gt;Ubuntu Repository 経由&lt;/h3&gt;
+&lt;p&gt;この手順では、Ubuntu Repository の最新版である 1.18.0 がインストールされる。&lt;/p&gt;
+&lt;p&gt;NGINX をインストールする。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install nginx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;NGINX のバージョンを確認する。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

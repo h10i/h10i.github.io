@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SSH on h10i</title>
+    <link>https://h10i.github.io/tags/ssh/</link>
+    <description>Recent content in SSH on h10i</description>
+    <generator>Hugo -- 0.147.9</generator>
+    <language>ja</language>
+    <lastBuildDate>Tue, 24 Jun 2025 23:18:02 +0900</lastBuildDate>
+    <atom:link href="https://h10i.github.io/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSH の公開鍵認証を設定する</title>
+      <link>https://h10i.github.io/posts/2025/06/24/setting-up-ssh-public-key-authentication/</link>
+      <pubDate>Tue, 24 Jun 2025 23:18:02 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/06/24/setting-up-ssh-public-key-authentication/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows 端末から Ubuntu 端末に SSH 接続するとき、公開鍵で認証できるようにする。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows 11 (接続元)
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;OpenSSH_for_Windows_9.5p1, LibreSSL 3.8.2&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Ubuntu 24.04 LTS (接続先)
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;OpenSSH_9.6p1 Ubuntu-3ubuntu13.12, OpenSSL 3.0.13 30 Jan 2024&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;p&gt;以下を例に説明する。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;接続ユーザ名: &lt;code&gt;your&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;接続先ホスト名: &lt;code&gt;example.local&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;鍵の作成&#34;&gt;鍵の作成&lt;/h3&gt;
+&lt;p&gt;Windows にて、公開鍵と秘密鍵を作成する。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

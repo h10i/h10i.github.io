@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://h10i.github.io/sitemap.xml

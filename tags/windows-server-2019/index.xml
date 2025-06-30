@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Windows Server 2019 on h10i</title>
+    <link>https://h10i.github.io/tags/windows-server-2019/</link>
+    <description>Recent content in Windows Server 2019 on h10i</description>
+    <generator>Hugo -- 0.147.9</generator>
+    <language>ja</language>
+    <lastBuildDate>Tue, 10 Sep 2024 16:16:20 +0900</lastBuildDate>
+    <atom:link href="https://h10i.github.io/tags/windows-server-2019/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>指定したユーザや管理者権限で PowerShell を実行する</title>
+      <link>https://h10i.github.io/posts/2024/09/10/running-powershell-as-the-specified-user-or-administrator/</link>
+      <pubDate>Tue, 10 Sep 2024 16:16:20 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2024/09/10/running-powershell-as-the-specified-user-or-administrator/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;PowerShell の実行ユーザを切り替える。&lt;/li&gt;
+&lt;li&gt;PowerShell を管理者権限で実行する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;前提&#34;&gt;前提&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows Server 2019&lt;/li&gt;
+&lt;li&gt;Windows PowerShell 5.1
+&lt;ul&gt;
+&lt;li&gt;7.4 でも同じように動くはず。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;p&gt;ユーザ切り替えと管理者権限での実行は、同時にできないため、個別に実行する必要がある。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
