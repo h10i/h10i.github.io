@@ -4,10 +4,28 @@
     <title>Posts on h10i</title>
     <link>https://h10i.github.io/posts/</link>
     <description>Recent content in Posts on h10i</description>
-    <generator>Hugo -- 0.147.9</generator>
+    <generator>Hugo -- 0.148.0</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 06 Jul 2025 18:03:09 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 10 Jul 2025 20:46:34 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cloudflare DNS を使ってワイルドカード証明書を Certbot で自動発行する</title>
+      <link>https://h10i.github.io/posts/2025/07/10/automate-wildcard-certificate-issuance-with-certbot-and-cloudflare-dns/</link>
+      <pubDate>Thu, 10 Jul 2025 20:46:34 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/07/10/automate-wildcard-certificate-issuance-with-certbot-and-cloudflare-dns/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;HTTPS 接続するために必要な独自ドメインの証明書を Certbot で発行し、自動で更新されるようにする。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 24.04 LTS&lt;/li&gt;
+&lt;li&gt;certbot 4.1.1&lt;/li&gt;
+&lt;li&gt;nginx 1.26.2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;p&gt;説明のためドメインは &lt;code&gt;example.com&lt;/code&gt; を指定しているが、実際のドメインに置き換えて実施する。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Ubuntu 24.04 に Pi-hole をインストールする</title>
       <link>https://h10i.github.io/posts/2025/07/06/installing-pi-hole-on-ubuntu-24.04/</link>
