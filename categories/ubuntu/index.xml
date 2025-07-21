@@ -6,8 +6,31 @@
     <description>Recent content in Ubuntu on h10i</description>
     <generator>Hugo -- 0.148.1</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 11 Jul 2025 19:57:20 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 21 Jul 2025 23:37:44 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nextcloud のデータ保存先を変更する</title>
+      <link>https://h10i.github.io/posts/2025/07/21/changing-nextcloud-data-location/</link>
+      <pubDate>Mon, 21 Jul 2025 23:37:44 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/07/21/changing-nextcloud-data-location/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Nextcloud のデータ保存先を外付け HDD に変更する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 24.04 LTS&lt;/li&gt;
+&lt;li&gt;Nextcloud 31.0.6snap1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;p&gt;外付け HDD は &lt;code&gt;/media/hdd&lt;/code&gt; にマウントされているものとする。&lt;/p&gt;
+&lt;h3 id=&#34;保存先の作成&#34;&gt;保存先の作成&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;/mnt&lt;/code&gt; または &lt;code&gt;/media&lt;/code&gt; 配下に新たな保存先を作成する。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mkdir -p /media/hdd/nextcloud
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo chown -R root:root /media/hdd/nextcloud
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;nextcloud-の設定変更&#34;&gt;Nextcloud の設定変更&lt;/h3&gt;
+&lt;p&gt;Nextcloud に外付けメディアへのアクセス権限を設定する。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Ubuntu 24.04 に Nextcloud をインストールする</title>
       <link>https://h10i.github.io/posts/2025/07/11/installing-nextcloud-on-ubuntu-24.04/</link>
