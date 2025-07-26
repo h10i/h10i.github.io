@@ -6,8 +6,27 @@
     <description>Recent content in Posts on h10i</description>
     <generator>Hugo -- 0.148.1</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 21 Jul 2025 23:37:44 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 26 Jul 2025 21:52:08 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>systemd のサービス実行結果を Discord に通知する</title>
+      <link>https://h10i.github.io/posts/2025/07/26/notifying-discord-of-systemd-service-status/</link>
+      <pubDate>Sat, 26 Jul 2025 21:52:08 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/07/26/notifying-discord-of-systemd-service-status/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;systemd のサービス実行結果を Discord に通知する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 24.04 LTS&lt;/li&gt;
+&lt;li&gt;Discord&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;h3 id=&#34;discord-の-webhook-url-取得&#34;&gt;Discord の Webhook URL 取得&lt;/h3&gt;
+&lt;p&gt;Discord にて、適当なサーバとチャンネルを作成する。&lt;/p&gt;
+&lt;p&gt;チャンネルの設定より、&lt;code&gt;Integrations &amp;gt; Webhooks&lt;/code&gt; を開く。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Nextcloud のデータ保存先を変更する</title>
       <link>https://h10i.github.io/posts/2025/07/21/changing-nextcloud-data-location/</link>
