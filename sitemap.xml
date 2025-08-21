@@ -3,24 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://h10i.github.io/categories/</loc>
-    <lastmod>2025-07-26T21:52:08+09:00</lastmod>
+    <lastmod>2025-08-21T19:40:39+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/</loc>
+    <lastmod>2025-08-21T19:40:39+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/tags/pi-hole/</loc>
+    <lastmod>2025-08-21T19:40:39+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/posts/</loc>
+    <lastmod>2025-08-21T19:40:39+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/tags/rclone/</loc>
+    <lastmod>2025-08-21T19:40:39+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/posts/2025/08/21/troubleshooting-rclone-server-misbehaving-errors/</loc>
+    <lastmod>2025-08-21T19:40:39+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/tags/</loc>
+    <lastmod>2025-08-21T19:40:39+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/tags/tailscale/</loc>
+    <lastmod>2025-08-21T19:40:39+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/categories/ubuntu/</loc>
+    <lastmod>2025-08-21T19:40:39+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/tags/discord/</loc>
     <lastmod>2025-07-26T21:52:08+09:00</lastmod>
   </url><url>
-    <loc>https://h10i.github.io/</loc>
-    <lastmod>2025-07-26T21:52:08+09:00</lastmod>
-  </url><url>
-    <loc>https://h10i.github.io/posts/</loc>
-    <lastmod>2025-07-26T21:52:08+09:00</lastmod>
-  </url><url>
     <loc>https://h10i.github.io/posts/2025/07/26/notifying-discord-of-systemd-service-status/</loc>
-    <lastmod>2025-07-26T21:52:08+09:00</lastmod>
-  </url><url>
-    <loc>https://h10i.github.io/tags/</loc>
-    <lastmod>2025-07-26T21:52:08+09:00</lastmod>
-  </url><url>
-    <loc>https://h10i.github.io/categories/ubuntu/</loc>
     <lastmod>2025-07-26T21:52:08+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/tags/nextcloud/</loc>
@@ -54,9 +66,6 @@
     <lastmod>2025-06-09T19:28:30+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/tags/pcloud/</loc>
-    <lastmod>2025-06-08T15:25:32+09:00</lastmod>
-  </url><url>
-    <loc>https://h10i.github.io/tags/rclone/</loc>
     <lastmod>2025-06-08T15:25:32+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/posts/2025/06/08/installing-rclone-for-pcloud-on-ubuntu-24.04/</loc>

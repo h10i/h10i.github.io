@@ -4,10 +4,43 @@
     <title>Rclone on h10i</title>
     <link>https://h10i.github.io/tags/rclone/</link>
     <description>Recent content in Rclone on h10i</description>
-    <generator>Hugo -- 0.148.1</generator>
+    <generator>Hugo -- 0.148.2</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 08 Jun 2025 15:25:32 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 21 Aug 2025 19:40:39 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/tags/rclone/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>rclone sync で server misbehaving が発生したときの調査と対処</title>
+      <link>https://h10i.github.io/posts/2025/08/21/troubleshooting-rclone-server-misbehaving-errors/</link>
+      <pubDate>Thu, 21 Aug 2025 19:40:39 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/08/21/troubleshooting-rclone-server-misbehaving-errors/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;tailscale で自宅サーバの Pi-hole を DNS として登録後、自宅サーバで動かしていた Rclone を使った pCloud へのバックアップが失敗するようになった。&lt;/li&gt;
+&lt;li&gt;Pi-hole が最初の問い合わせ先になったことで、Rclone から生じる大量の DNS クエリが Pi-hole のレート制限に達して拒否されていた。&lt;/li&gt;
+&lt;li&gt;Pi-hole のレート制限の上限を増やすことで、エラーが発生しなくなった。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;事象&#34;&gt;事象&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;自宅サーバでは、&lt;code&gt;rclone sync&lt;/code&gt; で pCloud へ定期的にファイル等をバックアップしている。&lt;/li&gt;
+&lt;li&gt;自宅サーバでは、Pi-hole を使った DNS を動かしている。&lt;/li&gt;
+&lt;li&gt;Tailscale にて、&lt;code&gt;Global nameservers&lt;/code&gt; に自宅サーバの IP アドレスを追加し、&lt;code&gt;Override DNS servers&lt;/code&gt; を設定した。&lt;/li&gt;
+&lt;li&gt;Tailscale の設定変更後、&lt;code&gt;rclone sync&lt;/code&gt; が失敗するようになった。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 24.04 LTS&lt;/li&gt;
+&lt;li&gt;Pi-hole
+&lt;ul&gt;
+&lt;li&gt;Core version is v6.1.2 (Latest: v6.1.4)&lt;/li&gt;
+&lt;li&gt;Web version is v6.2.1 (Latest: v6.2.1)&lt;/li&gt;
+&lt;li&gt;FTL version is v6.2.3 (Latest: v6.2.3)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Tailscale 1.80.0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;調査&#34;&gt;調査&lt;/h2&gt;
+&lt;p&gt;スクリプト内で実行していた Rclone のコマンドは以下の通りである。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Ubuntu 24.04 に rclone をインストールして CLI で pCloud を操作する</title>
       <link>https://h10i.github.io/posts/2025/06/08/installing-rclone-for-pcloud-on-ubuntu-24.04/</link>
