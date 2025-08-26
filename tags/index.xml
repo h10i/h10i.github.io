@@ -6,13 +6,20 @@
     <description>Recent content in Tags on h10i</description>
     <generator>Hugo -- 0.148.2</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 21 Aug 2025 19:40:39 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 26 Aug 2025 22:57:38 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Pi-Hole</title>
       <link>https://h10i.github.io/tags/pi-hole/</link>
-      <pubDate>Thu, 21 Aug 2025 19:40:39 +0900</pubDate>
+      <pubDate>Tue, 26 Aug 2025 22:57:38 +0900</pubDate>
       <guid>https://h10i.github.io/tags/pi-hole/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>VSCode</title>
+      <link>https://h10i.github.io/tags/vscode/</link>
+      <pubDate>Tue, 26 Aug 2025 22:57:38 +0900</pubDate>
+      <guid>https://h10i.github.io/tags/vscode/</guid>
       <description></description>
     </item>
     <item>

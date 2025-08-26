@@ -6,8 +6,32 @@
     <description>Recent content in Pi-Hole on h10i</description>
     <generator>Hugo -- 0.148.2</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 21 Aug 2025 19:40:39 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 26 Aug 2025 22:57:38 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/tags/pi-hole/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pi-hole のドメインブロック設定で VSCode の Remote SSH がエラーになる</title>
+      <link>https://h10i.github.io/posts/2025/08/26/troubleshooting-remote-ssh-in-vscode/</link>
+      <pubDate>Tue, 26 Aug 2025 22:57:38 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/08/26/troubleshooting-remote-ssh-in-vscode/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;VSCode で自宅サーバに SSH 接続したとき、SSH 接続に成功してから数秒経過後に&lt;code&gt;Remote Extension host terminated unexpectedly 3 times within the last 5 minutes&lt;/code&gt; というエラーが出る。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Restart Remote Extension Host&lt;/code&gt; をクリックしても、同じエラーが再発してループする。&lt;/li&gt;
+&lt;li&gt;Pi-hole で &lt;code&gt;mobile.events.data.microsoft.com&lt;/code&gt; への接続をブロックしていたことが原因だった。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows 11 (クライアント側)&lt;/li&gt;
+&lt;li&gt;Ubuntu 24.04 LTS (サーバ側)&lt;/li&gt;
+&lt;li&gt;VSCode 1.103.1
+&lt;ul&gt;
+&lt;li&gt;Remote - SSH 0.120.0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;調査&#34;&gt;調査&lt;/h2&gt;
+&lt;p&gt;VSCode にて、&lt;code&gt;Ctrl + Shift + U&lt;/code&gt; で Output を開く。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>rclone sync で server misbehaving が発生したときの調査と対処</title>
       <link>https://h10i.github.io/posts/2025/08/21/troubleshooting-rclone-server-misbehaving-errors/</link>
