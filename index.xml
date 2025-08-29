@@ -4,10 +4,29 @@
     <title>h10i</title>
     <link>https://h10i.github.io/</link>
     <description>Recent content on h10i</description>
-    <generator>Hugo -- 0.148.2</generator>
+    <generator>Hugo -- 0.149.0</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 26 Aug 2025 22:57:38 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 29 Aug 2025 09:48:04 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nextcloud で Too many connections エラーが出たときの対処</title>
+      <link>https://h10i.github.io/posts/2025/08/29/troubleshooting-too-many-connections-in-nextcloud/</link>
+      <pubDate>Fri, 29 Aug 2025 09:48:04 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/08/29/troubleshooting-too-many-connections-in-nextcloud/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Nextcloud (Snap 版) の MySQL 設定を変更する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 24.04 LTS (サーバ)&lt;/li&gt;
+&lt;li&gt;Nextcloud 31.0.6snap1&lt;/li&gt;
+&lt;li&gt;Windows 11 (クライアント)&lt;/li&gt;
+&lt;li&gt;Nextcloud デスクトップクライアント バージョン 3.17.1 (Windows)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;事象&#34;&gt;事象&lt;/h2&gt;
+&lt;p&gt;Nextcloud のデスクトップクライアントでファイル同期したとき、複数のファイルで次のエラーが発生し、同期に失敗した。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Pi-hole のドメインブロック設定で VSCode の Remote SSH がエラーになる</title>
       <link>https://h10i.github.io/posts/2025/08/26/troubleshooting-remote-ssh-in-vscode/</link>
