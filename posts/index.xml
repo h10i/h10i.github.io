@@ -4,10 +4,29 @@
     <title>Posts on h10i</title>
     <link>https://h10i.github.io/posts/</link>
     <description>Recent content in Posts on h10i</description>
-    <generator>Hugo -- 0.149.0</generator>
+    <generator>Hugo -- 0.149.1</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 29 Aug 2025 09:48:04 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 08 Sep 2025 17:08:04 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu とデュアルブートしている Windows を削除してパーティションを整理する</title>
+      <link>https://h10i.github.io/posts/2025/09/08/removing-windows-from-a-dual-boot-setup-with-ubuntu-and-organize-the-partitions/</link>
+      <pubDate>Mon, 08 Sep 2025 17:08:04 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/09/08/removing-windows-from-a-dual-boot-setup-with-ubuntu-and-organize-the-partitions/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu と Windows をデュアルブートしているが、Windows が不要となったため削除する。&lt;/li&gt;
+&lt;li&gt;削除した Windows のパーティションは、Ubuntu のパーティションに統合する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu Server 24.04 LTS&lt;/li&gt;
+&lt;li&gt;Windows 11&lt;/li&gt;
+&lt;li&gt;Ubuntu Server 24.04 LTS (Live 環境)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;調査&#34;&gt;調査&lt;/h2&gt;
+&lt;p&gt;現在のパーティションを確認する。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Nextcloud で Too many connections エラーが出たときの対処</title>
       <link>https://h10i.github.io/posts/2025/08/29/troubleshooting-too-many-connections-in-nextcloud/</link>
