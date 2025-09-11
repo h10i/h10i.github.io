@@ -4,10 +4,29 @@
     <title>Posts on h10i</title>
     <link>https://h10i.github.io/posts/</link>
     <description>Recent content in Posts on h10i</description>
-    <generator>Hugo -- 0.149.1</generator>
+    <generator>Hugo -- 0.150.0</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 08 Sep 2025 17:08:04 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 11 Sep 2025 19:36:59 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WSL で Windows の PATH を引き継がないようにする</title>
+      <link>https://h10i.github.io/posts/2025/09/11/disable-windows-path-inheritance-in-wsl/</link>
+      <pubDate>Thu, 11 Sep 2025 19:36:59 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/09/11/disable-windows-path-inheritance-in-wsl/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;WSL は、デフォルトで Windows の PATH を引き継いでいる。&lt;/li&gt;
+&lt;li&gt;Windows と WSL 上でパスが競合すると、意図しない方が呼び出されてしまう。&lt;/li&gt;
+&lt;li&gt;WSL が Windows の PATH を引き継がないように設定する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows 11&lt;/li&gt;
+&lt;li&gt;WSL 2.3.24.0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;事象&#34;&gt;事象&lt;/h2&gt;
+&lt;p&gt;Windows 11 に Gemini CLI をインストールし、WSL 上でも Gemini CLI をインストールした。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Ubuntu とデュアルブートしている Windows を削除してパーティションを整理する</title>
       <link>https://h10i.github.io/posts/2025/09/08/removing-windows-from-a-dual-boot-setup-with-ubuntu-and-organize-the-partitions/</link>

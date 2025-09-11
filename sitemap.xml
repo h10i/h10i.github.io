@@ -3,13 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://h10i.github.io/categories/</loc>
-    <lastmod>2025-09-08T17:08:04+09:00</lastmod>
+    <lastmod>2025-09-11T19:36:59+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/</loc>
-    <lastmod>2025-09-08T17:08:04+09:00</lastmod>
+    <lastmod>2025-09-11T19:36:59+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/posts/</loc>
-    <lastmod>2025-09-08T17:08:04+09:00</lastmod>
+    <lastmod>2025-09-11T19:36:59+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/tags/</loc>
+    <lastmod>2025-09-11T19:36:59+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/categories/windows/</loc>
+    <lastmod>2025-09-11T19:36:59+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/tags/wsl/</loc>
+    <lastmod>2025-09-11T19:36:59+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/posts/2025/09/11/disable-windows-path-inheritance-in-wsl/</loc>
+    <lastmod>2025-09-11T19:36:59+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/categories/ubuntu/</loc>
     <lastmod>2025-09-08T17:08:04+09:00</lastmod>
@@ -24,9 +36,6 @@
     <lastmod>2025-08-29T09:48:04+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/posts/2025/08/29/troubleshooting-too-many-connections-in-nextcloud/</loc>
-    <lastmod>2025-08-29T09:48:04+09:00</lastmod>
-  </url><url>
-    <loc>https://h10i.github.io/tags/</loc>
     <lastmod>2025-08-29T09:48:04+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/tags/pi-hole/</loc>
@@ -69,9 +78,6 @@
     <lastmod>2025-06-24T23:18:02+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/posts/2025/06/24/setting-up-ssh-public-key-authentication/</loc>
-    <lastmod>2025-06-24T23:18:02+09:00</lastmod>
-  </url><url>
-    <loc>https://h10i.github.io/categories/windows/</loc>
     <lastmod>2025-06-24T23:18:02+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/tags/gocryptfs/</loc>
