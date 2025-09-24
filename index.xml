@@ -6,8 +6,33 @@
     <description>Recent content on h10i</description>
     <generator>Hugo -- 0.150.0</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 11 Sep 2025 19:36:59 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 24 Sep 2025 18:52:51 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Amazon Linux 2023 上に PostgreSQL を使用した Gitea を構築する</title>
+      <link>https://h10i.github.io/posts/2025/09/24/setting-up-gitea-on-amazon-linux-2023-with-postgresql/</link>
+      <pubDate>Wed, 24 Sep 2025 18:52:51 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/09/24/setting-up-gitea-on-amazon-linux-2023-with-postgresql/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon Linux 2023 上に Gitea を構築する。&lt;/li&gt;
+&lt;li&gt;DB は PostgreSQL を使用する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon Linux 2023&lt;/li&gt;
+&lt;li&gt;PostgreSQL 17&lt;/li&gt;
+&lt;li&gt;Gitea 1.24.6&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;h3 id=&#34;ec2&#34;&gt;EC2&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Amazon Linux 2023 の EC2 を起動する。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Amazon Linux 2023 に SSH 接続する。(&lt;code&gt;amazon-linux-gitea.pem&lt;/code&gt; は作成したキーファイル)&lt;/p&gt;</description>
+    </item>
     <item>
       <title>WSL で Windows の PATH を引き継がないようにする</title>
       <link>https://h10i.github.io/posts/2025/09/11/disable-windows-path-inheritance-in-wsl/</link>
