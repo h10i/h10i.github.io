@@ -4,10 +4,30 @@
     <title>h10i</title>
     <link>https://h10i.github.io/</link>
     <description>Recent content on h10i</description>
-    <generator>Hugo -- 0.150.0</generator>
+    <generator>Hugo -- 0.151.0</generator>
     <language>ja</language>
-    <lastBuildDate>Wed, 24 Sep 2025 18:52:51 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 16 Oct 2025 22:39:04 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kotlin プロジェクトに静的解析ツールの detekt を導入する</title>
+      <link>https://h10i.github.io/posts/2025/10/16/introducing-detekt-to-a-kotlin-project/</link>
+      <pubDate>Thu, 16 Oct 2025 22:39:04 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/10/16/introducing-detekt-to-a-kotlin-project/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Detekt Gradle Plugin を使用して、detekt を実行する。&lt;/li&gt;
+&lt;li&gt;Git pre-commit hook を使用して、コミット時に detekt を自動実行する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Gradle 8.13&lt;/li&gt;
+&lt;li&gt;detekt 1.23.8&lt;/li&gt;
+&lt;li&gt;detekt-formatting 1.23.8&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;h3 id=&#34;gradle-plugin-の設定&#34;&gt;Gradle Plugin の設定&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;build.gradle.kts&lt;/code&gt; に &lt;code&gt;detekt&lt;/code&gt; を追加する。(detekt のドキュメントには &lt;code&gt;io.gitlab.arturbosch.detekt&lt;/code&gt; が記載されているが、&lt;code&gt;2.0.0-alpha.0&lt;/code&gt; 以降を使う場合は &lt;code&gt;dev.detekt&lt;/code&gt; とする必要がある。)&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Amazon Linux 2023 上に PostgreSQL を使用した Gitea を構築する</title>
       <link>https://h10i.github.io/posts/2025/09/24/setting-up-gitea-on-amazon-linux-2023-with-postgresql/</link>
