@@ -4,10 +4,24 @@
     <title>Categories on h10i</title>
     <link>https://h10i.github.io/categories/</link>
     <description>Recent content in Categories on h10i</description>
-    <generator>Hugo -- 0.151.0</generator>
+    <generator>Hugo -- 0.151.2</generator>
     <language>ja</language>
-    <lastBuildDate>Wed, 24 Sep 2025 18:52:51 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 20 Oct 2025 10:38:18 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JUnit</title>
+      <link>https://h10i.github.io/categories/junit/</link>
+      <pubDate>Mon, 20 Oct 2025 10:38:18 +0900</pubDate>
+      <guid>https://h10i.github.io/categories/junit/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kotlin</title>
+      <link>https://h10i.github.io/categories/kotlin/</link>
+      <pubDate>Mon, 20 Oct 2025 10:38:18 +0900</pubDate>
+      <guid>https://h10i.github.io/categories/kotlin/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Linux</title>
       <link>https://h10i.github.io/categories/linux/</link>
@@ -69,13 +83,6 @@
       <link>https://h10i.github.io/categories/java/</link>
       <pubDate>Fri, 27 Sep 2024 23:39:26 +0900</pubDate>
       <guid>https://h10i.github.io/categories/java/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>JUnit</title>
-      <link>https://h10i.github.io/categories/junit/</link>
-      <pubDate>Fri, 27 Sep 2024 23:39:26 +0900</pubDate>
-      <guid>https://h10i.github.io/categories/junit/</guid>
       <description></description>
     </item>
     <item>

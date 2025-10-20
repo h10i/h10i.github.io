@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Kotlin on h10i</title>
+    <link>https://h10i.github.io/categories/kotlin/</link>
+    <description>Recent content in Kotlin on h10i</description>
+    <generator>Hugo -- 0.151.2</generator>
+    <language>ja</language>
+    <lastBuildDate>Mon, 20 Oct 2025 10:38:18 +0900</lastBuildDate>
+    <atom:link href="https://h10i.github.io/categories/kotlin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JUnit 5 のテストコードを分類して Gradle で実行する</title>
+      <link>https://h10i.github.io/posts/2025/10/20/executing-classified-junit-5-tests-with-gradle/</link>
+      <pubDate>Mon, 20 Oct 2025 10:38:18 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/10/20/executing-classified-junit-5-tests-with-gradle/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Gradle から JUnit のテストを実行するとき、特定のグループに含まれるテストのみ実行できるようにする。&lt;/li&gt;
+&lt;li&gt;グループは、独自アノテーションを定義し、テストクラスにアノテーションを付けることで分類する。&lt;/li&gt;
+&lt;li&gt;アノテーションを付与し忘れているテストは失敗させ、いずれかのアノテーションを付与する必要がある旨をエラーログに出す。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Boot 3.4.5&lt;/li&gt;
+&lt;li&gt;Kotlin 2.0.21&lt;/li&gt;
+&lt;li&gt;JUnit 5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;h3 id=&#34;分類用アノテーションの作成&#34;&gt;分類用アノテーションの作成&lt;/h3&gt;
+&lt;p&gt;Unit Test、Integration Test、E2E Test の 3 種類に対応するアノテーションを作成する。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
