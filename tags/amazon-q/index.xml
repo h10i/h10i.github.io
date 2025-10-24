@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Amazon Q on h10i</title>
+    <link>https://h10i.github.io/tags/amazon-q/</link>
+    <description>Recent content in Amazon Q on h10i</description>
+    <generator>Hugo -- 0.152.1</generator>
+    <language>ja</language>
+    <lastBuildDate>Fri, 24 Oct 2025 23:42:55 +0900</lastBuildDate>
+    <atom:link href="https://h10i.github.io/tags/amazon-q/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows 11 (WSL) に Amazon Q CLI をインストールする</title>
+      <link>https://h10i.github.io/posts/2025/10/24/installing-amazon-q-cli-on-wsl/</link>
+      <pubDate>Fri, 24 Oct 2025 23:42:55 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/10/24/installing-amazon-q-cli-on-wsl/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon Q CLI は Windows に対応していないため、WSL 上の Ubuntu にインストールする。&lt;/li&gt;
+&lt;li&gt;無料枠で試すため、AWS Builder ID を使用する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows 11 (WSL/Ubuntu 24.04)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;p&gt;Ubuntu (WSL) にて実行する。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;amazon-q&lt;/code&gt; のパッケージをダウンロードする。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

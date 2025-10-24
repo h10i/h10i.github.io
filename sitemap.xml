@@ -2,13 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://h10i.github.io/categories/</loc>
-    <lastmod>2025-10-20T10:38:18+09:00</lastmod>
+    <loc>https://h10i.github.io/tags/amazon-q/</loc>
+    <lastmod>2025-10-24T23:42:55+09:00</lastmod>
   </url><url>
-    <loc>https://h10i.github.io/tags/gradle/</loc>
-    <lastmod>2025-10-20T10:38:18+09:00</lastmod>
+    <loc>https://h10i.github.io/categories/</loc>
+    <lastmod>2025-10-24T23:42:55+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/</loc>
+    <lastmod>2025-10-24T23:42:55+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/posts/</loc>
+    <lastmod>2025-10-24T23:42:55+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/tags/</loc>
+    <lastmod>2025-10-24T23:42:55+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/categories/windows-11/</loc>
+    <lastmod>2025-10-24T23:42:55+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/posts/2025/10/24/installing-amazon-q-cli-on-wsl/</loc>
+    <lastmod>2025-10-24T23:42:55+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/tags/gradle/</loc>
     <lastmod>2025-10-20T10:38:18+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/categories/junit/</loc>
@@ -18,12 +33,6 @@
     <lastmod>2025-10-20T10:38:18+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/categories/kotlin/</loc>
-    <lastmod>2025-10-20T10:38:18+09:00</lastmod>
-  </url><url>
-    <loc>https://h10i.github.io/posts/</loc>
-    <lastmod>2025-10-20T10:38:18+09:00</lastmod>
-  </url><url>
-    <loc>https://h10i.github.io/tags/</loc>
     <lastmod>2025-10-20T10:38:18+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/posts/2025/10/16/introducing-detekt-to-a-kotlin-project/</loc>
