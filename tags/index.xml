@@ -4,10 +4,17 @@
     <title>Tags on h10i</title>
     <link>https://h10i.github.io/tags/</link>
     <description>Recent content in Tags on h10i</description>
-    <generator>Hugo -- 0.152.1</generator>
+    <generator>Hugo -- 0.152.2</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 24 Oct 2025 23:42:55 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 31 Oct 2025 21:03:59 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WSL</title>
+      <link>https://h10i.github.io/tags/wsl/</link>
+      <pubDate>Fri, 31 Oct 2025 21:03:59 +0900</pubDate>
+      <guid>https://h10i.github.io/tags/wsl/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Amazon Q</title>
       <link>https://h10i.github.io/tags/amazon-q/</link>
@@ -41,13 +48,6 @@
       <link>https://h10i.github.io/tags/postgresql/</link>
       <pubDate>Wed, 24 Sep 2025 18:52:51 +0900</pubDate>
       <guid>https://h10i.github.io/tags/postgresql/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>WSL</title>
-      <link>https://h10i.github.io/tags/wsl/</link>
-      <pubDate>Thu, 11 Sep 2025 19:36:59 +0900</pubDate>
-      <guid>https://h10i.github.io/tags/wsl/</guid>
       <description></description>
     </item>
     <item>

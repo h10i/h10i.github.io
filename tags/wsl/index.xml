@@ -4,10 +4,29 @@
     <title>WSL on h10i</title>
     <link>https://h10i.github.io/tags/wsl/</link>
     <description>Recent content in WSL on h10i</description>
-    <generator>Hugo -- 0.152.1</generator>
+    <generator>Hugo -- 0.152.2</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 11 Sep 2025 19:36:59 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 31 Oct 2025 21:03:59 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/tags/wsl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenCode を WSL で動かしてみる</title>
+      <link>https://h10i.github.io/posts/2025/10/31/trying-opencode-on-wsl/</link>
+      <pubDate>Fri, 31 Oct 2025 21:03:59 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/10/31/trying-opencode-on-wsl/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;OpenCode とは、任意の LLM プロバイダを選べる OSS の AI エージェントである。&lt;/li&gt;
+&lt;li&gt;Claude Code や Gemini CLI のように、ターミナル上で動作する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;WSL (Ubuntu 24.04 LTS)&lt;/li&gt;
+&lt;li&gt;opencode 0.15.30&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;h3 id=&#34;インストール&#34;&gt;インストール&lt;/h3&gt;
+&lt;p&gt;OpenCode を npm でインストールする。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>WSL で Windows の PATH を引き継がないようにする</title>
       <link>https://h10i.github.io/posts/2025/09/11/disable-windows-path-inheritance-in-wsl/</link>
