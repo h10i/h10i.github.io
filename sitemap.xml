@@ -3,24 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://h10i.github.io/categories/</loc>
-    <lastmod>2025-10-31T21:03:59+09:00</lastmod>
+    <lastmod>2025-11-01T20:51:13+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/</loc>
-    <lastmod>2025-10-31T21:03:59+09:00</lastmod>
+    <lastmod>2025-11-01T20:51:13+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/posts/</loc>
+    <lastmod>2025-11-01T20:51:13+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/tags/</loc>
+    <lastmod>2025-11-01T20:51:13+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/categories/windows/</loc>
+    <lastmod>2025-11-01T20:51:13+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/tags/wsl/</loc>
+    <lastmod>2025-11-01T20:51:13+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/posts/2025/11/01/how-to-prevent-zone-identifier-from-being-created-in-wsl/</loc>
+    <lastmod>2025-11-01T20:51:13+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/categories/opencode/</loc>
     <lastmod>2025-10-31T21:03:59+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/posts/2025/10/31/trying-opencode-on-wsl/</loc>
-    <lastmod>2025-10-31T21:03:59+09:00</lastmod>
-  </url><url>
-    <loc>https://h10i.github.io/posts/</loc>
-    <lastmod>2025-10-31T21:03:59+09:00</lastmod>
-  </url><url>
-    <loc>https://h10i.github.io/tags/</loc>
-    <lastmod>2025-10-31T21:03:59+09:00</lastmod>
-  </url><url>
-    <loc>https://h10i.github.io/tags/wsl/</loc>
     <lastmod>2025-10-31T21:03:59+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/tags/amazon-q/</loc>
@@ -61,9 +67,6 @@
   </url><url>
     <loc>https://h10i.github.io/tags/postgresql/</loc>
     <lastmod>2025-09-24T18:52:51+09:00</lastmod>
-  </url><url>
-    <loc>https://h10i.github.io/categories/windows/</loc>
-    <lastmod>2025-09-11T19:36:59+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/posts/2025/09/11/disable-windows-path-inheritance-in-wsl/</loc>
     <lastmod>2025-09-11T19:36:59+09:00</lastmod>

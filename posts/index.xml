@@ -6,8 +6,29 @@
     <description>Recent content in Posts on h10i</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 31 Oct 2025 21:03:59 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 01 Nov 2025 20:51:13 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WSLにファイルを移動したときに Zone.Identifier が作成されないようにする</title>
+      <link>https://h10i.github.io/posts/2025/11/01/how-to-prevent-zone-identifier-from-being-created-in-wsl/</link>
+      <pubDate>Sat, 01 Nov 2025 20:51:13 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/11/01/how-to-prevent-zone-identifier-from-being-created-in-wsl/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows から WSL の Ubuntu にファイルを移動したとき、&lt;code&gt;{ファイル名}:Zone.Identifier&lt;/code&gt; というファイルが作成される。&lt;/li&gt;
+&lt;li&gt;Zone.Identifier とは、ファイルが信頼された場所から来たものかを判別するために使用するゾーン情報を管理するメタデータファイルである。&lt;/li&gt;
+&lt;li&gt;Zone.Identifier を作成しないように設定を変更する。&lt;/li&gt;
+&lt;li&gt;削除しても問題ないため、既に作成されたファイルを削除する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows 11 Pro&lt;/li&gt;
+&lt;li&gt;WSL (Ubuntu 24.04 LTS)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;h3 id=&#34;zoneidentifier-自動作成設定の無効化&#34;&gt;Zone.Identifier 自動作成設定の無効化&lt;/h3&gt;
+&lt;p&gt;Zone.Identifier を作成しないようにする。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>OpenCode を WSL で動かしてみる</title>
       <link>https://h10i.github.io/posts/2025/10/31/trying-opencode-on-wsl/</link>
