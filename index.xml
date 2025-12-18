@@ -6,8 +6,27 @@
     <description>Recent content on h10i</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 01 Nov 2025 20:51:13 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 18 Dec 2025 23:01:25 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Amazon Bedrock の API で推論プロファイルを利用する</title>
+      <link>https://h10i.github.io/posts/2025/12/18/trying-amazon-bedrock-api-using-inference-profile/</link>
+      <pubDate>Thu, 18 Dec 2025 23:01:25 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/12/18/trying-amazon-bedrock-api-using-inference-profile/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon Bedrock の API を生成し、API 経由で LLM を使う。&lt;/li&gt;
+&lt;li&gt;推論プロファイルを作成し、API 利用料をタグで管理する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;前提&#34;&gt;前提&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;AWS CLI: 2.32.19&lt;/li&gt;
+&lt;li&gt;Ubuntu 24.04 LTS (AWS CLI が使えれば OS は問わない。)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;h3 id=&#34;aws-cli-の設定&#34;&gt;AWS CLI の設定&lt;/h3&gt;
+&lt;p&gt;以下より、最新の AWS CLI をインストールする。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>WSLにファイルを移動したときに Zone.Identifier が作成されないようにする</title>
       <link>https://h10i.github.io/posts/2025/11/01/how-to-prevent-zone-identifier-from-being-created-in-wsl/</link>
