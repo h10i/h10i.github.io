@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Node.js on h10i</title>
+    <link>https://h10i.github.io/categories/node.js/</link>
+    <description>Recent content in Node.js on h10i</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>ja</language>
+    <lastBuildDate>Fri, 19 Dec 2025 22:41:09 +0900</lastBuildDate>
+    <atom:link href="https://h10i.github.io/categories/node.js/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>npm にプロキシを設定する</title>
+      <link>https://h10i.github.io/posts/2025/12/19/setting-up-a-proxy-for-npm/</link>
+      <pubDate>Fri, 19 Dec 2025 22:41:09 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/12/19/setting-up-a-proxy-for-npm/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;プロキシ環境下で npm を使用するため、npm にプロキシを設定する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;前提&#34;&gt;前提&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 24.04 LTS&lt;/li&gt;
+&lt;li&gt;npm 11.6.2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;h3 id=&#34;プロキシ設定&#34;&gt;プロキシ設定&lt;/h3&gt;
+&lt;p&gt;プロキシを設定する。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-pwsh&#34; data-lang=&#34;pwsh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm -g config set proxy &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://proxy.example.com:8080/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm -g config set https-proxy &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://proxy.example.com:8080/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;確認&#34;&gt;確認&lt;/h3&gt;
+&lt;p&gt;プロキシが有効か確認する。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
