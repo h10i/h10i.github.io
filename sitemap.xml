@@ -3,10 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://h10i.github.io/categories/</loc>
-    <lastmod>2025-12-19T22:41:09+09:00</lastmod>
+    <lastmod>2025-12-20T23:08:19+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/</loc>
-    <lastmod>2025-12-19T22:41:09+09:00</lastmod>
+    <lastmod>2025-12-20T23:08:19+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/posts/</loc>
+    <lastmod>2025-12-20T23:08:19+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/categories/ubuntu/</loc>
+    <lastmod>2025-12-20T23:08:19+09:00</lastmod>
+  </url><url>
+    <loc>https://h10i.github.io/posts/2025/12/20/running-intellij-idea-on-wayland-in-ubuntu/</loc>
+    <lastmod>2025-12-20T23:08:19+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/categories/node.js/</loc>
     <lastmod>2025-12-19T22:41:09+09:00</lastmod>
@@ -15,9 +24,6 @@
     <lastmod>2025-12-19T22:41:09+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/posts/2025/12/19/setting-up-a-proxy-for-npm/</loc>
-    <lastmod>2025-12-19T22:41:09+09:00</lastmod>
-  </url><url>
-    <loc>https://h10i.github.io/posts/</loc>
     <lastmod>2025-12-19T22:41:09+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/tags/</loc>
@@ -85,9 +91,6 @@
   </url><url>
     <loc>https://h10i.github.io/posts/2025/09/11/disable-windows-path-inheritance-in-wsl/</loc>
     <lastmod>2025-09-11T19:36:59+09:00</lastmod>
-  </url><url>
-    <loc>https://h10i.github.io/categories/ubuntu/</loc>
-    <lastmod>2025-09-08T17:08:04+09:00</lastmod>
   </url><url>
     <loc>https://h10i.github.io/posts/2025/09/08/removing-windows-from-a-dual-boot-setup-with-ubuntu-and-organize-the-partitions/</loc>
     <lastmod>2025-09-08T17:08:04+09:00</lastmod>

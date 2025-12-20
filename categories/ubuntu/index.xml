@@ -4,10 +4,36 @@
     <title>Ubuntu on h10i</title>
     <link>https://h10i.github.io/categories/ubuntu/</link>
     <description>Recent content in Ubuntu on h10i</description>
-    <generator>Hugo -- 0.152.2</generator>
+    <generator>Hugo -- 0.153.0</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 08 Sep 2025 17:08:04 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 20 Dec 2025 23:08:19 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu の Wayland で IntelliJ IDEA を使う</title>
+      <link>https://h10i.github.io/posts/2025/12/20/running-intellij-idea-on-wayland-in-ubuntu/</link>
+      <pubDate>Sat, 20 Dec 2025 23:08:19 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/12/20/running-intellij-idea-on-wayland-in-ubuntu/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu の Wayland セッションにて、IntelliJ IDEA を使うと、以下の事象が発生する。
+&lt;ul&gt;
+&lt;li&gt;UI の点滅やフリッカーが発生する。&lt;/li&gt;
+&lt;li&gt;日本語入力時、変換するまで表示されない。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;IntelliJ IDEA は Flatpak 版で、&lt;code&gt;socket=x11&lt;/code&gt; で動作している。&lt;/li&gt;
+&lt;li&gt;IntelliJ IDEA が &lt;code&gt;socket=wayland&lt;/code&gt; で動くように設定することで解決した。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;前提&#34;&gt;前提&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 24.04 LTS&lt;/li&gt;
+&lt;li&gt;Fcitx5 + Mozc&lt;/li&gt;
+&lt;li&gt;IntelliJ IDEA Community 2025.3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;h3 id=&#34;intellij-idea-の設定&#34;&gt;IntelliJ IDEA の設定&lt;/h3&gt;
+&lt;p&gt;IntelliJ IDEA Community を起動する。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Ubuntu とデュアルブートしている Windows を削除してパーティションを整理する</title>
       <link>https://h10i.github.io/posts/2025/09/08/removing-windows-from-a-dual-boot-setup-with-ubuntu-and-organize-the-partitions/</link>
