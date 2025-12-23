@@ -4,10 +4,30 @@
     <title>h10i</title>
     <link>https://h10i.github.io/</link>
     <description>Recent content on h10i</description>
-    <generator>Hugo -- 0.153.0</generator>
+    <generator>Hugo -- 0.153.2</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 20 Dec 2025 23:08:19 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 23 Dec 2025 21:22:52 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Claude Code で Amazon Bedrock の推論プロファイルを使用する</title>
+      <link>https://h10i.github.io/posts/2025/12/23/trying-claude-code-on-amazon-bedrock-using-inference-profile/</link>
+      <pubDate>Tue, 23 Dec 2025 21:22:52 +0900</pubDate>
+      <guid>https://h10i.github.io/posts/2025/12/23/trying-claude-code-on-amazon-bedrock-using-inference-profile/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Claude Code で Amazon Bedrock の推論プロファイルを使用する。&lt;/li&gt;
+&lt;li&gt;推論プロファイルを使うと、AWSのタグでコスト管理ができる。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;前提&#34;&gt;前提&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 24.04 LTS&lt;/li&gt;
+&lt;li&gt;mise 2025.12.12&lt;/li&gt;
+&lt;li&gt;Claude Code 2.0.73&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
+&lt;h3 id=&#34;aws-設定&#34;&gt;AWS 設定&lt;/h3&gt;
+&lt;p&gt;「&lt;a href=&#34;https://h10i.github.io/posts/2025/12/18/trying-amazon-bedrock-api-using-inference-profile/&#34;&gt;Amazon Bedrock の API で推論プロファイルを利用する&lt;/a&gt;」より、使用するモデルと高速推論用モデルに対応する推論プロファイルを作成しておく。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Ubuntu の Wayland で IntelliJ IDEA を使う</title>
       <link>https://h10i.github.io/posts/2025/12/20/running-intellij-idea-on-wayland-in-ubuntu/</link>
