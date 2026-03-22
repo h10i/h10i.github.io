@@ -4,7 +4,7 @@
     <title>NGINX on h10i</title>
     <link>https://h10i.github.io/tags/nginx/</link>
     <description>Recent content in NGINX on h10i</description>
-    <generator>Hugo -- 0.153.2</generator>
+    <generator>Hugo -- 0.158.0</generator>
     <language>ja</language>
     <lastBuildDate>Wed, 24 Apr 2024 23:17:57 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
@@ -26,7 +26,7 @@
 &lt;h3 id=&#34;ubuntu-repository-経由&#34;&gt;Ubuntu Repository 経由&lt;/h3&gt;
 &lt;p&gt;この手順では、Ubuntu Repository の最新版である 1.18.0 がインストールされる。&lt;/p&gt;
 &lt;p&gt;NGINX をインストールする。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install nginx
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install nginx
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;NGINX のバージョンを確認する。&lt;/p&gt;</description>
     </item>
   </channel>

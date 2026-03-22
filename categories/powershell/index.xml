@@ -4,7 +4,7 @@
     <title>PowerShell on h10i</title>
     <link>https://h10i.github.io/categories/powershell/</link>
     <description>Recent content in PowerShell on h10i</description>
-    <generator>Hugo -- 0.153.2</generator>
+    <generator>Hugo -- 0.158.0</generator>
     <language>ja</language>
     <lastBuildDate>Fri, 31 Jan 2025 20:13:17 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/categories/powershell/index.xml" rel="self" type="application/rss+xml" />
@@ -25,8 +25,8 @@
 &lt;h2 id=&#34;手順&#34;&gt;手順&lt;/h2&gt;
 &lt;h3 id=&#34;プロファイルパスの確認&#34;&gt;プロファイルパスの確認&lt;/h3&gt;
 &lt;p&gt;以下コマンドを実行し、プロファイルのパスを確認する。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-pwsh&#34; data-lang=&#34;pwsh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$PROFILE | Select-Object *
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;AllUsersAllHosts       : C:\Program Files\PowerShell\7\profile.ps1
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-pwsh&#34; data-lang=&#34;pwsh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$PROFILE | Select-Object *
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;AllUsersAllHosts       : C:\Program Files\PowerShell\7\profile.ps1
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;AllUsersCurrentHost    : C:\Program Files\PowerShell\7\Microsoft.PowerShell_profile.ps1
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;CurrentUserAllHosts    : C:\Users\{user}\Documents\PowerShell\profile.ps1
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;CurrentUserCurrentHost : C:\Users\{user}\Documents\PowerShell\Microsoft.PowerShell_profile.ps1

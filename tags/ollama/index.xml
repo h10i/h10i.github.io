@@ -4,7 +4,7 @@
     <title>Ollama on h10i</title>
     <link>https://h10i.github.io/tags/ollama/</link>
     <description>Recent content in Ollama on h10i</description>
-    <generator>Hugo -- 0.153.2</generator>
+    <generator>Hugo -- 0.158.0</generator>
     <language>ja</language>
     <lastBuildDate>Wed, 29 Jan 2025 09:21:23 +0900</lastBuildDate>
     <atom:link href="https://h10i.github.io/tags/ollama/index.xml" rel="self" type="application/rss+xml" />
@@ -48,8 +48,8 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://ollama.com/&#34;&gt;Ollama&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-pwsh&#34; data-lang=&#34;pwsh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ollama -v
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ollama version is 0.5.7
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-pwsh&#34; data-lang=&#34;pwsh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ollama -v
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ollama version is 0.5.7
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;モデルの実行&#34;&gt;モデルの実行&lt;/h3&gt;
 &lt;p&gt;シェルを開き、DeepSeek-R1 を実行する。モデルは &lt;a href=&#34;https://ollama.com/library/deepseek-r1&#34;&gt;deepseek-r1&lt;/a&gt; にて公開されている。パラメータ数に応じてモデルのサイズや快適に動作するスペックも変わるため、小さいモデルから試すのが良いかもしれない。&lt;/p&gt;</description>
     </item>
