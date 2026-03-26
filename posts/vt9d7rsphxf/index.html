@@ -1,0 +1,189 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="h10i" href="https://example.com/rss.xml"><meta name="generator" content="Astro v6.0.8"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/posts/vt9d7rsphxf/"><!-- Primary Meta Tags --><title>Ubuntu 22.04.4 LTS に SoftEther VPN Server をインストールする</title><meta name="title" content="Ubuntu 22.04.4 LTS に SoftEther VPN Server をインストールする"><meta name="description"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/posts/vt9d7rsphxf/"><meta property="og:title" content="Ubuntu 22.04.4 LTS に SoftEther VPN Server をインストールする"><meta property="og:description"><!-- Twitter --><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://example.com/posts/vt9d7rsphxf/"><meta property="twitter:title" content="Ubuntu 22.04.4 LTS に SoftEther VPN Server をインストールする"><meta property="twitter:description"><style>:root{--color-bg: #ffffff;--color-text: #333333;--color-text-muted: #666666;--color-link: #0056b3;--color-link-hover: #003d82;--color-border: #e5e5e5;--color-code-bg: #f4f4f4;--max-width: 800px;--container-padding: 1rem;--space-xs: .5rem;--space-sm: 1rem;--space-md: 1.5rem;--space-lg: 2rem;--space-xl: 3rem;--font-family: system-ui, -apple-system, sans-serif;--font-size-base: 1rem;--line-height-base: 1.6}[data-theme=dark]{--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}}*,*:before,*:after{box-sizing:border-box}html{font-size:16px}body{font-family:var(--font-family);margin:0;padding:0;background-color:var(--color-bg);color:var(--color-text);line-height:var(--line-height-base);display:flex;flex-direction:column;min-height:100vh}main{flex:1}.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 var(--container-padding)}a{color:var(--color-link);text-decoration:none}a:hover{color:var(--color-link-hover);text-decoration:underline}h1,h2,h3,h4,h5,h6{margin-top:1.5em;margin-bottom:.5em;line-height:1.2;font-weight:700}h1{font-size:2rem;margin-top:0}h2{font-size:1.5rem}h3{font-size:1.25rem}p{margin-top:0;margin-bottom:var(--space-sm)}img{max-width:100%;height:auto;display:block}code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;background-color:var(--color-code-bg);padding:.2em .4em;border-radius:4px;font-size:.9em}pre{background-color:var(--color-code-bg);padding:var(--space-sm);border-radius:4px;overflow-x:auto;margin-bottom:var(--space-sm)}pre code{background-color:transparent;padding:0;font-size:.85em}blockquote{margin:0 0 var(--space-sm) 0;padding-left:var(--space-sm);border-left:4px solid var(--color-border);color:var(--color-text-muted);font-style:italic}.text-muted{color:var(--color-text-muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}@media(max-width:640px){html{font-size:15px}h1{font-size:1.75rem}h2{font-size:1.4rem}}.site-footer[data-astro-cid-sz7xmlte]{text-align:center;padding:var(--space-xl) 0;margin-top:var(--space-xl);border-top:1px solid var(--color-border);color:var(--color-text-muted);font-size:.875rem}.theme-toggle[data-astro-cid-x3pjskd3]{background:none;border:none;cursor:pointer;color:var(--color-text);padding:var(--space-xs);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:background-color .2s}.theme-toggle[data-astro-cid-x3pjskd3]:hover{background-color:var(--color-code-bg)}.sun[data-astro-cid-x3pjskd3]{display:none}.moon[data-astro-cid-x3pjskd3],[data-theme=dark] .sun[data-astro-cid-x3pjskd3]{display:block}[data-theme=dark] .moon[data-astro-cid-x3pjskd3]{display:none}.site-header[data-astro-cid-3ef6ksr2]{border-bottom:1px solid var(--color-border);margin-bottom:var(--space-lg)}.header-container[data-astro-cid-3ef6ksr2]{display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:var(--space-sm);padding-bottom:var(--space-sm)}.site-title[data-astro-cid-3ef6ksr2]{margin:0;font-size:1.5rem;font-weight:700}.site-title[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--color-text);text-decoration:none}.header-right[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;gap:var(--space-md)}.site-nav[data-astro-cid-3ef6ksr2]{display:flex;gap:var(--space-md)}@media(max-width:640px){.header-container[data-astro-cid-3ef6ksr2]{flex-direction:column;gap:var(--space-sm);align-items:flex-start}.header-right[data-astro-cid-3ef6ksr2]{width:100%;justify-content:space-between;flex-direction:row-reverse}.site-nav[data-astro-cid-3ef6ksr2]{width:auto;justify-content:flex-start;gap:var(--space-sm);font-size:.95rem;overflow-x:auto}}
+.post-header[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xl);padding-bottom:var(--space-md);border-bottom:1px solid var(--color-border)}.post-title[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xs);font-size:2.5rem}.post-meta[data-astro-cid-bvzihdzo]{display:flex;flex-direction:column;gap:var(--space-sm);font-size:.875rem}.post-tags[data-astro-cid-bvzihdzo]{display:flex;flex-wrap:wrap;gap:var(--space-xs);list-style:none;padding:0;margin:0}.post-tag[data-astro-cid-bvzihdzo]{background-color:var(--color-code-bg);padding:.2rem .5rem;border-radius:4px;color:var(--color-text);text-decoration:none;font-size:.75rem}.post-tag[data-astro-cid-bvzihdzo]:hover{background-color:var(--color-border)}.post-content[data-astro-cid-bvzihdzo]{line-height:1.8}@media(max-width:640px){.post-title[data-astro-cid-bvzihdzo]{font-size:2rem}}
+</style></head> <body data-astro-cid-bvzihdzo> <header class="site-header" data-astro-cid-3ef6ksr2> <div class="header-container container" data-astro-cid-3ef6ksr2> <h1 class="site-title" data-astro-cid-3ef6ksr2><a href="/" data-astro-cid-3ef6ksr2>h10i</a></h1> <div class="header-right" data-astro-cid-3ef6ksr2> <nav class="site-nav" data-astro-cid-3ef6ksr2> <a href="/posts" class="active" data-astro-cid-3ef6ksr2="true"> posts </a> <a href="/archives" data-astro-cid-3ef6ksr2="true"> archives </a> <a href="/tags" data-astro-cid-3ef6ksr2="true"> tags </a> <a href="/search" data-astro-cid-3ef6ksr2="true"> search </a> </nav> <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle" data-astro-cid-x3pjskd3> <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <circle cx="12" cy="12" r="5" data-astro-cid-x3pjskd3></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-x3pjskd3></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-x3pjskd3></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-x3pjskd3></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-x3pjskd3></line> </svg> <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-x3pjskd3></path> </svg> </button> <script type="module">const m=document.getElementById("theme-toggle");function o(){return typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}function t(e){document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e)}t(o());m?.addEventListener("click",()=>{const n=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";t(n)});</script> </div> </div> </header> <main class="container" data-astro-cid-bvzihdzo> <article class="post" data-pagefind-body data-astro-cid-bvzihdzo> <header class="post-header" data-astro-cid-bvzihdzo> <h1 class="post-title" data-pagefind-meta="title" data-astro-cid-bvzihdzo>Ubuntu 22.04.4 LTS に SoftEther VPN Server をインストールする</h1> <div class="post-meta" data-astro-cid-bvzihdzo> <div class="post-date text-muted" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Published: <time datetime="2024-03-21T13:54:38.000Z"> 2024-03-21 </time></span>  </div> <ul class="post-tags" data-astro-cid-bvzihdzo> <li data-astro-cid-bvzihdzo> <a href="/tags/linux/" class="post-tag" data-astro-cid-bvzihdzo>#Linux</a> </li><li data-astro-cid-bvzihdzo> <a href="/tags/ubuntu/" class="post-tag" data-astro-cid-bvzihdzo>#Ubuntu</a> </li> </ul> </div> </header> <div class="post-content" data-astro-cid-bvzihdzo>  <h2 id="概要">概要</h2>
+<ul>
+<li>Ubuntu に SoftEther VPN Server をインストールする。</li>
+</ul>
+<h2 id="前提">前提</h2>
+<ul>
+<li>Ubuntu 22.04.4 LTS</li>
+<li>SoftEther VPN Server (Ver 4.43, Build 9799, beta)</li>
+</ul>
+<h2 id="手順">手順</h2>
+<h3 id="softether-vpn-server-のダウンロード">SoftEther VPN Server のダウンロード</h3>
+<p><a href="https://www.softether-download.com/ja.aspx?product=softether">SoftEther ダウンロード センター</a>より、以下を選択する。</p>
+<ul>
+<li>ダウンロードするソフトウェア: SoftEther VPN (Freeware)</li>
+<li>コンポーネント: SoftEther VPN Server</li>
+<li>プラットフォーム: Linux</li>
+<li>CPU: Intel x64 / AMD64 (64bit)</li>
+</ul>
+<p>ダウンロード可能なファイルが表示されたら、最新の URL をコピーする。</p>
+<p>適当な作業用のディレクトリを作成し、以下コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> wget</span><span style="color:#9ECBFF"> https://jp.softether-download.com/files/softether/v4.43-9799-beta-2023.08.31-tree/Linux/SoftEther_VPN_Server/64bit_-_Intel_x64_or_AMD64/softether-vpnserver-v4.43-9799-beta-2023.08.31-linux-x64-64bit.tar.gz</span></span>
+<span class="line"><span style="color:#B392F0">--2024-03-21</span><span style="color:#9ECBFF"> 23:01:57--</span><span style="color:#9ECBFF">  https://jp.softether-download.com/files/softether/v4.43-9799-beta-2023.08.31-tree/Linux/SoftEther_VPN_Server/64bit_-_Intel_x64_or_AMD64/softether-vpnserver-v4.43-9799-beta-2023.08.31-linux-x64-64bit.tar.gz</span></span>
+<span class="line"><span style="color:#B392F0">Resolving</span><span style="color:#9ECBFF"> jp.softether-download.com</span><span style="color:#E1E4E8"> (jp.softether-download.com)... 130.158.75.49</span></span>
+<span class="line"><span style="color:#B392F0">Connecting</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> jp.softether-download.com</span><span style="color:#E1E4E8"> (jp.softether-download.com)</span><span style="color:#F97583">|</span><span style="color:#B392F0">130.158.75.49</span><span style="color:#F97583">|</span><span style="color:#B392F0">:443...</span><span style="color:#9ECBFF"> connected.</span></span>
+<span class="line"><span style="color:#B392F0">HTTP</span><span style="color:#9ECBFF"> request</span><span style="color:#9ECBFF"> sent,</span><span style="color:#9ECBFF"> awaiting</span><span style="color:#9ECBFF"> response...</span><span style="color:#79B8FF"> 200</span><span style="color:#9ECBFF"> OK</span></span>
+<span class="line"><span style="color:#B392F0">Length:</span><span style="color:#79B8FF"> 8398576</span><span style="color:#E1E4E8"> (8.0M) [application/x-gzip]</span></span>
+<span class="line"><span style="color:#B392F0">Saving</span><span style="color:#9ECBFF"> to:</span><span style="color:#9ECBFF"> ‘softether-vpnserver-v4.43-9799-beta-2023.08.31-linux-x64-64bit.tar.gz’</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">softether-vpnserver-v4.43-979</span><span style="color:#9ECBFF"> 100%[================================================</span><span style="color:#E1E4E8">=</span><span style="color:#F97583">></span><span style="color:#9ECBFF">]</span><span style="color:#9ECBFF">   8.01M</span><span style="color:#9ECBFF">  9.25MB/s</span><span style="color:#9ECBFF">    in</span><span style="color:#9ECBFF"> 0.9s</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">2024-03-21</span><span style="color:#9ECBFF"> 23:01:58</span><span style="color:#E1E4E8"> (9.25 </span><span style="color:#9ECBFF">MB/s</span><span style="color:#E1E4E8">) - ‘softether-vpnserver-v4.43-9799-beta-2023.08.31-linux-x64-64bit.tar.gz’ saved [8398576/8398576]</span></span></code></pre>
+<p>ダウンロードしたパッケージファイルを展開する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> tar</span><span style="color:#9ECBFF"> xzvf</span><span style="color:#9ECBFF"> softether-vpnserver-v4.43-9799-beta-2023.08.31-linux-x64-64bit.tar.gz</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/Makefile</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/.install.sh</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/ReadMeFirst_License.txt</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/Authors.txt</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/ReadMeFirst_Important_Notices_ja.txt</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/ReadMeFirst_Important_Notices_en.txt</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/ReadMeFirst_Important_Notices_cn.txt</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/code/</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/code/vpnserver.a</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/code/vpncmd.a</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/lib/</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/lib/libcharset.a</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/lib/libcrypto.a</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/lib/libedit.a</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/lib/libiconv.a</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/lib/libintelaes.a</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/lib/libncurses.a</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/lib/libssl.a</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/lib/libz.a</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/lib/License.txt</span></span>
+<span class="line"><span style="color:#B392F0">vpnserver/hamcore.se2</span></span></code></pre>
+<h3 id="必要なソフトウェアやライブラリのインストール">必要なソフトウェアやライブラリのインストール</h3>
+<p>実行可能ファイルを生成するために必要なソフトウェアやライブラリをインストールする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> apt</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> build-essential</span><span style="color:#79B8FF"> -y</span></span></code></pre>
+<h3 id="実行可能ファイルの生成">実行可能ファイルの生成</h3>
+<p>展開したディレクトリを開き、<code>make</code> を実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> cd</span><span style="color:#9ECBFF"> softether</span></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> make</span></span>
+<span class="line"><span style="color:#79B8FF">...</span></span>
+<span class="line"><span style="color:#B392F0">The</span><span style="color:#9ECBFF"> preparation</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> SoftEther</span><span style="color:#9ECBFF"> VPN</span><span style="color:#9ECBFF"> Server</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> completed</span><span style="color:#9ECBFF"> !</span></span>
+<span class="line"><span style="color:#79B8FF">...</span></span>
+<span class="line"><span style="color:#B392F0">make[1]:</span><span style="color:#9ECBFF"> Leaving</span><span style="color:#9ECBFF"> directory</span><span style="color:#9ECBFF"> '/home/hiro/tmp/vpnserver'</span></span></code></pre>
+<p><code>The preparation of SoftEther VPN Server is completed !</code> が表示されたらたぶん問題ない。</p>
+<h3 id="vpn-server-の配置">VPN Server の配置</h3>
+<p><code>/usr/local/vpnserver</code> に移動する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ..</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> mv</span><span style="color:#9ECBFF"> vpnserver</span><span style="color:#9ECBFF"> /usr/local</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> /usr/local/</span></span></code></pre>
+<p>root 権限のみで読み書きできるように設定する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> chmod</span><span style="color:#79B8FF"> -R</span><span style="color:#79B8FF"> 600</span><span style="color:#9ECBFF"> vpnserver</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> chmod</span><span style="color:#79B8FF"> 700</span><span style="color:#9ECBFF"> vpnserver/vpncmd</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> chmod</span><span style="color:#79B8FF"> 700</span><span style="color:#9ECBFF"> vpnserver/vpnserver</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> chown</span><span style="color:#79B8FF"> -R</span><span style="color:#9ECBFF"> root:root</span><span style="color:#9ECBFF"> vpnserver</span></span></code></pre>
+<h3 id="動作チェック">動作チェック</h3>
+<p><code>make</code> 実行時にもチェックはされているが、再度チェックしたい場合は <code>vpncmd</code> より <code>check</code> を実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> sudo</span><span style="color:#9ECBFF"> vpnserver/vpncmd</span></span>
+<span class="line"><span style="color:#B392F0">vpncmd</span><span style="color:#9ECBFF"> command</span><span style="color:#9ECBFF"> -</span><span style="color:#9ECBFF"> SoftEther</span><span style="color:#9ECBFF"> VPN</span><span style="color:#9ECBFF"> Command</span><span style="color:#9ECBFF"> Line</span><span style="color:#9ECBFF"> Management</span><span style="color:#9ECBFF"> Utility</span></span>
+<span class="line"><span style="color:#B392F0">SoftEther</span><span style="color:#9ECBFF"> VPN</span><span style="color:#9ECBFF"> Command</span><span style="color:#9ECBFF"> Line</span><span style="color:#9ECBFF"> Management</span><span style="color:#9ECBFF"> Utility</span><span style="color:#E1E4E8"> (vpncmd </span><span style="color:#9ECBFF">command</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">Version</span><span style="color:#79B8FF"> 4.43</span><span style="color:#9ECBFF"> Build</span><span style="color:#79B8FF"> 9799</span><span style="color:#E1E4E8">   (English)</span></span>
+<span class="line"><span style="color:#B392F0">Compiled</span><span style="color:#9ECBFF"> 2023/08/31</span><span style="color:#9ECBFF"> 10:50:49</span><span style="color:#9ECBFF"> by</span><span style="color:#9ECBFF"> buildsan</span><span style="color:#9ECBFF"> at</span><span style="color:#9ECBFF"> crosswin</span><span style="color:#9ECBFF"> with</span><span style="color:#9ECBFF"> OpenSSL</span><span style="color:#79B8FF"> 3.0.9</span></span>
+<span class="line"><span style="color:#B392F0">Copyright</span><span style="color:#E1E4E8"> (c) 2012-2023 SoftEther VPN Project. All Rights Reserved.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">By</span><span style="color:#9ECBFF"> using</span><span style="color:#9ECBFF"> vpncmd</span><span style="color:#9ECBFF"> program,</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> following</span><span style="color:#9ECBFF"> can</span><span style="color:#9ECBFF"> be</span><span style="color:#9ECBFF"> achieved.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">1.</span><span style="color:#9ECBFF"> Management</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> VPN</span><span style="color:#9ECBFF"> Server</span><span style="color:#9ECBFF"> or</span><span style="color:#9ECBFF"> VPN</span><span style="color:#9ECBFF"> Bridge</span></span>
+<span class="line"><span style="color:#B392F0">2.</span><span style="color:#9ECBFF"> Management</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> VPN</span><span style="color:#9ECBFF"> Client</span></span>
+<span class="line"><span style="color:#B392F0">3.</span><span style="color:#9ECBFF"> Use</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> VPN</span><span style="color:#9ECBFF"> Tools</span><span style="color:#E1E4E8"> (certificate </span><span style="color:#9ECBFF">creation</span><span style="color:#9ECBFF"> and</span><span style="color:#9ECBFF"> Network</span><span style="color:#9ECBFF"> Traffic</span><span style="color:#9ECBFF"> Speed</span><span style="color:#9ECBFF"> Test</span><span style="color:#9ECBFF"> Tool</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Select</span><span style="color:#9ECBFF"> 1,</span><span style="color:#79B8FF"> 2</span><span style="color:#9ECBFF"> or</span><span style="color:#9ECBFF"> 3:</span><span style="color:#79B8FF"> 3</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">VPN</span><span style="color:#9ECBFF"> Tools</span><span style="color:#9ECBFF"> has</span><span style="color:#9ECBFF"> been</span><span style="color:#9ECBFF"> launched.</span><span style="color:#9ECBFF"> By</span><span style="color:#9ECBFF"> inputting</span><span style="color:#9ECBFF"> HELP,</span><span style="color:#9ECBFF"> you</span><span style="color:#9ECBFF"> can</span><span style="color:#9ECBFF"> view</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> list</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> commands</span><span style="color:#9ECBFF"> that</span><span style="color:#9ECBFF"> can</span><span style="color:#9ECBFF"> be</span><span style="color:#9ECBFF"> used.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">VPN</span><span style="color:#9ECBFF"> Tool</span><span style="color:#E1E4E8">s</span><span style="color:#F97583">></span><span style="color:#9ECBFF">check</span></span>
+<span class="line"><span style="color:#B392F0">Check</span><span style="color:#9ECBFF"> command</span><span style="color:#9ECBFF"> -</span><span style="color:#9ECBFF"> Check</span><span style="color:#9ECBFF"> whether</span><span style="color:#9ECBFF"> SoftEther</span><span style="color:#9ECBFF"> VPN</span><span style="color:#9ECBFF"> Operation</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> Possible</span></span>
+<span class="line"><span style="color:#B392F0">---------------------------------------------------</span></span>
+<span class="line"><span style="color:#B392F0">SoftEther</span><span style="color:#9ECBFF"> VPN</span><span style="color:#9ECBFF"> Operation</span><span style="color:#9ECBFF"> Environment</span><span style="color:#9ECBFF"> Check</span><span style="color:#9ECBFF"> Tool</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Copyright</span><span style="color:#E1E4E8"> (c) SoftEther VPN Project.</span></span>
+<span class="line"><span style="color:#B392F0">All</span><span style="color:#9ECBFF"> Rights</span><span style="color:#9ECBFF"> Reserved.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">If</span><span style="color:#9ECBFF"> this</span><span style="color:#9ECBFF"> operation</span><span style="color:#9ECBFF"> environment</span><span style="color:#9ECBFF"> check</span><span style="color:#9ECBFF"> tool</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> on</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> system</span><span style="color:#9ECBFF"> and</span><span style="color:#9ECBFF"> that</span><span style="color:#9ECBFF"> system</span><span style="color:#9ECBFF"> passes,</span><span style="color:#9ECBFF"> it</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> most</span><span style="color:#9ECBFF"> likely</span><span style="color:#9ECBFF"> that</span><span style="color:#9ECBFF"> SoftEther</span><span style="color:#9ECBFF"> VPN</span><span style="color:#9ECBFF"> software</span><span style="color:#9ECBFF"> can</span><span style="color:#9ECBFF"> operate</span><span style="color:#9ECBFF"> on</span><span style="color:#9ECBFF"> that</span><span style="color:#9ECBFF"> system.</span><span style="color:#9ECBFF"> This</span><span style="color:#9ECBFF"> check</span><span style="color:#9ECBFF"> may</span><span style="color:#9ECBFF"> take</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> while.</span><span style="color:#9ECBFF"> Please</span><span style="color:#9ECBFF"> wait...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Checking</span><span style="color:#9ECBFF"> 'Kernel System'...</span></span>
+<span class="line"><span style="color:#B392F0">              Pass</span></span>
+<span class="line"><span style="color:#B392F0">Checking</span><span style="color:#9ECBFF"> 'Memory Operation System'...</span></span>
+<span class="line"><span style="color:#B392F0">              Pass</span></span>
+<span class="line"><span style="color:#B392F0">Checking</span><span style="color:#9ECBFF"> 'ANSI / Unicode string processing system'...</span></span>
+<span class="line"><span style="color:#B392F0">              Pass</span></span>
+<span class="line"><span style="color:#B392F0">Checking</span><span style="color:#9ECBFF"> 'File system'...</span></span>
+<span class="line"><span style="color:#B392F0">              Pass</span></span>
+<span class="line"><span style="color:#B392F0">Checking</span><span style="color:#9ECBFF"> 'Thread processing system'...</span></span>
+<span class="line"><span style="color:#B392F0">              Pass</span></span>
+<span class="line"><span style="color:#B392F0">Checking</span><span style="color:#9ECBFF"> 'Network system'...</span></span>
+<span class="line"><span style="color:#B392F0">              Pass</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">All</span><span style="color:#9ECBFF"> checks</span><span style="color:#9ECBFF"> passed.</span><span style="color:#9ECBFF"> It</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> most</span><span style="color:#9ECBFF"> likely</span><span style="color:#9ECBFF"> that</span><span style="color:#9ECBFF"> SoftEther</span><span style="color:#9ECBFF"> VPN</span><span style="color:#9ECBFF"> Server</span><span style="color:#9ECBFF"> /</span><span style="color:#9ECBFF"> Bridge</span><span style="color:#9ECBFF"> can</span><span style="color:#9ECBFF"> operate</span><span style="color:#9ECBFF"> normally</span><span style="color:#9ECBFF"> on</span><span style="color:#9ECBFF"> this</span><span style="color:#9ECBFF"> system.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">The</span><span style="color:#9ECBFF"> command</span><span style="color:#9ECBFF"> completed</span><span style="color:#9ECBFF"> successfully.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">VPN</span><span style="color:#9ECBFF"> Tool</span><span style="color:#E1E4E8">s</span><span style="color:#F97583">></span><span style="color:#9ECBFF">exit</span></span></code></pre>
+<h3 id="サービスの登録">サービスの登録</h3>
+<p>任意のエディタで、サービス呼び出しスクリプトを作成する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> vi</span><span style="color:#9ECBFF"> /opt/vpnserver.sh</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#!/bin/sh</span></span>
+<span class="line"><span># chkconfig: 2345 99 01</span></span>
+<span class="line"><span># description: SoftEther VPN Server</span></span>
+<span class="line"><span>DAEMON=/usr/local/vpnserver/vpnserver</span></span>
+<span class="line"><span>LOCK=/var/lock/subsys/vpnserver</span></span>
+<span class="line"><span>test -x $DAEMON || exit 0</span></span>
+<span class="line"><span>case "$1" in</span></span>
+<span class="line"><span>start)</span></span>
+<span class="line"><span>$DAEMON start</span></span>
+<span class="line"><span>touch $LOCK</span></span>
+<span class="line"><span>;;</span></span>
+<span class="line"><span>stop)</span></span>
+<span class="line"><span>$DAEMON stop</span></span>
+<span class="line"><span>rm $LOCK</span></span>
+<span class="line"><span>;;</span></span>
+<span class="line"><span>restart)</span></span>
+<span class="line"><span>$DAEMON stop</span></span>
+<span class="line"><span>sleep 3</span></span>
+<span class="line"><span>$DAEMON start</span></span>
+<span class="line"><span>;;</span></span>
+<span class="line"><span>*)</span></span>
+<span class="line"><span>echo "Usage: $0 {start|stop|restart}"</span></span>
+<span class="line"><span>exit 1</span></span>
+<span class="line"><span>esac</span></span>
+<span class="line"><span>exit 0</span></span></code></pre>
+<p>スクリプトの権限を変更する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> chmod</span><span style="color:#79B8FF"> 755</span><span style="color:#9ECBFF"> /opt/vpnserver.sh</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> chown</span><span style="color:#9ECBFF"> root:root</span><span style="color:#9ECBFF"> /opt/vpnserver.sh</span></span></code></pre>
+<p>任意のエディタで <code>/etc/systemd/system/vpnserver.service</code> を作成する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> vi</span><span style="color:#9ECBFF"> /etc/systemd/system/vpnserver.service</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[Unit]</span></span>
+<span class="line"><span>Description = vpnserver daemon</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[Service]</span></span>
+<span class="line"><span>ExecStart = /opt/vpnserver.sh start</span></span>
+<span class="line"><span>ExecStop = /opt/vpnserver.sh stop</span></span>
+<span class="line"><span>ExecReload = /opt/vpnserver.sh restart</span></span>
+<span class="line"><span>Restart = always</span></span>
+<span class="line"><span>Type = forking</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[Install]</span></span>
+<span class="line"><span>WantedBy = multi-user.target</span></span></code></pre>
+<p>サービスをリロードする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> systemctl</span><span style="color:#9ECBFF"> daemon-reload</span></span></code></pre>
+<p><code>vpnserver</code> サービスを有効化する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> sudo</span><span style="color:#9ECBFF"> systemctl</span><span style="color:#9ECBFF"> enable</span><span style="color:#9ECBFF"> vpnserver.service</span></span>
+<span class="line"><span style="color:#B392F0">Created</span><span style="color:#9ECBFF"> symlink</span><span style="color:#9ECBFF"> /etc/systemd/system/multi-user.target.wants/vpnserver.service</span><span style="color:#9ECBFF"> →</span><span style="color:#9ECBFF"> /etc/systemd/system/vpnserver.service.</span></span></code></pre>
+<h3 id="サービスの開始停止">サービスの開始・停止</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#6A737D"># 開始</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> systemctl</span><span style="color:#9ECBFF"> start</span><span style="color:#9ECBFF"> vpnserver</span></span>
+<span class="line"><span style="color:#6A737D"># 終了</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> systemctl</span><span style="color:#9ECBFF"> stop</span><span style="color:#9ECBFF"> vpnserver</span></span>
+<span class="line"><span style="color:#6A737D"># 再起動</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> systemctl</span><span style="color:#9ECBFF"> restart</span><span style="color:#9ECBFF"> vpnserver</span></span></code></pre>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://ja.softether.org/4-docs/1-manual/7/7.3">7.3 Linux へのインストールと初期設定 - SoftEther VPN プロジェクト</a></li>
+</ul>  </div> </article> </main> <footer class="site-footer" data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte>
+&copy; 2026 h10i.
+</div> </footer></body></html>

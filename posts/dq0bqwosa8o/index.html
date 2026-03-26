@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="h10i" href="https://example.com/rss.xml"><meta name="generator" content="Astro v6.0.8"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/posts/dq0bqwosa8o/"><!-- Primary Meta Tags --><title>SoftEther VPN Server を動かしているサーバ上の Samba や SSH に VPN 経由で接続する</title><meta name="title" content="SoftEther VPN Server を動かしているサーバ上の Samba や SSH に VPN 経由で接続する"><meta name="description"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/posts/dq0bqwosa8o/"><meta property="og:title" content="SoftEther VPN Server を動かしているサーバ上の Samba や SSH に VPN 経由で接続する"><meta property="og:description"><!-- Twitter --><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://example.com/posts/dq0bqwosa8o/"><meta property="twitter:title" content="SoftEther VPN Server を動かしているサーバ上の Samba や SSH に VPN 経由で接続する"><meta property="twitter:description"><style>:root{--color-bg: #ffffff;--color-text: #333333;--color-text-muted: #666666;--color-link: #0056b3;--color-link-hover: #003d82;--color-border: #e5e5e5;--color-code-bg: #f4f4f4;--max-width: 800px;--container-padding: 1rem;--space-xs: .5rem;--space-sm: 1rem;--space-md: 1.5rem;--space-lg: 2rem;--space-xl: 3rem;--font-family: system-ui, -apple-system, sans-serif;--font-size-base: 1rem;--line-height-base: 1.6}[data-theme=dark]{--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}}*,*:before,*:after{box-sizing:border-box}html{font-size:16px}body{font-family:var(--font-family);margin:0;padding:0;background-color:var(--color-bg);color:var(--color-text);line-height:var(--line-height-base);display:flex;flex-direction:column;min-height:100vh}main{flex:1}.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 var(--container-padding)}a{color:var(--color-link);text-decoration:none}a:hover{color:var(--color-link-hover);text-decoration:underline}h1,h2,h3,h4,h5,h6{margin-top:1.5em;margin-bottom:.5em;line-height:1.2;font-weight:700}h1{font-size:2rem;margin-top:0}h2{font-size:1.5rem}h3{font-size:1.25rem}p{margin-top:0;margin-bottom:var(--space-sm)}img{max-width:100%;height:auto;display:block}code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;background-color:var(--color-code-bg);padding:.2em .4em;border-radius:4px;font-size:.9em}pre{background-color:var(--color-code-bg);padding:var(--space-sm);border-radius:4px;overflow-x:auto;margin-bottom:var(--space-sm)}pre code{background-color:transparent;padding:0;font-size:.85em}blockquote{margin:0 0 var(--space-sm) 0;padding-left:var(--space-sm);border-left:4px solid var(--color-border);color:var(--color-text-muted);font-style:italic}.text-muted{color:var(--color-text-muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}@media(max-width:640px){html{font-size:15px}h1{font-size:1.75rem}h2{font-size:1.4rem}}.site-footer[data-astro-cid-sz7xmlte]{text-align:center;padding:var(--space-xl) 0;margin-top:var(--space-xl);border-top:1px solid var(--color-border);color:var(--color-text-muted);font-size:.875rem}.theme-toggle[data-astro-cid-x3pjskd3]{background:none;border:none;cursor:pointer;color:var(--color-text);padding:var(--space-xs);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:background-color .2s}.theme-toggle[data-astro-cid-x3pjskd3]:hover{background-color:var(--color-code-bg)}.sun[data-astro-cid-x3pjskd3]{display:none}.moon[data-astro-cid-x3pjskd3],[data-theme=dark] .sun[data-astro-cid-x3pjskd3]{display:block}[data-theme=dark] .moon[data-astro-cid-x3pjskd3]{display:none}.site-header[data-astro-cid-3ef6ksr2]{border-bottom:1px solid var(--color-border);margin-bottom:var(--space-lg)}.header-container[data-astro-cid-3ef6ksr2]{display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:var(--space-sm);padding-bottom:var(--space-sm)}.site-title[data-astro-cid-3ef6ksr2]{margin:0;font-size:1.5rem;font-weight:700}.site-title[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--color-text);text-decoration:none}.header-right[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;gap:var(--space-md)}.site-nav[data-astro-cid-3ef6ksr2]{display:flex;gap:var(--space-md)}@media(max-width:640px){.header-container[data-astro-cid-3ef6ksr2]{flex-direction:column;gap:var(--space-sm);align-items:flex-start}.header-right[data-astro-cid-3ef6ksr2]{width:100%;justify-content:space-between;flex-direction:row-reverse}.site-nav[data-astro-cid-3ef6ksr2]{width:auto;justify-content:flex-start;gap:var(--space-sm);font-size:.95rem;overflow-x:auto}}
+.post-header[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xl);padding-bottom:var(--space-md);border-bottom:1px solid var(--color-border)}.post-title[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xs);font-size:2.5rem}.post-meta[data-astro-cid-bvzihdzo]{display:flex;flex-direction:column;gap:var(--space-sm);font-size:.875rem}.post-tags[data-astro-cid-bvzihdzo]{display:flex;flex-wrap:wrap;gap:var(--space-xs);list-style:none;padding:0;margin:0}.post-tag[data-astro-cid-bvzihdzo]{background-color:var(--color-code-bg);padding:.2rem .5rem;border-radius:4px;color:var(--color-text);text-decoration:none;font-size:.75rem}.post-tag[data-astro-cid-bvzihdzo]:hover{background-color:var(--color-border)}.post-content[data-astro-cid-bvzihdzo]{line-height:1.8}@media(max-width:640px){.post-title[data-astro-cid-bvzihdzo]{font-size:2rem}}
+</style></head> <body data-astro-cid-bvzihdzo> <header class="site-header" data-astro-cid-3ef6ksr2> <div class="header-container container" data-astro-cid-3ef6ksr2> <h1 class="site-title" data-astro-cid-3ef6ksr2><a href="/" data-astro-cid-3ef6ksr2>h10i</a></h1> <div class="header-right" data-astro-cid-3ef6ksr2> <nav class="site-nav" data-astro-cid-3ef6ksr2> <a href="/posts" class="active" data-astro-cid-3ef6ksr2="true"> posts </a> <a href="/archives" data-astro-cid-3ef6ksr2="true"> archives </a> <a href="/tags" data-astro-cid-3ef6ksr2="true"> tags </a> <a href="/search" data-astro-cid-3ef6ksr2="true"> search </a> </nav> <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle" data-astro-cid-x3pjskd3> <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <circle cx="12" cy="12" r="5" data-astro-cid-x3pjskd3></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-x3pjskd3></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-x3pjskd3></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-x3pjskd3></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-x3pjskd3></line> </svg> <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-x3pjskd3></path> </svg> </button> <script type="module">const m=document.getElementById("theme-toggle");function o(){return typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}function t(e){document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e)}t(o());m?.addEventListener("click",()=>{const n=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";t(n)});</script> </div> </div> </header> <main class="container" data-astro-cid-bvzihdzo> <article class="post" data-pagefind-body data-astro-cid-bvzihdzo> <header class="post-header" data-astro-cid-bvzihdzo> <h1 class="post-title" data-pagefind-meta="title" data-astro-cid-bvzihdzo>SoftEther VPN Server を動かしているサーバ上の Samba や SSH に VPN 経由で接続する</h1> <div class="post-meta" data-astro-cid-bvzihdzo> <div class="post-date text-muted" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Published: <time datetime="2024-04-14T02:05:48.000Z"> 2024-04-14 </time></span>  </div> <ul class="post-tags" data-astro-cid-bvzihdzo> <li data-astro-cid-bvzihdzo> <a href="/tags/linux/" class="post-tag" data-astro-cid-bvzihdzo>#Linux</a> </li><li data-astro-cid-bvzihdzo> <a href="/tags/ubuntu/" class="post-tag" data-astro-cid-bvzihdzo>#Ubuntu</a> </li> </ul> </div> </header> <div class="post-content" data-astro-cid-bvzihdzo>  <h2 id="概要">概要</h2>
+<ul>
+<li>Ubuntu Server に SoftEther VPN Server をインストールしている。</li>
+<li>同じサーバ上で Samba によるファイル共有サービス等を動かしている。</li>
+<li>VPN 接続すると、Samba の共有ディレクトリや SSH 接続ができない。</li>
+<li>Ubuntu Server にブリッジを追加し、VPN 接続したクライアントから Samba や SSH に接続できるようにする。</li>
+</ul>
+<h2 id="前提">前提</h2>
+<ul>
+<li>Ubuntu 22.04 LTS</li>
+<li>SoftEther VPN Server (Ver 4.43, Build 9799, beta)
+<ul>
+<li>ローカルブリッジ設定のブリッジ先は、物理 LAN の <code>enp1s0</code> で動作している。</li>
+</ul>
+</li>
+</ul>
+<h2 id="手順">手順</h2>
+<h3 id="ブリッジの追加">ブリッジの追加</h3>
+<p>任意のエディタで、<code>/etc/netplan/</code> 配下にある YAML ファイルを開く。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> vi</span><span style="color:#9ECBFF"> /etc/netplan/00-installer-config.yaml</span></span></code></pre>
+<p>ネットワークインタフェース <code>enp1s0</code> を無効化し、<code>br0</code> を追加する。</p>
+<p>今回は、<code>192.168.11.100/24</code> を固定 IP として設定する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">network</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  version</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">2</span></span>
+<span class="line"><span style="color:#85E89D">  ethernets</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    enp1s0</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      dhcp4</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"><span style="color:#85E89D">      dhcp6</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"><span style="color:#85E89D">  bridges</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    br0</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      interfaces</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">        - </span><span style="color:#9ECBFF">enp1s0</span></span>
+<span class="line"><span style="color:#85E89D">      dhcp4</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span>
+<span class="line"><span style="color:#85E89D">      dhcp6</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#85E89D">      addresses</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">        - </span><span style="color:#9ECBFF">192.168.11.100/24</span></span>
+<span class="line"><span style="color:#85E89D">      routes</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">        - </span><span style="color:#85E89D">to</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">default</span></span>
+<span class="line"><span style="color:#85E89D">          via</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">192.168.11.1</span></span>
+<span class="line"><span style="color:#85E89D">      nameservers</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        addresses</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">          - </span><span style="color:#79B8FF">192.168.11.1</span></span></code></pre>
+<p><code>netplan</code> で有効化する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> sudo</span><span style="color:#9ECBFF"> netplan</span><span style="color:#9ECBFF"> apply</span></span>
+<span class="line"><span style="color:#B392F0">WARNING:root:Cannot</span><span style="color:#9ECBFF"> call</span><span style="color:#9ECBFF"> Open</span><span style="color:#9ECBFF"> vSwitch:</span><span style="color:#9ECBFF"> ovsdb-server.service</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> not</span><span style="color:#9ECBFF"> running.</span></span></code></pre>
+<p><code>ovsdb-server.service</code> がないため警告が出ているが、特に関係ないので無視する。</p>
+<p>SSH 接続して作業している場合は、<code>netplan try</code> コマンドを使う。設定ミスで接続できなくなった場合にロールバックしてくれる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> sudo</span><span style="color:#9ECBFF"> netplan</span><span style="color:#9ECBFF"> try</span><span style="color:#79B8FF"> --timeout</span><span style="color:#79B8FF"> 30</span></span>
+<span class="line"><span style="color:#B392F0">WARNING:root:Cannot</span><span style="color:#9ECBFF"> call</span><span style="color:#9ECBFF"> Open</span><span style="color:#9ECBFF"> vSwitch:</span><span style="color:#9ECBFF"> ovsdb-server.service</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> not</span><span style="color:#9ECBFF"> running.</span></span>
+<span class="line"><span style="color:#B392F0">Do</span><span style="color:#9ECBFF"> you</span><span style="color:#9ECBFF"> want</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> keep</span><span style="color:#9ECBFF"> these</span><span style="color:#9ECBFF"> settings?</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Press</span><span style="color:#9ECBFF"> ENTER</span><span style="color:#9ECBFF"> before</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> timeout</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> accept</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> new</span><span style="color:#9ECBFF"> configuration</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Changes</span><span style="color:#9ECBFF"> will</span><span style="color:#9ECBFF"> revert</span><span style="color:#9ECBFF"> in</span><span style="color:#79B8FF"> 23</span><span style="color:#9ECBFF"> seconds</span></span></code></pre>
+<p>設定が変更されているか確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> networkctl</span><span style="color:#9ECBFF"> list</span></span>
+<span class="line"><span style="color:#B392F0">IDX</span><span style="color:#9ECBFF"> LINK</span><span style="color:#9ECBFF">   TYPE</span><span style="color:#9ECBFF">     OPERATIONAL</span><span style="color:#9ECBFF"> SETUP</span></span>
+<span class="line"><span style="color:#B392F0">  1</span><span style="color:#9ECBFF"> lo</span><span style="color:#9ECBFF">     loopback</span><span style="color:#9ECBFF"> carrier</span><span style="color:#9ECBFF">     unmanaged</span></span>
+<span class="line"><span style="color:#B392F0">  2</span><span style="color:#9ECBFF"> enp1s0</span><span style="color:#9ECBFF"> ether</span><span style="color:#9ECBFF">    enslaved</span><span style="color:#9ECBFF">    configured</span></span>
+<span class="line"><span style="color:#B392F0">  3</span><span style="color:#9ECBFF"> br0</span><span style="color:#9ECBFF">    bridge</span><span style="color:#9ECBFF">   routable</span><span style="color:#9ECBFF">    configured</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">3</span><span style="color:#9ECBFF"> links</span><span style="color:#9ECBFF"> listed.</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> ip</span><span style="color:#9ECBFF"> addr</span></span>
+<span class="line"><span style="color:#B392F0">1:</span><span style="color:#9ECBFF"> lo:</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">LOOPBACK,UP,LOWER_U</span><span style="color:#E1E4E8">P</span><span style="color:#F97583">></span><span style="color:#9ECBFF"> mtu</span><span style="color:#79B8FF"> 65536</span><span style="color:#9ECBFF"> qdisc</span><span style="color:#9ECBFF"> noqueue</span><span style="color:#9ECBFF"> state</span><span style="color:#9ECBFF"> UNKNOWN</span><span style="color:#9ECBFF"> group</span><span style="color:#9ECBFF"> default</span><span style="color:#9ECBFF"> qlen</span><span style="color:#79B8FF"> 1000</span></span>
+<span class="line"><span style="color:#B392F0">    link/loopback</span><span style="color:#9ECBFF"> 00:00:00:00:00:00</span><span style="color:#9ECBFF"> brd</span><span style="color:#9ECBFF"> 00:00:00:00:00:00</span></span>
+<span class="line"><span style="color:#B392F0">    inet</span><span style="color:#9ECBFF"> 127.0.0.1/8</span><span style="color:#9ECBFF"> scope</span><span style="color:#9ECBFF"> host</span><span style="color:#9ECBFF"> lo</span></span>
+<span class="line"><span style="color:#B392F0">       valid_lft</span><span style="color:#9ECBFF"> forever</span><span style="color:#9ECBFF"> preferred_lft</span><span style="color:#9ECBFF"> forever</span></span>
+<span class="line"><span style="color:#B392F0">    inet6</span><span style="color:#9ECBFF"> ::1/128</span><span style="color:#9ECBFF"> scope</span><span style="color:#9ECBFF"> host</span></span>
+<span class="line"><span style="color:#B392F0">       valid_lft</span><span style="color:#9ECBFF"> forever</span><span style="color:#9ECBFF"> preferred_lft</span><span style="color:#9ECBFF"> forever</span></span>
+<span class="line"><span style="color:#B392F0">2:</span><span style="color:#9ECBFF"> enp1s0:</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">BROADCAST,MULTICAST,PROMISC,UP,LOWER_U</span><span style="color:#E1E4E8">P</span><span style="color:#F97583">></span><span style="color:#9ECBFF"> mtu</span><span style="color:#79B8FF"> 1500</span><span style="color:#9ECBFF"> qdisc</span><span style="color:#9ECBFF"> fq_codel</span><span style="color:#9ECBFF"> master</span><span style="color:#9ECBFF"> br0</span><span style="color:#9ECBFF"> state</span><span style="color:#9ECBFF"> UP</span><span style="color:#9ECBFF"> group</span><span style="color:#9ECBFF"> default</span><span style="color:#9ECBFF"> qlen</span><span style="color:#79B8FF"> 1000</span></span>
+<span class="line"><span style="color:#B392F0">    link/ether</span><span style="color:#9ECBFF"> xx:xx:xx:xx:xx:xx</span><span style="color:#9ECBFF"> brd</span><span style="color:#9ECBFF"> ff:ff:ff:ff:ff:ff</span></span>
+<span class="line"><span style="color:#B392F0">3:</span><span style="color:#9ECBFF"> br0:</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">BROADCAST,MULTICAST,UP,LOWER_U</span><span style="color:#E1E4E8">P</span><span style="color:#F97583">></span><span style="color:#9ECBFF"> mtu</span><span style="color:#79B8FF"> 1500</span><span style="color:#9ECBFF"> qdisc</span><span style="color:#9ECBFF"> noqueue</span><span style="color:#9ECBFF"> state</span><span style="color:#9ECBFF"> UP</span><span style="color:#9ECBFF"> group</span><span style="color:#9ECBFF"> default</span><span style="color:#9ECBFF"> qlen</span><span style="color:#79B8FF"> 1000</span></span>
+<span class="line"><span style="color:#B392F0">    link/ether</span><span style="color:#9ECBFF"> yy:yy:yy:yy:yy:yy</span><span style="color:#9ECBFF"> brd</span><span style="color:#9ECBFF"> ff:ff:ff:ff:ff:ff</span></span>
+<span class="line"><span style="color:#B392F0">    inet</span><span style="color:#9ECBFF"> 192.168.11.100/24</span><span style="color:#9ECBFF"> brd</span><span style="color:#79B8FF"> 192.168.11.255</span><span style="color:#9ECBFF"> scope</span><span style="color:#9ECBFF"> global</span><span style="color:#9ECBFF"> br0</span></span>
+<span class="line"><span style="color:#B392F0">       valid_lft</span><span style="color:#9ECBFF"> forever</span><span style="color:#9ECBFF"> preferred_lft</span><span style="color:#9ECBFF"> forever</span></span>
+<span class="line"><span style="color:#B392F0">    inet6</span><span style="color:#9ECBFF"> aaaa:aaaa:aaaa:aaaa:aaaa:aaaa:aaaa:aaaa/64</span><span style="color:#9ECBFF"> scope</span><span style="color:#9ECBFF"> global</span><span style="color:#9ECBFF"> dynamic</span><span style="color:#9ECBFF"> mngtmpaddr</span><span style="color:#9ECBFF"> noprefixroute</span></span>
+<span class="line"><span style="color:#B392F0">       valid_lft</span><span style="color:#9ECBFF"> 2591997sec</span><span style="color:#9ECBFF"> preferred_lft</span><span style="color:#9ECBFF"> 604797sec</span></span>
+<span class="line"><span style="color:#B392F0">    inet6</span><span style="color:#9ECBFF"> bbbb::bbbb:bbbb:bbbb:bbbb/64</span><span style="color:#9ECBFF"> scope</span><span style="color:#9ECBFF"> link</span></span>
+<span class="line"><span style="color:#B392F0">       valid_lft</span><span style="color:#9ECBFF"> forever</span><span style="color:#9ECBFF"> preferred_lft</span><span style="color:#9ECBFF"> forever</span></span></code></pre>
+<p>念のため、サーバを再起動し、サーバと同じネットワークから以下の接続ができるか確認する。</p>
+<ul>
+<li>SSH 接続</li>
+<li>VPN 接続</li>
+<li>Samba 接続</li>
+</ul>
+<p>Samba に接続できなくなっていたので、次の手順で設定変更する。</p>
+<h3 id="samba-の設定変更">Samba の設定変更</h3>
+<p>SSH 接続できるが、Samba の共有ディレクトリには接続できなくなった。</p>
+<p>ブリッジ経由での接続が許可されていないため、設定に追加する。</p>
+<p>任意のエディタで設定ファイルを開く。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> vi</span><span style="color:#9ECBFF"> /etc/samba/smb.conf</span></span></code></pre>
+<p><code>interfaces</code> に <code>br0</code> を追加する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[global]</span></span>
+<span class="line"><span>...</span></span>
+<span class="line"><span># The specific set of interfaces / networks to bind to</span></span>
+<span class="line"><span># This can be either the interface name or an IP address/netmask;</span></span>
+<span class="line"><span># interface names are normally preferred</span></span>
+<span class="line"><span>   interfaces = 127.0.0.0/8 enp1s0 br0</span></span></code></pre>
+<p>設定ファイルに問題がないか確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> sudo</span><span style="color:#9ECBFF"> testparm</span></span>
+<span class="line"><span style="color:#B392F0">Load</span><span style="color:#9ECBFF"> smb</span><span style="color:#9ECBFF"> config</span><span style="color:#9ECBFF"> files</span><span style="color:#9ECBFF"> from</span><span style="color:#9ECBFF"> /etc/samba/smb.conf</span></span>
+<span class="line"><span style="color:#B392F0">Loaded</span><span style="color:#9ECBFF"> services</span><span style="color:#9ECBFF"> file</span><span style="color:#9ECBFF"> OK.</span></span>
+<span class="line"><span style="color:#B392F0">Weak</span><span style="color:#9ECBFF"> crypto</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> allowed</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Server</span><span style="color:#9ECBFF"> role:</span><span style="color:#9ECBFF"> ROLE_STANDALONE</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Press</span><span style="color:#9ECBFF"> enter</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> see</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> dump</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> your</span><span style="color:#9ECBFF"> service</span><span style="color:#9ECBFF"> definitions</span></span></code></pre>
+<p>問題なければサービスを再起動する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> systemctl</span><span style="color:#9ECBFF"> restart</span><span style="color:#9ECBFF"> smbd</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> systemctl</span><span style="color:#9ECBFF"> restart</span><span style="color:#9ECBFF"> nmbd</span></span></code></pre>
+<p>これで外部からブリッジ経由で Samba の共有ディレクトリに接続できるようになる。</p>
+<h3 id="tap-デバイスの追加">TAP デバイスの追加</h3>
+<p>SoftEther VPN Server のローカルブリッジ設定にて、TAP デバイスを追加する。</p>
+<p>SoftEther VPN サーバ管理マネージャを起動し、「ローカルブリッジ設定」を開く。</p>
+<p>以下を選択し、「ローカルブリッジを追加」をクリックする。</p>
+<ul>
+<li>仮想 HUB: VPN (作成済みの名称)</li>
+<li>作成する種類: 新しい tap デバイスとのブリッジ接続</li>
+<li>新しい tap デバイス名: vpn (任意の名称)</li>
+</ul>
+<p>TAP デバイスが追加されていることを確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> networkctl</span><span style="color:#9ECBFF"> list</span></span>
+<span class="line"><span style="color:#B392F0">IDX</span><span style="color:#9ECBFF"> LINK</span><span style="color:#9ECBFF">    TYPE</span><span style="color:#9ECBFF">     OPERATIONAL</span><span style="color:#9ECBFF"> SETUP</span></span>
+<span class="line"><span style="color:#B392F0">  1</span><span style="color:#9ECBFF"> lo</span><span style="color:#9ECBFF">      loopback</span><span style="color:#9ECBFF"> carrier</span><span style="color:#9ECBFF">     unmanaged</span></span>
+<span class="line"><span style="color:#B392F0">  2</span><span style="color:#9ECBFF"> enp1s0</span><span style="color:#9ECBFF">  ether</span><span style="color:#9ECBFF">    enslaved</span><span style="color:#9ECBFF">    configured</span></span>
+<span class="line"><span style="color:#B392F0">  3</span><span style="color:#9ECBFF"> br0</span><span style="color:#9ECBFF">     bridge</span><span style="color:#9ECBFF">   routable</span><span style="color:#9ECBFF">    configured</span></span>
+<span class="line"><span style="color:#B392F0">  4</span><span style="color:#9ECBFF"> tap_vpn</span><span style="color:#9ECBFF"> ether</span><span style="color:#9ECBFF">    routable</span><span style="color:#9ECBFF">    unmanaged</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">4</span><span style="color:#9ECBFF"> links</span><span style="color:#9ECBFF"> listed.</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> ip</span><span style="color:#9ECBFF"> addr</span></span>
+<span class="line"><span style="color:#B392F0">1:</span><span style="color:#9ECBFF"> lo:</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">LOOPBACK,UP,LOWER_U</span><span style="color:#E1E4E8">P</span><span style="color:#F97583">></span><span style="color:#9ECBFF"> mtu</span><span style="color:#79B8FF"> 65536</span><span style="color:#9ECBFF"> qdisc</span><span style="color:#9ECBFF"> noqueue</span><span style="color:#9ECBFF"> state</span><span style="color:#9ECBFF"> UNKNOWN</span><span style="color:#9ECBFF"> group</span><span style="color:#9ECBFF"> default</span><span style="color:#9ECBFF"> qlen</span><span style="color:#79B8FF"> 1000</span></span>
+<span class="line"><span style="color:#B392F0">    link/loopback</span><span style="color:#9ECBFF"> 00:00:00:00:00:00</span><span style="color:#9ECBFF"> brd</span><span style="color:#9ECBFF"> 00:00:00:00:00:00</span></span>
+<span class="line"><span style="color:#B392F0">    inet</span><span style="color:#9ECBFF"> 127.0.0.1/8</span><span style="color:#9ECBFF"> scope</span><span style="color:#9ECBFF"> host</span><span style="color:#9ECBFF"> lo</span></span>
+<span class="line"><span style="color:#B392F0">       valid_lft</span><span style="color:#9ECBFF"> forever</span><span style="color:#9ECBFF"> preferred_lft</span><span style="color:#9ECBFF"> forever</span></span>
+<span class="line"><span style="color:#B392F0">    inet6</span><span style="color:#9ECBFF"> ::1/128</span><span style="color:#9ECBFF"> scope</span><span style="color:#9ECBFF"> host</span></span>
+<span class="line"><span style="color:#B392F0">       valid_lft</span><span style="color:#9ECBFF"> forever</span><span style="color:#9ECBFF"> preferred_lft</span><span style="color:#9ECBFF"> forever</span></span>
+<span class="line"><span style="color:#B392F0">2:</span><span style="color:#9ECBFF"> enp1s0:</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">BROADCAST,MULTICAST,PROMISC,UP,LOWER_U</span><span style="color:#E1E4E8">P</span><span style="color:#F97583">></span><span style="color:#9ECBFF"> mtu</span><span style="color:#79B8FF"> 1500</span><span style="color:#9ECBFF"> qdisc</span><span style="color:#9ECBFF"> fq_codel</span><span style="color:#9ECBFF"> master</span><span style="color:#9ECBFF"> br0</span><span style="color:#9ECBFF"> state</span><span style="color:#9ECBFF"> UP</span><span style="color:#9ECBFF"> group</span><span style="color:#9ECBFF"> default</span><span style="color:#9ECBFF"> qlen</span><span style="color:#79B8FF"> 1000</span></span>
+<span class="line"><span style="color:#B392F0">    link/ether</span><span style="color:#9ECBFF"> xx:xx:xx:xx:xx:xx</span><span style="color:#9ECBFF"> brd</span><span style="color:#9ECBFF"> ff:ff:ff:ff:ff:ff</span></span>
+<span class="line"><span style="color:#B392F0">3:</span><span style="color:#9ECBFF"> br0:</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">BROADCAST,MULTICAST,UP,LOWER_U</span><span style="color:#E1E4E8">P</span><span style="color:#F97583">></span><span style="color:#9ECBFF"> mtu</span><span style="color:#79B8FF"> 1500</span><span style="color:#9ECBFF"> qdisc</span><span style="color:#9ECBFF"> noqueue</span><span style="color:#9ECBFF"> state</span><span style="color:#9ECBFF"> UP</span><span style="color:#9ECBFF"> group</span><span style="color:#9ECBFF"> default</span><span style="color:#9ECBFF"> qlen</span><span style="color:#79B8FF"> 1000</span></span>
+<span class="line"><span style="color:#B392F0">    link/ether</span><span style="color:#9ECBFF"> yy:yy:yy:yy:yy:yy</span><span style="color:#9ECBFF"> brd</span><span style="color:#9ECBFF"> ff:ff:ff:ff:ff:ff</span></span>
+<span class="line"><span style="color:#B392F0">    inet</span><span style="color:#9ECBFF"> 192.168.11.100/24</span><span style="color:#9ECBFF"> brd</span><span style="color:#79B8FF"> 192.168.11.255</span><span style="color:#9ECBFF"> scope</span><span style="color:#9ECBFF"> global</span><span style="color:#9ECBFF"> br0</span></span>
+<span class="line"><span style="color:#B392F0">       valid_lft</span><span style="color:#9ECBFF"> forever</span><span style="color:#9ECBFF"> preferred_lft</span><span style="color:#9ECBFF"> forever</span></span>
+<span class="line"><span style="color:#B392F0">    inet6</span><span style="color:#9ECBFF"> aaaa:aaaa:aaaa:aaaa:aaaa:aaaa:aaaa:aaaa/64</span><span style="color:#9ECBFF"> scope</span><span style="color:#9ECBFF"> global</span><span style="color:#9ECBFF"> dynamic</span><span style="color:#9ECBFF"> mngtmpaddr</span><span style="color:#9ECBFF"> noprefixroute</span></span>
+<span class="line"><span style="color:#B392F0">       valid_lft</span><span style="color:#9ECBFF"> 2591997sec</span><span style="color:#9ECBFF"> preferred_lft</span><span style="color:#9ECBFF"> 604797sec</span></span>
+<span class="line"><span style="color:#B392F0">    inet6</span><span style="color:#9ECBFF"> bbbb::bbbb:bbbb:bbbb:bbbb/64</span><span style="color:#9ECBFF"> scope</span><span style="color:#9ECBFF"> link</span></span>
+<span class="line"><span style="color:#B392F0">       valid_lft</span><span style="color:#9ECBFF"> forever</span><span style="color:#9ECBFF"> preferred_lft</span><span style="color:#9ECBFF"> forever</span></span>
+<span class="line"><span style="color:#B392F0">4:</span><span style="color:#9ECBFF"> tap_vpn:</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">BROADCAST,MULTICAST,UP,LOWER_U</span><span style="color:#E1E4E8">P</span><span style="color:#F97583">></span><span style="color:#9ECBFF"> mtu</span><span style="color:#79B8FF"> 1500</span><span style="color:#9ECBFF"> qdisc</span><span style="color:#9ECBFF"> fq_codel</span><span style="color:#9ECBFF"> state</span><span style="color:#9ECBFF"> UNKNOWN</span><span style="color:#9ECBFF"> group</span><span style="color:#9ECBFF"> default</span><span style="color:#9ECBFF"> qlen</span><span style="color:#79B8FF"> 1000</span></span>
+<span class="line"><span style="color:#B392F0">    link/ether</span><span style="color:#9ECBFF"> zz:zz:zz:zz:zz:zz</span><span style="color:#9ECBFF"> brd</span><span style="color:#9ECBFF"> ff:ff:ff:ff:ff:ff</span></span>
+<span class="line"><span style="color:#B392F0">    inet6</span><span style="color:#9ECBFF"> cccc:cccc:cccc:cccc:cccc:cccc:cccc:cccc/64</span><span style="color:#9ECBFF"> scope</span><span style="color:#9ECBFF"> global</span><span style="color:#9ECBFF"> temporary</span><span style="color:#9ECBFF"> dynamic</span></span>
+<span class="line"><span style="color:#B392F0">       valid_lft</span><span style="color:#9ECBFF"> 604781sec</span><span style="color:#9ECBFF"> preferred_lft</span><span style="color:#9ECBFF"> 86075sec</span></span>
+<span class="line"><span style="color:#B392F0">    inet6</span><span style="color:#9ECBFF"> dddd:dddd:dddd:dddd:dddd:dddd:dddd:dddd/64</span><span style="color:#9ECBFF"> scope</span><span style="color:#9ECBFF"> global</span><span style="color:#9ECBFF"> dynamic</span><span style="color:#9ECBFF"> mngtmpaddr</span></span>
+<span class="line"><span style="color:#B392F0">       valid_lft</span><span style="color:#9ECBFF"> 2591981sec</span><span style="color:#9ECBFF"> preferred_lft</span><span style="color:#9ECBFF"> 604781sec</span></span>
+<span class="line"><span style="color:#B392F0">    inet6</span><span style="color:#9ECBFF"> eeee::eeee:eeee:eeee:eeee/64</span><span style="color:#9ECBFF"> scope</span><span style="color:#9ECBFF"> link</span></span>
+<span class="line"><span style="color:#B392F0">       valid_lft</span><span style="color:#9ECBFF"> forever</span><span style="color:#9ECBFF"> preferred_lft</span><span style="color:#9ECBFF"> forever</span></span></code></pre>
+<p>SoftEther VPN サーバ管理マネージャを起動し、「ローカルブリッジ設定」を開く。</p>
+<p>ブリッジ先に <code>enp1s0</code> を指定した設定を削除し、<code>tap_vpn</code> の設定のみが動作した状態にする。</p>
+<h3 id="tap-デバイスをブリッジに追加">TAP デバイスをブリッジに追加</h3>
+<p><code>tap_vpn</code> をプロミスキャスモードに設定する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> ip</span><span style="color:#9ECBFF"> link</span><span style="color:#9ECBFF"> set</span><span style="color:#9ECBFF"> dev</span><span style="color:#9ECBFF"> tap_vpn</span><span style="color:#9ECBFF"> promisc</span><span style="color:#9ECBFF"> on</span></span></code></pre>
+<p><code>tap_vpn</code> を <code>br0</code> のインタフェースに追加する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> ip</span><span style="color:#9ECBFF"> link</span><span style="color:#9ECBFF"> set</span><span style="color:#9ECBFF"> dev</span><span style="color:#9ECBFF"> tap_vpn</span><span style="color:#9ECBFF"> master</span><span style="color:#9ECBFF"> br0</span></span></code></pre>
+<p>別ネットワークのクライアントから VPN 接続し、Samba の共有ディレクトリやサーバへの SSH 接続ができることを確認する。</p>
+<p>問題なければ、VPN Server のサービス起動時に <code>tap_vpn</code> を <code>br0</code> のインタフェースに追加する設定を入れる。</p>
+<p>やり方は色々あると思うので、お好みで。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> sudo</span><span style="color:#9ECBFF"> cat</span><span style="color:#9ECBFF"> /etc/systemd/system/vpnserver.service</span></span>
+<span class="line"><span style="color:#E1E4E8">[Unit]</span></span>
+<span class="line"><span style="color:#B392F0">Description</span><span style="color:#9ECBFF"> =</span><span style="color:#9ECBFF"> vpnserver</span><span style="color:#9ECBFF"> daemon</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">[Service]</span></span>
+<span class="line"><span style="color:#B392F0">ExecStart</span><span style="color:#9ECBFF"> =</span><span style="color:#9ECBFF"> /opt/vpnserver.sh</span><span style="color:#9ECBFF"> start</span></span>
+<span class="line"><span style="color:#B392F0">ExecStop</span><span style="color:#9ECBFF"> =</span><span style="color:#9ECBFF"> /opt/vpnserver.sh</span><span style="color:#9ECBFF"> stop</span></span>
+<span class="line"><span style="color:#B392F0">ExecReload</span><span style="color:#9ECBFF"> =</span><span style="color:#9ECBFF"> /opt/vpnserver.sh</span><span style="color:#9ECBFF"> restart</span></span>
+<span class="line"><span style="color:#B392F0">Restart</span><span style="color:#9ECBFF"> =</span><span style="color:#9ECBFF"> always</span></span>
+<span class="line"><span style="color:#B392F0">Type</span><span style="color:#9ECBFF"> =</span><span style="color:#9ECBFF"> forking</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">[Install]</span></span>
+<span class="line"><span style="color:#B392F0">WantedBy</span><span style="color:#9ECBFF"> =</span><span style="color:#9ECBFF"> multi-user.target</span></span></code></pre>
+<p><code>/opt/vpnserver.sh</code> の中身は以下とした。</p>
+<p>VPN Server が <code>tap_vpn</code> を作成したら、 <code>br0</code> に追加している。</p>
+<p>終了時は、念のため <code>br0</code> から削除したうえで VPN Server を停止する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D">#!/bin/bash</span></span>
+<span class="line"><span style="color:#6A737D"># chkconfig: 2345 99 01</span></span>
+<span class="line"><span style="color:#6A737D"># description: SoftEther VPN Server</span></span>
+<span class="line"><span style="color:#E1E4E8">DAEMON</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">/usr/local/vpnserver/vpnserver</span></span>
+<span class="line"><span style="color:#E1E4E8">LOCK</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">/var/lock/subsys/vpnserver</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">start_vpnserver</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">  $DAEMON </span><span style="color:#9ECBFF">start</span></span>
+<span class="line"><span style="color:#B392F0">  touch</span><span style="color:#E1E4E8"> $LOCK</span></span>
+<span class="line"><span style="color:#F97583">  for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> {</span><span style="color:#B392F0">1..10}</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#B392F0"> ip</span><span style="color:#9ECBFF"> link</span><span style="color:#9ECBFF"> show</span><span style="color:#9ECBFF"> dev</span><span style="color:#9ECBFF"> tap_vpn</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF">/dev/null</span><span style="color:#F97583"> 2>&#x26;1</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">then</span></span>
+<span class="line"><span style="color:#B392F0">      ip</span><span style="color:#9ECBFF"> link</span><span style="color:#9ECBFF"> set</span><span style="color:#9ECBFF"> dev</span><span style="color:#9ECBFF"> tap_vpn</span><span style="color:#9ECBFF"> promisc</span><span style="color:#9ECBFF"> on</span></span>
+<span class="line"><span style="color:#B392F0">      ip</span><span style="color:#9ECBFF"> link</span><span style="color:#9ECBFF"> set</span><span style="color:#9ECBFF"> dev</span><span style="color:#9ECBFF"> tap_vpn</span><span style="color:#9ECBFF"> master</span><span style="color:#9ECBFF"> br0</span></span>
+<span class="line"><span style="color:#F97583">      break</span></span>
+<span class="line"><span style="color:#F97583">    else</span></span>
+<span class="line"><span style="color:#B392F0">      sleep</span><span style="color:#79B8FF"> 1</span></span>
+<span class="line"><span style="color:#F97583">    fi</span></span>
+<span class="line"><span style="color:#F97583">  done</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">stop_vpnserver</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#B392F0"> ip</span><span style="color:#9ECBFF"> link</span><span style="color:#9ECBFF"> show</span><span style="color:#9ECBFF"> dev</span><span style="color:#9ECBFF"> tap_vpn</span><span style="color:#F97583"> ></span><span style="color:#9ECBFF">/dev/null</span><span style="color:#F97583"> 2>&#x26;1</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">then</span></span>
+<span class="line"><span style="color:#B392F0">    ip</span><span style="color:#9ECBFF"> link</span><span style="color:#9ECBFF"> set</span><span style="color:#9ECBFF"> tap_vpn</span><span style="color:#9ECBFF"> promisc</span><span style="color:#9ECBFF"> off</span></span>
+<span class="line"><span style="color:#B392F0">    ip</span><span style="color:#9ECBFF"> link</span><span style="color:#9ECBFF"> set</span><span style="color:#9ECBFF"> dev</span><span style="color:#9ECBFF"> tap_vpn</span><span style="color:#9ECBFF"> nomaster</span></span>
+<span class="line"><span style="color:#F97583">  fi</span></span>
+<span class="line"><span style="color:#E1E4E8">  $DAEMON </span><span style="color:#9ECBFF">stop</span></span>
+<span class="line"><span style="color:#B392F0">  rm</span><span style="color:#E1E4E8"> $LOCK</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">test</span><span style="color:#79B8FF"> -x</span><span style="color:#E1E4E8"> $DAEMON </span><span style="color:#F97583">||</span><span style="color:#79B8FF"> exit</span><span style="color:#79B8FF"> 0</span></span>
+<span class="line"><span style="color:#F97583">case</span><span style="color:#9ECBFF"> "</span><span style="color:#79B8FF">$1</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> in</span></span>
+<span class="line"><span style="color:#DBEDFF">start</span><span style="color:#F97583">)</span></span>
+<span class="line"><span style="color:#B392F0">  start_vpnserver</span></span>
+<span class="line"><span style="color:#E1E4E8">  ;;</span></span>
+<span class="line"><span style="color:#DBEDFF">stop</span><span style="color:#F97583">)</span></span>
+<span class="line"><span style="color:#B392F0">  stop_vpnserver</span></span>
+<span class="line"><span style="color:#E1E4E8">  ;;</span></span>
+<span class="line"><span style="color:#DBEDFF">restart</span><span style="color:#F97583">)</span></span>
+<span class="line"><span style="color:#B392F0">  stop_vpnserver</span></span>
+<span class="line"><span style="color:#B392F0">  sleep</span><span style="color:#79B8FF"> 3</span></span>
+<span class="line"><span style="color:#B392F0">  start_vpnserver</span></span>
+<span class="line"><span style="color:#E1E4E8">  ;;</span></span>
+<span class="line"><span style="color:#F97583">*)</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "Usage: </span><span style="color:#79B8FF">$0</span><span style="color:#9ECBFF"> {start|stop|restart}"</span></span>
+<span class="line"><span style="color:#79B8FF">  exit</span><span style="color:#79B8FF"> 1</span></span>
+<span class="line"><span style="color:#E1E4E8">  ;;</span></span>
+<span class="line"><span style="color:#F97583">esac</span></span>
+<span class="line"><span style="color:#79B8FF">exit</span><span style="color:#79B8FF"> 0</span></span></code></pre>
+<p>最後に、サーバを再起動し、VPN 接続経由で各種サービスが使えることを確認する。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://wiki.archlinux.jp/index.php/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%96%E3%83%AA%E3%83%83%E3%82%B8">ネットワークブリッジ - ArchWiki</a></li>
+</ul>  </div> </article> </main> <footer class="site-footer" data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte>
+&copy; 2026 h10i.
+</div> </footer></body></html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="h10i" href="https://example.com/rss.xml"><meta name="generator" content="Astro v6.0.8"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/posts/bzudqjmlslx/"><!-- Primary Meta Tags --><title>Fire HD 10 (7th generation) に LineageOS 16.0 (Android 9) をインストールする</title><meta name="title" content="Fire HD 10 (7th generation) に LineageOS 16.0 (Android 9) をインストールする"><meta name="description"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/posts/bzudqjmlslx/"><meta property="og:title" content="Fire HD 10 (7th generation) に LineageOS 16.0 (Android 9) をインストールする"><meta property="og:description"><!-- Twitter --><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://example.com/posts/bzudqjmlslx/"><meta property="twitter:title" content="Fire HD 10 (7th generation) に LineageOS 16.0 (Android 9) をインストールする"><meta property="twitter:description"><style>:root{--color-bg: #ffffff;--color-text: #333333;--color-text-muted: #666666;--color-link: #0056b3;--color-link-hover: #003d82;--color-border: #e5e5e5;--color-code-bg: #f4f4f4;--max-width: 800px;--container-padding: 1rem;--space-xs: .5rem;--space-sm: 1rem;--space-md: 1.5rem;--space-lg: 2rem;--space-xl: 3rem;--font-family: system-ui, -apple-system, sans-serif;--font-size-base: 1rem;--line-height-base: 1.6}[data-theme=dark]{--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}}*,*:before,*:after{box-sizing:border-box}html{font-size:16px}body{font-family:var(--font-family);margin:0;padding:0;background-color:var(--color-bg);color:var(--color-text);line-height:var(--line-height-base);display:flex;flex-direction:column;min-height:100vh}main{flex:1}.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 var(--container-padding)}a{color:var(--color-link);text-decoration:none}a:hover{color:var(--color-link-hover);text-decoration:underline}h1,h2,h3,h4,h5,h6{margin-top:1.5em;margin-bottom:.5em;line-height:1.2;font-weight:700}h1{font-size:2rem;margin-top:0}h2{font-size:1.5rem}h3{font-size:1.25rem}p{margin-top:0;margin-bottom:var(--space-sm)}img{max-width:100%;height:auto;display:block}code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;background-color:var(--color-code-bg);padding:.2em .4em;border-radius:4px;font-size:.9em}pre{background-color:var(--color-code-bg);padding:var(--space-sm);border-radius:4px;overflow-x:auto;margin-bottom:var(--space-sm)}pre code{background-color:transparent;padding:0;font-size:.85em}blockquote{margin:0 0 var(--space-sm) 0;padding-left:var(--space-sm);border-left:4px solid var(--color-border);color:var(--color-text-muted);font-style:italic}.text-muted{color:var(--color-text-muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}@media(max-width:640px){html{font-size:15px}h1{font-size:1.75rem}h2{font-size:1.4rem}}.site-footer[data-astro-cid-sz7xmlte]{text-align:center;padding:var(--space-xl) 0;margin-top:var(--space-xl);border-top:1px solid var(--color-border);color:var(--color-text-muted);font-size:.875rem}.theme-toggle[data-astro-cid-x3pjskd3]{background:none;border:none;cursor:pointer;color:var(--color-text);padding:var(--space-xs);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:background-color .2s}.theme-toggle[data-astro-cid-x3pjskd3]:hover{background-color:var(--color-code-bg)}.sun[data-astro-cid-x3pjskd3]{display:none}.moon[data-astro-cid-x3pjskd3],[data-theme=dark] .sun[data-astro-cid-x3pjskd3]{display:block}[data-theme=dark] .moon[data-astro-cid-x3pjskd3]{display:none}.site-header[data-astro-cid-3ef6ksr2]{border-bottom:1px solid var(--color-border);margin-bottom:var(--space-lg)}.header-container[data-astro-cid-3ef6ksr2]{display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:var(--space-sm);padding-bottom:var(--space-sm)}.site-title[data-astro-cid-3ef6ksr2]{margin:0;font-size:1.5rem;font-weight:700}.site-title[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--color-text);text-decoration:none}.header-right[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;gap:var(--space-md)}.site-nav[data-astro-cid-3ef6ksr2]{display:flex;gap:var(--space-md)}@media(max-width:640px){.header-container[data-astro-cid-3ef6ksr2]{flex-direction:column;gap:var(--space-sm);align-items:flex-start}.header-right[data-astro-cid-3ef6ksr2]{width:100%;justify-content:space-between;flex-direction:row-reverse}.site-nav[data-astro-cid-3ef6ksr2]{width:auto;justify-content:flex-start;gap:var(--space-sm);font-size:.95rem;overflow-x:auto}}
+.post-header[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xl);padding-bottom:var(--space-md);border-bottom:1px solid var(--color-border)}.post-title[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xs);font-size:2.5rem}.post-meta[data-astro-cid-bvzihdzo]{display:flex;flex-direction:column;gap:var(--space-sm);font-size:.875rem}.post-tags[data-astro-cid-bvzihdzo]{display:flex;flex-wrap:wrap;gap:var(--space-xs);list-style:none;padding:0;margin:0}.post-tag[data-astro-cid-bvzihdzo]{background-color:var(--color-code-bg);padding:.2rem .5rem;border-radius:4px;color:var(--color-text);text-decoration:none;font-size:.75rem}.post-tag[data-astro-cid-bvzihdzo]:hover{background-color:var(--color-border)}.post-content[data-astro-cid-bvzihdzo]{line-height:1.8}@media(max-width:640px){.post-title[data-astro-cid-bvzihdzo]{font-size:2rem}}
+</style></head> <body data-astro-cid-bvzihdzo> <header class="site-header" data-astro-cid-3ef6ksr2> <div class="header-container container" data-astro-cid-3ef6ksr2> <h1 class="site-title" data-astro-cid-3ef6ksr2><a href="/" data-astro-cid-3ef6ksr2>h10i</a></h1> <div class="header-right" data-astro-cid-3ef6ksr2> <nav class="site-nav" data-astro-cid-3ef6ksr2> <a href="/posts" class="active" data-astro-cid-3ef6ksr2="true"> posts </a> <a href="/archives" data-astro-cid-3ef6ksr2="true"> archives </a> <a href="/tags" data-astro-cid-3ef6ksr2="true"> tags </a> <a href="/search" data-astro-cid-3ef6ksr2="true"> search </a> </nav> <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle" data-astro-cid-x3pjskd3> <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <circle cx="12" cy="12" r="5" data-astro-cid-x3pjskd3></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-x3pjskd3></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-x3pjskd3></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-x3pjskd3></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-x3pjskd3></line> </svg> <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-x3pjskd3></path> </svg> </button> <script type="module">const m=document.getElementById("theme-toggle");function o(){return typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}function t(e){document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e)}t(o());m?.addEventListener("click",()=>{const n=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";t(n)});</script> </div> </div> </header> <main class="container" data-astro-cid-bvzihdzo> <article class="post" data-pagefind-body data-astro-cid-bvzihdzo> <header class="post-header" data-astro-cid-bvzihdzo> <h1 class="post-title" data-pagefind-meta="title" data-astro-cid-bvzihdzo>Fire HD 10 (7th generation) に LineageOS 16.0 (Android 9) をインストールする</h1> <div class="post-meta" data-astro-cid-bvzihdzo> <div class="post-date text-muted" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Published: <time datetime="2025-05-26T12:35:45.000Z"> 2025-05-26 </time></span>  </div> <ul class="post-tags" data-astro-cid-bvzihdzo> <li data-astro-cid-bvzihdzo> <a href="/tags/lineageos/" class="post-tag" data-astro-cid-bvzihdzo>#LineageOS</a> </li><li data-astro-cid-bvzihdzo> <a href="/tags/android/" class="post-tag" data-astro-cid-bvzihdzo>#Android</a> </li> </ul> </div> </header> <div class="post-content" data-astro-cid-bvzihdzo>  <h2 id="概要">概要</h2>
+<ul>
+<li>2017 年に発売した Fire HD 10 (7th generation) は Fire OS 5.7.1.0 が最新版となり、Android 5.1 がベースとなっている。</li>
+<li>LineageOS 16.0 をインストールすることで、 Android 9 に対応することができる。</li>
+</ul>
+<h2 id="環境">環境</h2>
+<ul>
+<li>Ubuntu 24.04 (作業用)</li>
+<li>Fire HD 10 (Fire OS 5.7.1.0)</li>
+<li>LineageOS 16.0 (Android 9)</li>
+</ul>
+<h2 id="手順">手順</h2>
+<p><a href="https://xdaforums.com/t/unlock-root-twrp-unbrick-fire-hd-10-2017-suez.3913639/page-87#post-90017177">[UNLOCK][ROOT][TWRP][UNBRICK] Fire HD 10 2017 (suez)</a> の手順を参考に進める。</p>
+<h3 id="事前確認">事前確認</h3>
+<p>Fire HD 10 にて、次の点を確認する。</p>
+<ul>
+<li>必要なデータを端末外にバックアップしていること。</li>
+<li>バージョンが Fire OS 5.7.1.0 であること。</li>
+</ul>
+<h3 id="ダウンロード">ダウンロード</h3>
+<p>Ubuntu 端末にて、以下をダウンロードし、任意のパス (本手順では <code>~/tmp/firehd10</code>) に配置する。。</p>
+<ul>
+<li><a href="https://drive.google.com/drive/folders/1fvYiOXJMnFxHR7kWXdHcfuMukahhq0cY">LineageOS 16.0</a>
+<ul>
+<li><code>lineage-16.0-20220705-UNOFFICIAL-suez.zip</code></li>
+</ul>
+</li>
+<li><a href="https://drive.google.com/file/d/1i_3g2XdbBKe_nn77vM41HREkmz6xIcOW/view">BiTGApps arm64 9.0.0 v3.8</a>
+<ul>
+<li><code>BiTGApps-arm64-9.0.0-v3.8-ROAR[1].zip</code></li>
+</ul>
+</li>
+<li><a href="http://myphone-download.wondershare.cc/mgroot/20165195.zip">Dirty COW: CVE-2016-5195 Exploit</a>
+<ul>
+<li><code>20165195.zip</code></li>
+</ul>
+</li>
+<li><a href="http://myphone-download.wondershare.cc/mgroot/SuperSU_18+.zip">SuperSU 18+</a>
+<ul>
+<li><code>SuperSU_18+.zip</code></li>
+</ul>
+</li>
+<li><a href="https://www.apkmirror.com/wp-content/themes/APKMirror/download.php?id=281417&#x26;key=6373f7e9137d295909e3dff09e3af5301d1fb9a4">SuperSU 2.82 SR5 APK</a>
+<ul>
+<li><code>eu.chainfire.supersu_2.82-SR5-282_minAPI9(nodpi)_apkmirror.com.apk</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="資材の準備">資材の準備</h3>
+<ol>
+<li>
+<p>Ubuntu 端末にて、ダウンロードしたファイルを解凍する。(<code>~/tmp/firehd10/exploit</code> 配下に必要なファイルを配置する。)</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/tmp/firehd10</span></span>
+<span class="line"><span style="color:#B392F0">unzip</span><span style="color:#9ECBFF"> amonet-suez-v1.1.2.zip</span></span>
+<span class="line"><span style="color:#B392F0">unzip</span><span style="color:#9ECBFF"> 20165195.zip</span><span style="color:#79B8FF"> -d</span><span style="color:#9ECBFF"> exploit</span></span>
+<span class="line"><span style="color:#B392F0">unzip</span><span style="color:#9ECBFF"> SuperSU_18+.zip</span><span style="color:#79B8FF"> -d</span><span style="color:#9ECBFF"> exploit</span></span>
+<span class="line"><span style="color:#B392F0">rm</span><span style="color:#9ECBFF"> exploit/Superuser.apk</span></span>
+<span class="line"><span style="color:#B392F0">cp</span><span style="color:#9ECBFF"> eu.chainfire.supersu_2.82-SR5-282_minAPI9</span><span style="color:#79B8FF">\(</span><span style="color:#9ECBFF">nodpi</span><span style="color:#79B8FF">\)</span><span style="color:#9ECBFF">_apkmirror.com.apk</span><span style="color:#9ECBFF"> exploit/Superuser.apk</span></span></code></pre>
+</li>
+<li>
+<p>Ubuntu 端末にて、以下のコマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> apt</span><span style="color:#9ECBFF"> update</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> add-apt-repository</span><span style="color:#9ECBFF"> universe</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> apt</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> python3</span><span style="color:#9ECBFF"> python3-serial</span><span style="color:#9ECBFF"> adb</span><span style="color:#9ECBFF"> fastboot</span><span style="color:#9ECBFF"> dos2unix</span><span style="color:#9ECBFF"> android-file-transfer</span><span style="color:#9ECBFF"> gmtp</span><span style="color:#9ECBFF"> go-mtpfs</span><span style="color:#9ECBFF"> mtp-tools</span></span>
+<span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> ~/.android</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> 0x1949</span><span style="color:#F97583"> >></span><span style="color:#9ECBFF"> ~/.android/adb_usb.ini</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> vi</span><span style="color:#9ECBFF"> /etc/udev/rules.d/51-android.rules</span></span></code></pre>
+</li>
+<li>
+<p>vi (任意のエディタ) で開いた <code>51-android.rules</code> に以下を入力し、上書き保存する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># adb protocol for blaze / ottter (Amazon Kindle Fire)</span></span>
+<span class="line"><span>SUBSYSTEM=="usb", ATTR{idVendor}=="1949", ATTRS{idProduct}=="0006", MODE="0660", OWNER="root", GROUP="androiddev", SYMLINK+="android%n"</span></span></code></pre>
+</li>
+<li>
+<p>次のコマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> addgroup</span><span style="color:#79B8FF"> --system</span><span style="color:#9ECBFF"> androiddev</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> adduser</span><span style="color:#9ECBFF"> ubuntu</span><span style="color:#9ECBFF"> androiddev</span><span style="color:#6A737D"> # ubuntu は作業ユーザ名</span></span>
+<span class="line"><span style="color:#B392F0">adb</span><span style="color:#9ECBFF"> kill-server</span></span>
+<span class="line"><span style="color:#B392F0">adb</span><span style="color:#9ECBFF"> start-server</span></span></code></pre>
+</li>
+</ol>
+<h3 id="usb-デバッグの有効化">USB デバッグの有効化</h3>
+<p>Fire HD 10 にて、以下の手順を実施する。</p>
+<ol>
+<li>
+<p><code>Settings > Device</code> にある <code>Device Options</code> を開く。</p>
+</li>
+<li>
+<p><code>Serial Number</code> を 5 回タップし、開発者モードを有効化する。</p>
+</li>
+<li>
+<p><code>Settings > Device</code> にある <code>Device Options > Developer options</code> を開く。</p>
+</li>
+<li>
+<p><code>Debugging</code> にある <code>Enable ADB</code> を有効化する。</p>
+</li>
+<li>
+<p><code>Settings > Personal > Security &#x26; Privacy</code> を開く。</p>
+</li>
+<li>
+<p><code>Advanced</code> にある <code>Apps from Unknown Sources</code> を有効化する。</p>
+</li>
+<li>
+<p>Ubuntu 端末と Fire HD 10 を USB ケーブルで接続する。</p>
+</li>
+<li>
+<p>Ubuntu 端末にて bash を開き、次のコマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>adb devices</span></span></code></pre>
+</li>
+<li>
+<p>Fire HD 10 にて、<code>Allow USB debugging?</code> と表示されるため、<code>Always allow from this computer</code> にチェックを入れ、<code>Allow</code> を選択する。</p>
+</li>
+</ol>
+<h3 id="root-化">root 化</h3>
+<ol>
+<li>
+<p>Ubuntu 端末にて、次のコマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/tmp/firehd10/exploit</span></span>
+<span class="line"><span style="color:#B392F0">adb</span><span style="color:#9ECBFF"> shell</span><span style="color:#9ECBFF"> mkdir</span><span style="color:#9ECBFF"> /sdcard/exploit</span></span>
+<span class="line"><span style="color:#B392F0">adb</span><span style="color:#9ECBFF"> push</span><span style="color:#79B8FF"> *</span><span style="color:#9ECBFF"> /sdcard/exploit</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">adb</span><span style="color:#9ECBFF"> shell</span></span>
+<span class="line"><span style="color:#B392F0">cp</span><span style="color:#9ECBFF"> /sdcard/exploit/</span><span style="color:#79B8FF">*</span><span style="color:#9ECBFF"> /data/local/tmp</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> /data/local/tmp</span></span>
+<span class="line"><span style="color:#B392F0">chmod</span><span style="color:#79B8FF"> 755</span><span style="color:#79B8FF"> *</span></span>
+<span class="line"><span style="color:#B392F0">./Matrix</span><span style="color:#9ECBFF"> /data/local/tmp</span><span style="color:#79B8FF"> 2</span></span></code></pre>
+</li>
+<li>
+<p>処理が終わるまでしばらく待機し、bash に次の表示が出ることを確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">&#x3C;WSRoot>&#x3C;Exploit>0&#x3C;/Exploit>&#x3C;/WSRoot></span></span>
+<span class="line"><span style="color:#79B8FF">&#x3C;WSRoot>&#x3C;Done>0&#x3C;/Done>&#x3C;/WSRoot></span></span></code></pre>
+</li>
+<li>
+<p>次のコマンドを実行し、ルート化できていることを確認する。(シェルのユーザが <code>root</code> に変わっていれば OK)</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">su</span></span></code></pre>
+</li>
+<li>
+<p>Fire HD 10 にて、<code>Docs</code> アプリを開く。</p>
+</li>
+<li>
+<p>LOCAL STORAGE にある <code>exploit/Superuser.apk</code> を選択し、インストールする。</p>
+</li>
+<li>
+<p>SuperSU を開く。</p>
+</li>
+<li>
+<p><code>The SU binary needs to be updated. Continue ?</code> と聞かれるため、<code>CONTINUE</code> を選択する。</p>
+</li>
+<li>
+<p><code>... How would you like to install the SU binary ?</code> と聞かれるため、<code>NORMAL</code> を選択する。</p>
+</li>
+<li>
+<p><code>Installation success !</code> と表示されたら、<code>REBOOT</code> を選択する。</p>
+</li>
+<li>
+<p>再起動したら、SuperSU を開く。</p>
+</li>
+<li>
+<p><code>SETTINGS > Access</code> にある <code>Default access</code> を選択し、<code>Grant</code> を設定する。</p>
+</li>
+<li>
+<p>Ubuntu 端末にて、次のコマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">adb</span><span style="color:#9ECBFF"> shell</span></span>
+<span class="line"><span style="color:#B392F0">su</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> /data/data-lib</span></span>
+<span class="line"><span style="color:#B392F0">rm</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> com.wondershare.DashRoot</span></span>
+<span class="line"><span style="color:#B392F0">rm</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> wondershare</span></span></code></pre>
+</li>
+</ol>
+<h3 id="twrp-のインストール">TWRP のインストール</h3>
+<ol>
+<li>
+<p>Ubuntu 端末にて bash を開き、次のコマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/tmp/firehd10/amonet</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> ./step-1.sh</span></span></code></pre>
+</li>
+<li>
+<p>以下が表示されたら <code>YES</code> を入力する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">Brick preloader to continue via bootrom-exploit? (Type "YES" to continue)</span></span></code></pre>
+</li>
+<li>
+<p>Ubuntu 端末と Fire HD 10 の USB ケーブルを外す。</p>
+</li>
+<li>
+<p>Ubuntu 端末にて、以下のコマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> systemctl</span><span style="color:#9ECBFF"> stop</span><span style="color:#9ECBFF"> ModemManager</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> systemctl</span><span style="color:#9ECBFF"> disable</span><span style="color:#9ECBFF"> ModemManager</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/tmp/firehd10/amonet</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> ./bootrom-step-minimal.sh</span></span></code></pre>
+</li>
+<li>
+<p><code>Waiting for bootrom</code> と表示されたら、Ubuntu 端末と Fire HD 10 を USB ケーブルで接続する。</p>
+</li>
+<li>
+<p>Fire HD 10 の電源ボタンを 20 秒以上押す。</p>
+</li>
+<li>
+<p>以下が表示されたら、Enter を押し、しばらく待機する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">* * * Remove the short and press Enter * * *</span></span></code></pre>
+</li>
+<li>
+<p>以下が表示されたら、Enter を押し、処理が完了するまで待機する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">If this is correct (i.e. you used "brick" option in step 1) press enter, otherwise terminate with Ctrl+C</span></span></code></pre>
+</li>
+<li>
+<p><code>Reboot to unlocked fastboot</code> と表示されたら処理が完了しており、Fire HD 10 が再起動する。</p>
+</li>
+<li>
+<p>再起動した Fire HD 10 の左下に <code>=> HACKED FASTBOOT mode</code> の記載があることを確認する。</p>
+</li>
+<li>
+<p>Ubuntu 端末にて、以下のコマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/tmp/firehd10/amonet</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> ./fastboot-step.sh</span></span></code></pre>
+</li>
+<li>
+<p>以下が表示されたら、Enter を押し、処理が完了するまで待機する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">Your device will be reset to factory defaults...</span></span>
+<span class="line"><span style="color:#79B8FF">Press Enter to Continue...</span></span></code></pre>
+</li>
+<li>
+<p><code>fastboot: error: Command failed</code> と表示されるが、Fire HD 10 が再起動し、TWRP が起動していれば問題ない。</p>
+</li>
+</ol>
+<h3 id="lineageos-のインストール">LineageOS のインストール</h3>
+<p>Ubuntu 端末と Fire HD 10 を USB で接続し、Fire HD 10 が <code>Recovery Mode</code> で起動した状態で以下の手順を実施する。</p>
+<ol>
+<li>
+<p>Fire HD 10 にて、<code>Wipe > Format Data</code> を選択する。</p>
+</li>
+<li>
+<p><code>yes</code> と入力し、データをフォーマットする。(完了後に <code>Reboot System</code> を選択しないよう注意する。)</p>
+</li>
+<li>
+<p><code>Back</code> でメニューまで戻る。</p>
+</li>
+<li>
+<p><code>Advanced > ADB Sideload</code> を選択する。</p>
+</li>
+<li>
+<p><code>Swipe to Start Sideload</code> をスワイプする。</p>
+</li>
+<li>
+<p>Ubuntu 端末にて、以下コマンドを実行し、対象デバイスに <code>sideload</code> と表示されていることを確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">adb</span><span style="color:#9ECBFF"> devices</span></span></code></pre>
+</li>
+</ol>
+<p>7.Ubuntu 端末にて、以下コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/tmp/firehd10/</span></span>
+<span class="line"><span style="color:#B392F0">adb</span><span style="color:#9ECBFF"> sideload</span><span style="color:#9ECBFF"> lineage-16.0-20220705-UNOFFICIAL-suez.zip</span></span></code></pre>
+<ol start="8">
+<li>続けてアドオンをインストールするため、<code>Back</code> を選択する。</li>
+</ol>
+<h3 id="アドオンのインストール">アドオンのインストール</h3>
+<ol>
+<li>
+<p>Fire HD 10 にて、<code>Advanced > ADB Sideload</code> を選択する。</p>
+</li>
+<li>
+<p><code>Swipe to Start Sideload</code> をスワイプする。</p>
+</li>
+<li>
+<p>Ubuntu 端末にて、以下コマンドを実行し、対象デバイスに <code>sideload</code> と表示されていることを確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">adb</span><span style="color:#9ECBFF"> devices</span></span></code></pre>
+</li>
+</ol>
+<p>3.Ubuntu 端末にて、以下コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/tmp/firehd10/</span></span>
+<span class="line"><span style="color:#B392F0">adb</span><span style="color:#9ECBFF"> sideload</span><span style="color:#9ECBFF"> 'BiTGApps-arm64-9.0.0-v3.8-ROAR[1].zip'</span></span></code></pre>
+<h3 id="システムの起動">システムの起動</h3>
+<ol>
+<li>Fire HD 10 にて、<code>Reboot system now</code> を選択する。</li>
+<li>数分待つと、初期設定が始まるため、セットアップする。</li>
+<li>設定が完了したら、<code>Settings > About tablet</code> より、<code>Android version</code> と <code>LineageOS version</code> がインストールしたバージョンになっていることを確認する。</li>
+</ol>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://xdaforums.com/t/unlock-root-twrp-unbrick-fire-hd-10-2017-suez.3913639/page-87#post-90017177">［UNLOCK］［ROOT］［TWRP］［UNBRICK］ Fire HD 10 2017 (suez) ｜ Page 87 ｜ XDA Forums</a></li>
+</ul>  </div> </article> </main> <footer class="site-footer" data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte>
+&copy; 2026 h10i.
+</div> </footer></body></html>

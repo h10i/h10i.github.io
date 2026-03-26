@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="h10i" href="https://example.com/rss.xml"><meta name="generator" content="Astro v6.0.8"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/posts/wtatkgcqj1o/"><!-- Primary Meta Tags --><title>Windows のユーザやグループを PowerShell スクリプトで操作する</title><meta name="title" content="Windows のユーザやグループを PowerShell スクリプトで操作する"><meta name="description"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/posts/wtatkgcqj1o/"><meta property="og:title" content="Windows のユーザやグループを PowerShell スクリプトで操作する"><meta property="og:description"><!-- Twitter --><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://example.com/posts/wtatkgcqj1o/"><meta property="twitter:title" content="Windows のユーザやグループを PowerShell スクリプトで操作する"><meta property="twitter:description"><style>:root{--color-bg: #ffffff;--color-text: #333333;--color-text-muted: #666666;--color-link: #0056b3;--color-link-hover: #003d82;--color-border: #e5e5e5;--color-code-bg: #f4f4f4;--max-width: 800px;--container-padding: 1rem;--space-xs: .5rem;--space-sm: 1rem;--space-md: 1.5rem;--space-lg: 2rem;--space-xl: 3rem;--font-family: system-ui, -apple-system, sans-serif;--font-size-base: 1rem;--line-height-base: 1.6}[data-theme=dark]{--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}}*,*:before,*:after{box-sizing:border-box}html{font-size:16px}body{font-family:var(--font-family);margin:0;padding:0;background-color:var(--color-bg);color:var(--color-text);line-height:var(--line-height-base);display:flex;flex-direction:column;min-height:100vh}main{flex:1}.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 var(--container-padding)}a{color:var(--color-link);text-decoration:none}a:hover{color:var(--color-link-hover);text-decoration:underline}h1,h2,h3,h4,h5,h6{margin-top:1.5em;margin-bottom:.5em;line-height:1.2;font-weight:700}h1{font-size:2rem;margin-top:0}h2{font-size:1.5rem}h3{font-size:1.25rem}p{margin-top:0;margin-bottom:var(--space-sm)}img{max-width:100%;height:auto;display:block}code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;background-color:var(--color-code-bg);padding:.2em .4em;border-radius:4px;font-size:.9em}pre{background-color:var(--color-code-bg);padding:var(--space-sm);border-radius:4px;overflow-x:auto;margin-bottom:var(--space-sm)}pre code{background-color:transparent;padding:0;font-size:.85em}blockquote{margin:0 0 var(--space-sm) 0;padding-left:var(--space-sm);border-left:4px solid var(--color-border);color:var(--color-text-muted);font-style:italic}.text-muted{color:var(--color-text-muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}@media(max-width:640px){html{font-size:15px}h1{font-size:1.75rem}h2{font-size:1.4rem}}.site-footer[data-astro-cid-sz7xmlte]{text-align:center;padding:var(--space-xl) 0;margin-top:var(--space-xl);border-top:1px solid var(--color-border);color:var(--color-text-muted);font-size:.875rem}.theme-toggle[data-astro-cid-x3pjskd3]{background:none;border:none;cursor:pointer;color:var(--color-text);padding:var(--space-xs);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:background-color .2s}.theme-toggle[data-astro-cid-x3pjskd3]:hover{background-color:var(--color-code-bg)}.sun[data-astro-cid-x3pjskd3]{display:none}.moon[data-astro-cid-x3pjskd3],[data-theme=dark] .sun[data-astro-cid-x3pjskd3]{display:block}[data-theme=dark] .moon[data-astro-cid-x3pjskd3]{display:none}.site-header[data-astro-cid-3ef6ksr2]{border-bottom:1px solid var(--color-border);margin-bottom:var(--space-lg)}.header-container[data-astro-cid-3ef6ksr2]{display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:var(--space-sm);padding-bottom:var(--space-sm)}.site-title[data-astro-cid-3ef6ksr2]{margin:0;font-size:1.5rem;font-weight:700}.site-title[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--color-text);text-decoration:none}.header-right[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;gap:var(--space-md)}.site-nav[data-astro-cid-3ef6ksr2]{display:flex;gap:var(--space-md)}@media(max-width:640px){.header-container[data-astro-cid-3ef6ksr2]{flex-direction:column;gap:var(--space-sm);align-items:flex-start}.header-right[data-astro-cid-3ef6ksr2]{width:100%;justify-content:space-between;flex-direction:row-reverse}.site-nav[data-astro-cid-3ef6ksr2]{width:auto;justify-content:flex-start;gap:var(--space-sm);font-size:.95rem;overflow-x:auto}}
+.post-header[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xl);padding-bottom:var(--space-md);border-bottom:1px solid var(--color-border)}.post-title[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xs);font-size:2.5rem}.post-meta[data-astro-cid-bvzihdzo]{display:flex;flex-direction:column;gap:var(--space-sm);font-size:.875rem}.post-tags[data-astro-cid-bvzihdzo]{display:flex;flex-wrap:wrap;gap:var(--space-xs);list-style:none;padding:0;margin:0}.post-tag[data-astro-cid-bvzihdzo]{background-color:var(--color-code-bg);padding:.2rem .5rem;border-radius:4px;color:var(--color-text);text-decoration:none;font-size:.75rem}.post-tag[data-astro-cid-bvzihdzo]:hover{background-color:var(--color-border)}.post-content[data-astro-cid-bvzihdzo]{line-height:1.8}@media(max-width:640px){.post-title[data-astro-cid-bvzihdzo]{font-size:2rem}}
+</style></head> <body data-astro-cid-bvzihdzo> <header class="site-header" data-astro-cid-3ef6ksr2> <div class="header-container container" data-astro-cid-3ef6ksr2> <h1 class="site-title" data-astro-cid-3ef6ksr2><a href="/" data-astro-cid-3ef6ksr2>h10i</a></h1> <div class="header-right" data-astro-cid-3ef6ksr2> <nav class="site-nav" data-astro-cid-3ef6ksr2> <a href="/posts" class="active" data-astro-cid-3ef6ksr2="true"> posts </a> <a href="/archives" data-astro-cid-3ef6ksr2="true"> archives </a> <a href="/tags" data-astro-cid-3ef6ksr2="true"> tags </a> <a href="/search" data-astro-cid-3ef6ksr2="true"> search </a> </nav> <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle" data-astro-cid-x3pjskd3> <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <circle cx="12" cy="12" r="5" data-astro-cid-x3pjskd3></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-x3pjskd3></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-x3pjskd3></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-x3pjskd3></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-x3pjskd3></line> </svg> <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-x3pjskd3></path> </svg> </button> <script type="module">const m=document.getElementById("theme-toggle");function o(){return typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}function t(e){document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e)}t(o());m?.addEventListener("click",()=>{const n=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";t(n)});</script> </div> </div> </header> <main class="container" data-astro-cid-bvzihdzo> <article class="post" data-pagefind-body data-astro-cid-bvzihdzo> <header class="post-header" data-astro-cid-bvzihdzo> <h1 class="post-title" data-pagefind-meta="title" data-astro-cid-bvzihdzo>Windows のユーザやグループを PowerShell スクリプトで操作する</h1> <div class="post-meta" data-astro-cid-bvzihdzo> <div class="post-date text-muted" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Published: <time datetime="2024-09-11T01:17:06.000Z"> 2024-09-11 </time></span>  </div> <ul class="post-tags" data-astro-cid-bvzihdzo> <li data-astro-cid-bvzihdzo> <a href="/tags/windows/" class="post-tag" data-astro-cid-bvzihdzo>#Windows</a> </li><li data-astro-cid-bvzihdzo> <a href="/tags/powershell/" class="post-tag" data-astro-cid-bvzihdzo>#PowerShell</a> </li><li data-astro-cid-bvzihdzo> <a href="/tags/windows 11/" class="post-tag" data-astro-cid-bvzihdzo>#Windows 11</a> </li><li data-astro-cid-bvzihdzo> <a href="/tags/powershell 5/" class="post-tag" data-astro-cid-bvzihdzo>#PowerShell 5</a> </li><li data-astro-cid-bvzihdzo> <a href="/tags/powershell 7/" class="post-tag" data-astro-cid-bvzihdzo>#PowerShell 7</a> </li> </ul> </div> </header> <div class="post-content" data-astro-cid-bvzihdzo>  <h2 id="概要">概要</h2>
+<ul>
+<li>Windows のユーザやグループをコマンドで操作する。
+<ul>
+<li>ユーザの作成/変更/削除</li>
+<li>グループの作成/変更/削除</li>
+<li>グループへのユーザ追加/削除</li>
+</ul>
+</li>
+</ul>
+<h2 id="前提">前提</h2>
+<ul>
+<li>PowerShell 5.1
+<ul>
+<li>PowerShell 7+ の場合、モジュールインポートが必要である。</li>
+<li>各コマンドは、管理者権限の PowerShell で実行する。</li>
+</ul>
+</li>
+</ul>
+<h2 id="説明">説明</h2>
+<h3 id="powershell-7-の場合">PowerShell 7+ の場合</h3>
+<p>PowerShell 7+ で作成する場合、<code>New-LocalUser</code> を実行すると、次のようなエラーが出る。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="log"><code><span class="line"><span style="color:#E1E4E8">New-LocalUser: Could not load type </span><span style="color:#9ECBFF">'Microsoft.PowerShell.Telemetry.Internal.TelemetryAPI'</span><span style="color:#E1E4E8"> from assembly </span><span style="color:#9ECBFF">'System.Management.Automation, Version=7.4.5.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35'</span><span style="color:#E1E4E8">.</span></span></code></pre>
+<p>PowerShell の Issue として報告されている。</p>
+<ul>
+<li><a href="https://github.com/PowerShell/PowerShell/issues/18624">Running New-LocalUser in PowerShell 7.3 raises an error · Issue #18624 · PowerShell/PowerShell</a></li>
+<li><a href="https://github.com/PowerShell/PowerShell/issues/21645">New-LocalUser doesn’t work in Power 7.3+ without importing Microsoft.Powershell.LocalAccounts · Issue #21645 · PowerShell/PowerShell</a></li>
+</ul>
+<p>以下のコマンドでモジュールをインポートすると、問題は解消する。今回の手順では、以下をインポートした状態を前提として説明する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#79B8FF">Import-Module</span><span style="color:#E1E4E8"> Microsoft.PowerShell.LocalAccounts </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">UseWindowsPowerShell</span></span></code></pre>
+<p>また、issue のコメントにて、以下のモジュールをインストールすれば、 PowerShell 7+ で使えるとのことである。(試してないため、今回記載するコマンドが問題なく実行できるかは不明である。)</p>
+<ul>
+<li><a href="https://github.com/iSazonov/LocalAccounts">iSazonov/LocalAccounts： vNext version of Microsoft.PowerShell.LocalAccounts for .Net 8+</a></li>
+</ul>
+<h3 id="ユーザグループの参照">ユーザ/グループの参照</h3>
+<h4 id="ユーザの参照">ユーザの参照</h4>
+<p>ユーザ情報は、以下のコマンドで参照できる。</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/get-localuser?view=powershell-5.1">Get-LocalUser (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+<p>全てのユーザ情報を参照する場合、引数なしで <code>Get-LocalUser</code> コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#79B8FF">Get-LocalUser</span></span></code></pre>
+<p>特定ユーザの情報のみを参照する場合、<code>-Name</code> にユーザ名を指定する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$userName </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "TestUser"</span></span>
+<span class="line"><span style="color:#79B8FF">Get-LocalUser</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Name $userName</span></span></code></pre>
+<h4 id="グループの参照">グループの参照</h4>
+<p>グループ情報は、以下のコマンドで参照できる。</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/get-localgroup?view=powershell-5.1">Get-LocalGroup (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+<p>全てのグループ情報を参照する場合、引数なしで <code>Get-LocalGroup</code> コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#79B8FF">Get-LocalGroup</span></span></code></pre>
+<p>特定グループの情報のみを参照する場合、<code>-Name</code> にグループ名を指定する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$groupName </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "TestGroup"</span></span>
+<span class="line"><span style="color:#79B8FF">Get-LocalGroup</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Name $groupName</span></span></code></pre>
+<h4 id="グループメンバの参照">グループメンバの参照</h4>
+<p>グループに所属するメンバの情報は、以下のコマンドで参照できる。</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/get-localgroupmember?view=powershell-5.1">Get-LocalGroupMember (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+<p>例えば、<code>TestGroup</code> グループの所属ユーザ全てを参照するには、以下の <code>Get-LocalGroupMember</code> コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$groupName </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "TestGroup"</span></span>
+<span class="line"><span style="color:#79B8FF">Get-LocalGroupMember</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Name $groupName</span></span></code></pre>
+<p><code>TestGroup</code> グループ内の <code>TestUser</code> ユーザのみの情報を参照するには、<code>-Member</code> オプションに対象ユーザ名を指定する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$groupName </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "TestGroup"</span></span>
+<span class="line"><span style="color:#E1E4E8">$userName </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "TestUser"</span></span>
+<span class="line"><span style="color:#79B8FF">Get-LocalGroupMember</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Name $groupName </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">Member $userName</span></span></code></pre>
+<h4 id="全てのユーザと所属グループをまとめて参照">全てのユーザと所属グループをまとめて参照</h4>
+<p>以下のスクリプトを実行することで、全ユーザ情報と各ユーザが所属するグループをまとめて出力できる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$localUsers </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> Get-LocalUser</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">$result </span><span style="color:#F97583">=</span><span style="color:#F97583"> @</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">foreach</span><span style="color:#E1E4E8"> ($user </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> $localUsers) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  $groups </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> Get-LocalGroup</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> ForEach-Object</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    $groupName </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> $_</span><span style="color:#E1E4E8">.Name</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">Get-LocalGroupMember</span><span style="color:#E1E4E8"> $groupName </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">Member $user.Name </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">ErrorAction SilentlyContinue) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        $groupName</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  $result </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> [</span><span style="color:#F97583">pscustomobject</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">@</span><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">    UserName </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $user.Name</span></span>
+<span class="line"><span style="color:#E1E4E8">    Enabled </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $user.Enabled</span></span>
+<span class="line"><span style="color:#E1E4E8">    Groups </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $groups </span><span style="color:#F97583">-join</span><span style="color:#9ECBFF"> ", "</span></span>
+<span class="line"><span style="color:#E1E4E8">    UserDescription </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $user.Description</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">$result </span><span style="color:#F97583">|</span><span style="color:#79B8FF"> Format-Table</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">AutoSize</span></span></code></pre>
+<h3 id="ユーザの操作">ユーザの操作</h3>
+<h4 id="ユーザの作成">ユーザの作成</h4>
+<p>Windows の新しいローカルユーザは、以下のコマンドで作成できる。</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/new-localuser?view=powershell-5.1">New-LocalUser (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+<p>今回は、ユーザ名とパスワードのみを設定したローカルユーザを作成する。</p>
+<p>例えば、ユーザ名が <code>TestUser</code>、パスワードが <code>TestUserPassword</code> のユーザを作成するには、以下コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$userName </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "TestUser"</span></span>
+<span class="line"><span style="color:#E1E4E8">$plainPassword </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "TestUserPassword"</span></span>
+<span class="line"><span style="color:#E1E4E8">$securePassword </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> ConvertTo-SecureString</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">String $plainPassword </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">AsPlainText </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">Force</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">New-LocalUser</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Name $userName </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">Password $securePassword</span></span></code></pre>
+<p>ユーザ名とパスワードを対話形式で入力する場合、以下のようにする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$userName </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> Read-Host</span><span style="color:#9ECBFF"> "Please enter the new user name and press Enter"</span></span>
+<span class="line"><span style="color:#E1E4E8">$securePassword </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> Read-Host</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">AsSecureString </span><span style="color:#9ECBFF">"Please enter the new password for '</span><span style="color:#E1E4E8">$userName</span><span style="color:#9ECBFF">' and press Enter"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">New-LocalUser</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Name $userName </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">Password $securePassword</span></span></code></pre>
+<h4 id="ユーザの変更">ユーザの変更</h4>
+<h5 id="ユーザ名の変更">ユーザ名の変更</h5>
+<p>ローカルユーザのユーザ名は、以下のコマンドで変更できる。</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/new-localuser?view=powershell-5.1">New-LocalUser (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+<p>例えば、<code>TestUser</code> ユーザの名前を <code>NewTestUser</code> に変更する場合、以下コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#79B8FF">Rename-LocalUser</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Name </span><span style="color:#9ECBFF">"TestUser"</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">NewName </span><span style="color:#9ECBFF">"NewTestUser"</span></span></code></pre>
+<h5 id="パスワードの変更">パスワードの変更</h5>
+<p>ローカルユーザのパスワードは、以下のコマンドで変更できる。パスワード以外も変更できるが、今回はパスワードのみの手順を記載する。</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/set-localuser?view=powershell-5.1">Set-LocalUser (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+<p>例えば、プロンプトで入力したユーザのパスワードを変更するには、以下のコマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$userName </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> Read-Host</span><span style="color:#9ECBFF"> "Please enter the user name and press Enter"</span></span>
+<span class="line"><span style="color:#E1E4E8">$secureNewPassword </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> Read-Host</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">AsSecureString </span><span style="color:#9ECBFF">"Please enter the new password for '</span><span style="color:#E1E4E8">$userName</span><span style="color:#9ECBFF">' and press Enter"</span></span>
+<span class="line"><span style="color:#E1E4E8">$userAccount </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> Get-LocalUser</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Name $userName</span></span>
+<span class="line"><span style="color:#E1E4E8">$userAccount </span><span style="color:#F97583">|</span><span style="color:#79B8FF"> Set-LocalUser</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Password $secureNewPassword</span></span></code></pre>
+<h4 id="ユーザの削除">ユーザの削除</h4>
+<p>ローカルユーザは、以下のコマンドで削除できる。</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/remove-localuser?view=powershell-5.1">Remove-LocalUser (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+<p>例えば、<code>TestUser</code> ユーザを削除するには、以下の <code>Remove-LocalUser</code> コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$userName </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "TestUser"</span></span>
+<span class="line"><span style="color:#79B8FF">Remove-LocalUser</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Name $userName</span></span></code></pre>
+<h3 id="グループの操作">グループの操作</h3>
+<h4 id="グループへのユーザ追加">グループへのユーザ追加</h4>
+<p>グループには、以下のコマンドでユーザを追加できる。</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/add-localgroupmember?view=powershell-5.1">Add-LocalGroupMember (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+<p>例えば、<code>TestUser</code> ユーザを <code>Administrators</code> グループに追加するには、以下の <code>Add-LocalGroupMember</code> コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$group </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Administrators"</span></span>
+<span class="line"><span style="color:#E1E4E8">$userName </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "TestUser"</span></span>
+<span class="line"><span style="color:#79B8FF">Add-LocalGroupMember</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Group $group </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">Member $userName</span></span></code></pre>
+<h4 id="グループからユーザ削除">グループからユーザ削除</h4>
+<p>グループからは、以下のコマンドでユーザを削除できる。</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/remove-localgroupmember?view=powershell-5.1">Remove-LocalGroupMember (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+<p>例えば、<code>TestUser</code> ユーザを <code>Administrators</code> グループから削除するには、以下の <code>Remove-LocalGroupMember</code> コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$group </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Administrators"</span></span>
+<span class="line"><span style="color:#E1E4E8">$userName </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "TestUser"</span></span>
+<span class="line"><span style="color:#79B8FF">Remove-LocalGroupMember</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Group $group </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">Member $userName</span></span></code></pre>
+<h4 id="グループの作成">グループの作成</h4>
+<p>Windows の新しいローカルグループは、以下のコマンドで作成できる。</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/new-localgroup?view=powershell-5.1">New-LocalGroup (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+<p>例えば、<code>TestGroup</code> を作成するには、以下の <code>New-LocalGroup</code> コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$groupName </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "TestGroup"</span></span>
+<span class="line"><span style="color:#79B8FF">New-LocalGroup</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Name $groupName</span></span></code></pre>
+<h4 id="グループの変更">グループの変更</h4>
+<h5 id="グループ名の変更">グループ名の変更</h5>
+<p>ローカルグループのグループ名は、以下のコマンドで変更できる。</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/rename-localgroup?view=powershell-5.1">Rename-LocalGroup (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+<p>例えば、<code>TestGroup</code> グループの名前を <code>NewTestGroup</code> に変更するには、以下の <code>Rename-LocalGroup</code> コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$groupName </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "TestGroup"</span></span>
+<span class="line"><span style="color:#E1E4E8">$newGroupName </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "NewTestGroup"</span></span>
+<span class="line"><span style="color:#79B8FF">Rename-LocalGroup</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Name $groupName </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">NewName $newGroupName</span></span></code></pre>
+<h5 id="グループ説明文の変更">グループ説明文の変更</h5>
+<p>ローカルグループのグループ説明文は、以下のコマンドで変更できる。</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/set-localgroup?view=powershell-5.1">Set-LocalGroup (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+<p>例えば、<code>TestUserGroup</code> グループの説明文を <code>This is a test sample description.</code> に変更するには、以下の <code>Set-LocalGroup</code> コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$groupName </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "TestGroup"</span></span>
+<span class="line"><span style="color:#E1E4E8">$description </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "This is a test sample description."</span></span>
+<span class="line"><span style="color:#79B8FF">Set-LocalGroup</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Name $groupName </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">Description $description</span></span></code></pre>
+<h4 id="グループの削除">グループの削除</h4>
+<p>ローカルグループは、以下のコマンドで削除できる。</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/remove-localgroup?view=powershell-5.1">Remove-LocalGroup (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+<p>例えば、<code>TestGroup</code> グループを削除するには、以下の <code>Remove-LocalGroup</code> コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$groupName </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "TestGroup"</span></span>
+<span class="line"><span style="color:#79B8FF">Remove-LocalGroup</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Name $groupName</span></span></code></pre>
+<h2 id="参考">参考</h2>
+<ul>
+<li>ユーザ/グループの参照
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/get-localuser?view=powershell-5.1">Get-LocalUser (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/get-localgroup?view=powershell-5.1">Get-LocalGroup (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/get-localgroupmember?view=powershell-5.1">Get-LocalGroupMember (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+</li>
+<li>ユーザの操作
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/new-localuser?view=powershell-5.1">New-LocalUser (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/rename-localuser?view=powershell-5.1">Rename-LocalUser (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/set-localuser?view=powershell-5.1">Set-LocalUser (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/remove-localuser?view=powershell-5.1">Remove-LocalUser (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+</li>
+<li>グループの操作
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/add-localgroupmember?view=powershell-5.1">Add-LocalGroupMember (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/remove-localgroupmember?view=powershell-5.1">Remove-LocalGroupMember (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/new-localgroup?view=powershell-5.1">New-LocalGroup (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/rename-localgroup?view=powershell-5.1">Rename-LocalGroup (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/set-localgroup?view=powershell-5.1">Set-LocalGroup (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/remove-localgroup?view=powershell-5.1">Remove-LocalGroup (Microsoft.PowerShell.LocalAccounts) - PowerShell ｜ Microsoft Learn</a></li>
+</ul>
+</li>
+</ul>  </div> </article> </main> <footer class="site-footer" data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte>
+&copy; 2026 h10i.
+</div> </footer></body></html>

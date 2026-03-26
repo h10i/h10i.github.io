@@ -1,0 +1,296 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="h10i" href="https://example.com/rss.xml"><meta name="generator" content="Astro v6.0.8"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/posts/p4dhfd0hkrn/"><!-- Primary Meta Tags --><title>Ubuntu とデュアルブートしている Windows を削除してパーティションを整理する</title><meta name="title" content="Ubuntu とデュアルブートしている Windows を削除してパーティションを整理する"><meta name="description"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/posts/p4dhfd0hkrn/"><meta property="og:title" content="Ubuntu とデュアルブートしている Windows を削除してパーティションを整理する"><meta property="og:description"><!-- Twitter --><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://example.com/posts/p4dhfd0hkrn/"><meta property="twitter:title" content="Ubuntu とデュアルブートしている Windows を削除してパーティションを整理する"><meta property="twitter:description"><style>:root{--color-bg: #ffffff;--color-text: #333333;--color-text-muted: #666666;--color-link: #0056b3;--color-link-hover: #003d82;--color-border: #e5e5e5;--color-code-bg: #f4f4f4;--max-width: 800px;--container-padding: 1rem;--space-xs: .5rem;--space-sm: 1rem;--space-md: 1.5rem;--space-lg: 2rem;--space-xl: 3rem;--font-family: system-ui, -apple-system, sans-serif;--font-size-base: 1rem;--line-height-base: 1.6}[data-theme=dark]{--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}}*,*:before,*:after{box-sizing:border-box}html{font-size:16px}body{font-family:var(--font-family);margin:0;padding:0;background-color:var(--color-bg);color:var(--color-text);line-height:var(--line-height-base);display:flex;flex-direction:column;min-height:100vh}main{flex:1}.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 var(--container-padding)}a{color:var(--color-link);text-decoration:none}a:hover{color:var(--color-link-hover);text-decoration:underline}h1,h2,h3,h4,h5,h6{margin-top:1.5em;margin-bottom:.5em;line-height:1.2;font-weight:700}h1{font-size:2rem;margin-top:0}h2{font-size:1.5rem}h3{font-size:1.25rem}p{margin-top:0;margin-bottom:var(--space-sm)}img{max-width:100%;height:auto;display:block}code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;background-color:var(--color-code-bg);padding:.2em .4em;border-radius:4px;font-size:.9em}pre{background-color:var(--color-code-bg);padding:var(--space-sm);border-radius:4px;overflow-x:auto;margin-bottom:var(--space-sm)}pre code{background-color:transparent;padding:0;font-size:.85em}blockquote{margin:0 0 var(--space-sm) 0;padding-left:var(--space-sm);border-left:4px solid var(--color-border);color:var(--color-text-muted);font-style:italic}.text-muted{color:var(--color-text-muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}@media(max-width:640px){html{font-size:15px}h1{font-size:1.75rem}h2{font-size:1.4rem}}.site-footer[data-astro-cid-sz7xmlte]{text-align:center;padding:var(--space-xl) 0;margin-top:var(--space-xl);border-top:1px solid var(--color-border);color:var(--color-text-muted);font-size:.875rem}.theme-toggle[data-astro-cid-x3pjskd3]{background:none;border:none;cursor:pointer;color:var(--color-text);padding:var(--space-xs);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:background-color .2s}.theme-toggle[data-astro-cid-x3pjskd3]:hover{background-color:var(--color-code-bg)}.sun[data-astro-cid-x3pjskd3]{display:none}.moon[data-astro-cid-x3pjskd3],[data-theme=dark] .sun[data-astro-cid-x3pjskd3]{display:block}[data-theme=dark] .moon[data-astro-cid-x3pjskd3]{display:none}.site-header[data-astro-cid-3ef6ksr2]{border-bottom:1px solid var(--color-border);margin-bottom:var(--space-lg)}.header-container[data-astro-cid-3ef6ksr2]{display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:var(--space-sm);padding-bottom:var(--space-sm)}.site-title[data-astro-cid-3ef6ksr2]{margin:0;font-size:1.5rem;font-weight:700}.site-title[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--color-text);text-decoration:none}.header-right[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;gap:var(--space-md)}.site-nav[data-astro-cid-3ef6ksr2]{display:flex;gap:var(--space-md)}@media(max-width:640px){.header-container[data-astro-cid-3ef6ksr2]{flex-direction:column;gap:var(--space-sm);align-items:flex-start}.header-right[data-astro-cid-3ef6ksr2]{width:100%;justify-content:space-between;flex-direction:row-reverse}.site-nav[data-astro-cid-3ef6ksr2]{width:auto;justify-content:flex-start;gap:var(--space-sm);font-size:.95rem;overflow-x:auto}}
+.post-header[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xl);padding-bottom:var(--space-md);border-bottom:1px solid var(--color-border)}.post-title[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xs);font-size:2.5rem}.post-meta[data-astro-cid-bvzihdzo]{display:flex;flex-direction:column;gap:var(--space-sm);font-size:.875rem}.post-tags[data-astro-cid-bvzihdzo]{display:flex;flex-wrap:wrap;gap:var(--space-xs);list-style:none;padding:0;margin:0}.post-tag[data-astro-cid-bvzihdzo]{background-color:var(--color-code-bg);padding:.2rem .5rem;border-radius:4px;color:var(--color-text);text-decoration:none;font-size:.75rem}.post-tag[data-astro-cid-bvzihdzo]:hover{background-color:var(--color-border)}.post-content[data-astro-cid-bvzihdzo]{line-height:1.8}@media(max-width:640px){.post-title[data-astro-cid-bvzihdzo]{font-size:2rem}}
+</style></head> <body data-astro-cid-bvzihdzo> <header class="site-header" data-astro-cid-3ef6ksr2> <div class="header-container container" data-astro-cid-3ef6ksr2> <h1 class="site-title" data-astro-cid-3ef6ksr2><a href="/" data-astro-cid-3ef6ksr2>h10i</a></h1> <div class="header-right" data-astro-cid-3ef6ksr2> <nav class="site-nav" data-astro-cid-3ef6ksr2> <a href="/posts" class="active" data-astro-cid-3ef6ksr2="true"> posts </a> <a href="/archives" data-astro-cid-3ef6ksr2="true"> archives </a> <a href="/tags" data-astro-cid-3ef6ksr2="true"> tags </a> <a href="/search" data-astro-cid-3ef6ksr2="true"> search </a> </nav> <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle" data-astro-cid-x3pjskd3> <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <circle cx="12" cy="12" r="5" data-astro-cid-x3pjskd3></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-x3pjskd3></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-x3pjskd3></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-x3pjskd3></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-x3pjskd3></line> </svg> <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-x3pjskd3></path> </svg> </button> <script type="module">const m=document.getElementById("theme-toggle");function o(){return typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}function t(e){document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e)}t(o());m?.addEventListener("click",()=>{const n=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";t(n)});</script> </div> </div> </header> <main class="container" data-astro-cid-bvzihdzo> <article class="post" data-pagefind-body data-astro-cid-bvzihdzo> <header class="post-header" data-astro-cid-bvzihdzo> <h1 class="post-title" data-pagefind-meta="title" data-astro-cid-bvzihdzo>Ubuntu とデュアルブートしている Windows を削除してパーティションを整理する</h1> <div class="post-meta" data-astro-cid-bvzihdzo> <div class="post-date text-muted" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Published: <time datetime="2025-09-08T08:08:04.000Z"> 2025-09-08 </time></span>  </div> <ul class="post-tags" data-astro-cid-bvzihdzo> <li data-astro-cid-bvzihdzo> <a href="/tags/ubuntu/" class="post-tag" data-astro-cid-bvzihdzo>#Ubuntu</a> </li> </ul> </div> </header> <div class="post-content" data-astro-cid-bvzihdzo>  <h2 id="概要">概要</h2>
+<ul>
+<li>Ubuntu と Windows をデュアルブートしているが、Windows が不要となったため削除する。</li>
+<li>削除した Windows のパーティションは、Ubuntu のパーティションに統合する。</li>
+</ul>
+<h2 id="環境">環境</h2>
+<ul>
+<li>Ubuntu Server 24.04 LTS</li>
+<li>Windows 11</li>
+<li>Ubuntu Server 24.04 LTS (Live 環境)</li>
+</ul>
+<h2 id="調査">調査</h2>
+<p>現在のパーティションを確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> parted</span><span style="color:#79B8FF"> -l</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">Model: 512GB SSD (nvme)</span></span>
+<span class="line"><span style="color:#79B8FF">Disk /dev/nvme0n1: 512GB</span></span>
+<span class="line"><span style="color:#79B8FF">Sector size (logical/physical): 512B/512B</span></span>
+<span class="line"><span style="color:#79B8FF">Partition Table: gpt</span></span>
+<span class="line"><span style="color:#79B8FF">Disk Flags:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Number  Start   End    Size    File system  Name                          Flags</span></span>
+<span class="line"><span style="color:#79B8FF"> 1      1049kB  106MB  105MB   fat32        EFI system partition          boot, esp</span></span>
+<span class="line"><span style="color:#79B8FF"> 2      106MB   123MB  16.8MB               Microsoft reserved partition  msftres</span></span>
+<span class="line"><span style="color:#79B8FF"> 3      123MB   107GB  107GB   ntfs         Basic data partition          msftdata</span></span>
+<span class="line"><span style="color:#79B8FF"> 4      256GB   511GB  256GB   ext4         Basic data partition          msftdata</span></span>
+<span class="line"><span style="color:#79B8FF"> 5      511GB   512GB  849MB   ntfs                                       hidden, diag</span></span></code></pre>
+<p>次の用途で使用されている。</p>
+<ul>
+<li><code>/dev/nvme0n1p1</code>: EFI System Partition (ESP, 共用)</li>
+<li><code>/dev/nvme0n1p2</code>: Windows 用の Microsoft Reserved Partition (不要)</li>
+<li><code>/dev/nvme0n1p3</code>: Windows C ドライブ (NTFS, 不要)</li>
+<li><code>/dev/nvme0n1p4</code>: Ubuntu のルート (ext4, 必要)</li>
+<li><code>/dev/nvme0n1p5</code>: Windows 回復パーティション (NTFS, 不要)</li>
+</ul>
+<p><code>p2</code>, <code>p3</code>, <code>p5</code> が Windows 関連の領域であり、削除対象となる。</p>
+<p>削除した領域は Ubuntu で使っている <code>p4</code> を拡張したい。パーティションの移動が必要となるため、Live で起動する Ubuntu 環境を別途用意し、Live 環境でパーティションの再配置を実施する必要がある。</p>
+<p>具体的には、<code>p2</code>, <code>p3</code>, <code>p5</code> を削除した後、新たに <code>p2</code> を作成する。その後、<code>p4</code> のデータを <code>p2</code> に移動する。最後に、<code>p4</code> を削除し、<code>p2</code> を拡張する。</p>
+<h2 id="手順">手順</h2>
+<h3 id="live-環境の-ubuntu">Live 環境の Ubuntu</h3>
+<p>パーティションの変更はオンライン環境では実施できないため、USB メモリ等の Live 環境で Ubuntu を起動し、作業する。Windows で USB メモリに Live 環境の Ubuntu を作成する場合は Rufus 等を使用する。</p>
+<p>USB メモリを対象端末に接続し、USB メモリの Ubuntu を起動する。</p>
+<p><code>Try or install Ubuntu</code> を選択する。</p>
+<p>インストーラが起動したら、上部分にある <code>Help</code> を選択する。</p>
+<p>SSH で作業する場合、インストーラの上部分にある <code>Help > Help on SSH access</code> を選択すると、<code>installer</code> ユーザで SSH 接続するための情報が表示される。(SSH 接続した状態でも今回の手順は実施可能であるため、作業しやすいやり方で可)</p>
+<p><code>Help > Enter Shell</code> より、シェルを起動する。以降はこのシェル上で作業する。</p>
+<h3 id="windows-関連パーティションの削除">Windows 関連パーティションの削除</h3>
+<p><strong>最悪データが消えても復旧できるように、バックアップしてから作業すること。</strong></p>
+<p>Live 環境の Ubuntu のシェル (<code>root</code> ユーザ) にて実施する。</p>
+<p><code>p4</code> が Ubuntu の領域 (<code>ext4</code>) であることを確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">lsblk</span><span style="color:#79B8FF"> -f</span></span></code></pre>
+<p>Windows 関連のパーティションを削除するため、<code>parted</code> コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">parted</span><span style="color:#9ECBFF"> /dev/nvme0n1</span></span></code></pre>
+<p>現在のパーティションを表示する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">(parted) print</span></span>
+<span class="line"><span style="color:#79B8FF">Model: 512GB SSD (nvme)</span></span>
+<span class="line"><span style="color:#79B8FF">Disk /dev/nvme0n1: 512GB</span></span>
+<span class="line"><span style="color:#79B8FF">Sector size (logical/physical): 512B/512B</span></span>
+<span class="line"><span style="color:#79B8FF">Partition Table: gpt</span></span>
+<span class="line"><span style="color:#79B8FF">Disk Flags:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Number  Start   End    Size    File system  Name                          Flags</span></span>
+<span class="line"><span style="color:#79B8FF"> 1      1049kB  106MB  105MB   fat32        EFI system partition          boot, esp</span></span>
+<span class="line"><span style="color:#79B8FF"> 2      106MB   123MB  16.8MB               Microsoft reserved partition  msftres</span></span>
+<span class="line"><span style="color:#79B8FF"> 3      123MB   107GB  107GB   ntfs         Basic data partition          msftdata</span></span>
+<span class="line"><span style="color:#79B8FF"> 4      256GB   511GB  256GB   ext4         Basic data partition          msftdata</span></span>
+<span class="line"><span style="color:#79B8FF"> 5      511GB   512GB  849MB   ntfs                                       hidden, diag</span></span></code></pre>
+<p><code>p2</code>, <code>p3</code>, <code>p5</code> が Windows 関連のパーティションであることを確認し、削除する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">(parted) rm 2     # Windows 用の Microsoft Reserved Partition</span></span>
+<span class="line"><span style="color:#79B8FF">(parted) rm 3     # Windows C ドライブ</span></span>
+<span class="line"><span style="color:#79B8FF">(parted) rm 5     # Windows 回復パーティション</span></span></code></pre>
+<p>削除できたことを確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">(parted) print</span></span>
+<span class="line"><span style="color:#79B8FF">Model: 512GB SSD (nvme)</span></span>
+<span class="line"><span style="color:#79B8FF">Disk /dev/nvme0n1: 512GB</span></span>
+<span class="line"><span style="color:#79B8FF">Sector size (logical/physical): 512B/512B</span></span>
+<span class="line"><span style="color:#79B8FF">Partition Table: gpt</span></span>
+<span class="line"><span style="color:#79B8FF">Disk Flags:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Number  Start   End    Size   File system  Name                  Flags</span></span>
+<span class="line"><span style="color:#79B8FF"> 1      1049kB  106MB  105MB  fat32        EFI system partition  boot, esp</span></span>
+<span class="line"><span style="color:#79B8FF"> 4      256GB   511GB  256GB  ext4         Basic data partition  msftdata</span></span></code></pre>
+<p><code>parted</code> を終了する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">(parted) quit</span></span></code></pre>
+<p><code>nvme0n1p4</code> をチェックする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">e2fsck</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> /dev/nvme0n1p4</span></span></code></pre>
+<p>必要に応じて最適化する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">e2fsck 1.47.0 (5-Feb-2023)</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 1: Checking inodes, blocks, and sizes</span></span>
+<span class="line"><span style="color:#79B8FF">Inode 14418651 extent tree (at level 1) could be shorter.  Optimize&#x3C;y>? yes</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 1E: Optimizing extent trees</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 2: Checking directory structure</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 3: Checking directory connectivity</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 4: Checking reference counts</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 5: Checking group summary information</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">/dev/nvme0n1p4: ***** FILE SYSTEM WAS MODIFIED *****</span></span>
+<span class="line"><span style="color:#79B8FF">/dev/nvme0n1p4: 1231810/15605760 files (0.2% non-contiguous), 24418593/62394368 blocks</span></span></code></pre>
+<h3 id="パーティションの作成とデータ移行">パーティションの作成とデータ移行</h3>
+<p>Live 環境の Ubuntu のシェル (<code>root</code> ユーザ) にて実施する。</p>
+<p>パーティションの後方に空き領域を作るため、ファイルシステムを一時的に縮小する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">resize2fs</span><span style="color:#9ECBFF"> /dev/nvme0n1p4</span><span style="color:#9ECBFF"> 200G</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">resize2fs 1.47.0 (5-Feb-2023)</span></span>
+<span class="line"><span style="color:#79B8FF">Resizing the filesystem on /dev/nvme0n1p4 to 52428800 (4k) blocks.</span></span>
+<span class="line"><span style="color:#79B8FF">The filesystem on /dev/nvme0n1p4 is now 52428800 (4k) blocks long.</span></span></code></pre>
+<p><code>p4</code> (<code>ext4</code>) の領域を左に移動するため、<code>parted</code> を実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">parted</span><span style="color:#9ECBFF"> /dev/nvme0n1</span></span></code></pre>
+<p>現在の状態を再度確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">(parted) print</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">Model: 512GB SSD (nvme)</span></span>
+<span class="line"><span style="color:#79B8FF">Disk /dev/nvme0n1: 512GB</span></span>
+<span class="line"><span style="color:#79B8FF">Sector size (logical/physical): 512B/512B</span></span>
+<span class="line"><span style="color:#79B8FF">Partition Table: gpt</span></span>
+<span class="line"><span style="color:#79B8FF">Disk Flags:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Number  Start   End    Size   File system  Name                  Flags</span></span>
+<span class="line"><span style="color:#79B8FF"> 1      1049kB  106MB  105MB  fat32        EFI system partition  boot, esp</span></span>
+<span class="line"><span style="color:#79B8FF"> 4      256GB   511GB  256GB  ext4         Basic data partition  msftdata</span></span></code></pre>
+<p><code>p1</code> と <code>p4</code> の間 (<code>106MB</code> ~ <code>256GB</code>) に新しいパーティションを作成する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">(parted) mkpart primary ext4 106MB 256GB</span></span></code></pre>
+<p><code>p2</code> が作成されたことを確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">(parted) print</span></span>
+<span class="line"><span style="color:#79B8FF">Model: 512GB SSD (nvme)</span></span>
+<span class="line"><span style="color:#79B8FF">Disk /dev/nvme0n1: 512GB</span></span>
+<span class="line"><span style="color:#79B8FF">Sector size (logical/physical): 512B/512B</span></span>
+<span class="line"><span style="color:#79B8FF">Partition Table: gpt</span></span>
+<span class="line"><span style="color:#79B8FF">Disk Flags:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Number  Start   End    Size   File system  Name                  Flags</span></span>
+<span class="line"><span style="color:#79B8FF"> 1      1049kB  106MB  105MB  fat32        EFI system partition  boot, esp</span></span>
+<span class="line"><span style="color:#79B8FF"> 2      106MB   256GB  256GB  ext4         primary</span></span>
+<span class="line"><span style="color:#79B8FF"> 4      256GB   511GB  256GB  ext4         Basic data partition  msftdata</span></span></code></pre>
+<p><code>parted</code> を終了する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">(parted) quit</span></span></code></pre>
+<p>作成した <code>p2</code> をフォーマットする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">mkfs.ext4</span><span style="color:#9ECBFF"> /dev/nvme0n1p2</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">mke2fs 1.47.0 (5-Feb-2023)</span></span>
+<span class="line"><span style="color:#79B8FF">Discarding device blocks: done</span></span>
+<span class="line"><span style="color:#79B8FF">Creating filesystem with 62398720 4k blocks and 15605760 inodes</span></span>
+<span class="line"><span style="color:#79B8FF">Filesystem UUID: 2543fd22-fc5d-430f-87be-9ef247334f4e</span></span>
+<span class="line"><span style="color:#79B8FF">Superblock backups stored on blocks:</span></span>
+<span class="line"><span style="color:#79B8FF">        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,</span></span>
+<span class="line"><span style="color:#79B8FF">        4096000, 7962624, 11239424, 20480000, 23887872</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Allocating group tables: done</span></span>
+<span class="line"><span style="color:#79B8FF">Writing inode tables: done</span></span>
+<span class="line"><span style="color:#79B8FF">Creating journal (262144 blocks): done</span></span>
+<span class="line"><span style="color:#79B8FF">Writing superblocks and filesystem accounting information: done</span></span></code></pre>
+<p><code>p4</code> と <code>p2</code> をそれぞれマウントする。(今回は移行元を <code>/mnt/old</code> とし、移行先を <code>/mnt/new</code> とする。)</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> /mnt/old</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#B392F0">mount</span><span style="color:#9ECBFF"> /dev/nvme0n1p4</span><span style="color:#9ECBFF"> /mnt/old</span></span>
+<span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> /mnt/new</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#B392F0">mount</span><span style="color:#9ECBFF"> /dev/nvme0n1p2</span><span style="color:#9ECBFF"> /mnt/new</span></span></code></pre>
+<p>データの使用量を確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">df</span><span style="color:#79B8FF"> -h</span></span></code></pre>
+<p><code>p4</code> の使用量が <code>p2</code> より小さいことを確認する。もし <code>p2</code> より大きい場合は、別の領域に <code>p4</code> のデータをバックアップする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">...</span></span>
+<span class="line"><span style="color:#79B8FF">/dev/nvme0n1p2  234G   28K  222G   1% /mnt/new</span></span>
+<span class="line"><span style="color:#79B8FF">/dev/nvme0n1p4  196G   89G   98G  48% /mnt/old</span></span></code></pre>
+<p><code>p4</code> にあるデータを <code>p2</code> にコピーする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">rsync</span><span style="color:#79B8FF"> -aHAX</span><span style="color:#9ECBFF"> /mnt/old/</span><span style="color:#9ECBFF"> /mnt/new/</span></span></code></pre>
+<p>アンマウントする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">umount</span><span style="color:#9ECBFF"> /mnt/new</span></span>
+<span class="line"><span style="color:#B392F0">umount</span><span style="color:#9ECBFF"> /mnt/old</span></span></code></pre>
+<p><code>p2</code> をチェックする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">e2fsck</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> /dev/nvme0n1p2</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">e2fsck 1.47.0 (5-Feb-2023)</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 1: Checking inodes, blocks, and sizes</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 2: Checking directory structure</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 3: Checking directory connectivity</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 4: Checking reference counts</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 5: Checking group summary information</span></span>
+<span class="line"><span style="color:#79B8FF">/dev/nvme0n1p2: 1231810/15605760 files (0.1% non-contiguous), 24516082/62398720 blocks</span></span></code></pre>
+<h3 id="動作確認">動作確認</h3>
+<p>Live 環境の Ubuntu のシェル (<code>root</code> ユーザ) にて実施する。</p>
+<p><code>p4</code> を削除する前に、<code>p2</code> のデータで正しく起動できるか確認する。</p>
+<p><code>p2</code> の UUID を確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">blkid</span><span style="color:#9ECBFF"> /dev/nvme0n1p2</span></span></code></pre>
+<p>UUID の値をコピーしておく。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">/dev/nvme0n1p2: UUID="2543fd22-fc5d-430f-87be-9ef247334f4e" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="primary" PARTUUID="78887ccc-a4be-45ea-a88d-f8e0bdc90f64"</span></span></code></pre>
+<p>同様にして、<code>p4</code> の UUID も確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">blkid</span><span style="color:#9ECBFF"> /dev/nvme0n1p4</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">/dev/nvme0n1p4: UUID="e5bc1fee-fc92-4b0f-8b8c-7bc78cf72f86" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="Basic data partition" PARTUUID="075a8eda-ecb5-428b-994a-f59333013d01"</span></span></code></pre>
+<p>ブートローダを更新するため、必要な仮想ファイルシステムをバインドする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">mount</span><span style="color:#9ECBFF"> /dev/nvme0n1p2</span><span style="color:#9ECBFF"> /mnt/new</span></span>
+<span class="line"><span style="color:#B392F0">mount</span><span style="color:#9ECBFF"> /dev/nvme0n1p1</span><span style="color:#9ECBFF"> /mnt/new/boot/efi</span></span>
+<span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">in</span><span style="color:#9ECBFF"> /dev</span><span style="color:#9ECBFF"> /dev/pts</span><span style="color:#9ECBFF"> /proc</span><span style="color:#9ECBFF"> /sys</span><span style="color:#9ECBFF"> /run</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">do</span></span>
+<span class="line"><span style="color:#B392F0">    mount</span><span style="color:#79B8FF"> --bind</span><span style="color:#E1E4E8"> $i </span><span style="color:#9ECBFF">/mnt/new</span><span style="color:#E1E4E8">$i</span></span>
+<span class="line"><span style="color:#F97583">done</span></span></code></pre>
+<p><code>chroot</code> 環境に入る。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">chroot</span><span style="color:#9ECBFF"> /mnt/new</span></span></code></pre>
+<p><code>grub.cfg</code> の中身を確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">less</span><span style="color:#9ECBFF"> /boot/efi/EFI/ubuntu/grub.cfg</span></span></code></pre>
+<p><code>p4</code> の UUID が root に設定されている。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>search.fs_uuid e5bc1fee-fc92-4b0f-8b8c-7bc78cf72f86 root</span></span>
+<span class="line"><span>set prefix=($root)'/boot/grub'</span></span>
+<span class="line"><span>configfile $prefix/grub.cfg</span></span></code></pre>
+<p>任意のエディタで <code>/etc/fstab</code> を開く。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">vi</span><span style="color:#9ECBFF"> /etc/fstab</span></span></code></pre>
+<p>既存の <code>p4</code> のエントリの UUID を書き換え、上書き保存する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="diff"><code><span class="line"><span style="color:#E1E4E8">...</span></span>
+<span class="line"><span style="color:#FDAEB7"><span style="user-select: none;">-</span> /dev/disk/by-uuid/e5bc1fee-fc92-4b0f-8b8c-7bc78cf72f86 / ext4 defaults 0 1</span></span>
+<span class="line"><span style="color:#85E89D"><span style="user-select: none;">+</span> /dev/disk/by-uuid/2543fd22-fc5d-430f-87be-9ef247334f4e / ext4 defaults 0 1</span></span>
+<span class="line"><span style="color:#E1E4E8">...</span></span></code></pre>
+<p>GRUB を再生成する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">grub-install</span><span style="color:#79B8FF"> --target=x86_64-efi</span><span style="color:#79B8FF"> --efi-directory=/boot/efi</span><span style="color:#79B8FF"> --bootloader-id=ubuntu</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">Installing for x86_64-efi platform.</span></span>
+<span class="line"><span style="color:#79B8FF">grub-install: warning: EFI variables cannot be set on this system.</span></span>
+<span class="line"><span style="color:#79B8FF">grub-install: warning: You will have to complete the GRUB setup manually.</span></span>
+<span class="line"><span style="color:#79B8FF">Installation finished. No error reported.</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">update-grub</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">Sourcing file `/etc/default/grub'</span></span>
+<span class="line"><span style="color:#79B8FF">Generating grub configuration file ...</span></span>
+<span class="line"><span style="color:#79B8FF">Found linux image: /boot/vmlinuz-6.8.0-79-generic</span></span>
+<span class="line"><span style="color:#79B8FF">Found initrd image: /boot/initrd.img-6.8.0-79-generic</span></span>
+<span class="line"><span style="color:#79B8FF">Found linux image: /boot/vmlinuz-6.8.0-78-generic</span></span>
+<span class="line"><span style="color:#79B8FF">Found initrd image: /boot/initrd.img-6.8.0-78-generic</span></span>
+<span class="line"><span style="color:#79B8FF">Warning: os-prober will be executed to detect other bootable partitions.</span></span>
+<span class="line"><span style="color:#79B8FF">Its output will be used to detect bootable binaries on them and create new boot entries.</span></span>
+<span class="line"><span style="color:#79B8FF">Found Windows Boot Manager on /dev/nvme0n1p1@/EFI/Microsoft/Boot/bootmgfw.efi</span></span>
+<span class="line"><span style="color:#79B8FF">Found Ubuntu 24.04.3 LTS (24.04) on /dev/nvme0n1p4</span></span>
+<span class="line"><span style="color:#79B8FF">Adding boot menu entry for UEFI Firmware Settings ...</span></span>
+<span class="line"><span style="color:#79B8FF">done</span></span></code></pre>
+<p><code>grub.cfg</code> の中身を確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">less</span><span style="color:#9ECBFF"> /boot/efi/EFI/ubuntu/grub.cfg</span></span></code></pre>
+<p><code>p2</code> の UUID が root に設定されている。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>search.fs_uuid 2543fd22-fc5d-430f-87be-9ef247334f4e root</span></span>
+<span class="line"><span>set prefix=($root)'/boot/grub'</span></span>
+<span class="line"><span>configfile $prefix/grub.cfg</span></span></code></pre>
+<p>この時点で、 <code>p2</code> をもとに起動するはずなので、サーバを再起動する。(ブートローダの選択肢で <code>p4</code> の Ubuntu を選ばないように注意する。)</p>
+<p><code>p2</code> で Ubuntu が起動したら、SSH 接続や各種サービスの利用等、問題なく使えることを確認する。</p>
+<h3 id="パーティションの削除と拡張">パーティションの削除と拡張</h3>
+<p><code>p2</code> で問題なく起動できることが確認出来たら、 <code>p4</code> を削除し、 <code>p2</code> を拡張する。</p>
+<p>以降の手順は Live 環境の Ubuntu で実行する。</p>
+<p><code>parted</code> コマンドを実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">parted</span><span style="color:#9ECBFF"> /dev/nvme0n1</span></span></code></pre>
+<p>現在のパーティションを表示する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">(parted) print</span></span>
+<span class="line"><span style="color:#79B8FF">Model: 512GB SSD (nvme)</span></span>
+<span class="line"><span style="color:#79B8FF">Disk /dev/nvme0n1: 512GB</span></span>
+<span class="line"><span style="color:#79B8FF">Sector size (logical/physical): 512B/512B</span></span>
+<span class="line"><span style="color:#79B8FF">Partition Table: gpt</span></span>
+<span class="line"><span style="color:#79B8FF">Disk Flags:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Number  Start   End    Size   File system  Name                  Flags</span></span>
+<span class="line"><span style="color:#79B8FF"> 1      1049kB  106MB  105MB  fat32        EFI system partition  boot, esp</span></span>
+<span class="line"><span style="color:#79B8FF"> 2      106MB   256GB  256GB  ext4         primary</span></span>
+<span class="line"><span style="color:#79B8FF"> 4      256GB   511GB  256GB  ext4         Basic data partition  msftdata</span></span></code></pre>
+<p><code>p4</code> を削除し、<code>p2</code> のサイズを <code>100%</code> にする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">(parted) rm 4</span></span>
+<span class="line"><span style="color:#79B8FF">(parted) resizepart 2 100%</span></span></code></pre>
+<p>現在のパーティションを表示し、<code>p2</code> が最大サイズまで拡張されていることを確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">(parted) print</span></span>
+<span class="line"><span style="color:#79B8FF">Model: 512GB SSD (nvme)</span></span>
+<span class="line"><span style="color:#79B8FF">Disk /dev/nvme0n1: 512GB</span></span>
+<span class="line"><span style="color:#79B8FF">Sector size (logical/physical): 512B/512B</span></span>
+<span class="line"><span style="color:#79B8FF">Partition Table: gpt</span></span>
+<span class="line"><span style="color:#79B8FF">Disk Flags:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Number  Start   End    Size   File system  Name                  Flags</span></span>
+<span class="line"><span style="color:#79B8FF"> 1      1049kB  106MB  105MB  fat32        EFI system partition  boot, esp</span></span>
+<span class="line"><span style="color:#79B8FF"> 2      106MB   512GB  512GB  ext4         primary</span></span></code></pre>
+<p><code>parted</code> を終了する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">(parted) quit</span></span></code></pre>
+<p><code>p2</code> をチェックする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">e2fsck</span><span style="color:#79B8FF"> -f</span><span style="color:#9ECBFF"> /dev/nvme0n1p2</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">e2fsck 1.47.0 (5-Feb-2023)</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 1: Checking inodes, blocks, and sizes</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 2: Checking directory structure</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 3: Checking directory connectivity</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 4: Checking reference counts</span></span>
+<span class="line"><span style="color:#79B8FF">Pass 5: Checking group summary information</span></span>
+<span class="line"><span style="color:#79B8FF">/dev/nvme0n1p2: 1231812/15605760 files (0.1% non-contiguous), 24481005/62398720 blocks</span></span></code></pre>
+<p><code>p2</code> のファイルシステムを最大まで拡張する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">resize2fs</span><span style="color:#9ECBFF"> /dev/nvme0n1p2</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">resize2fs 1.47.0 (5-Feb-2023)</span></span>
+<span class="line"><span style="color:#79B8FF">Resizing the filesystem on /dev/nvme0n1p2 to 125001041 (4k) blocks.</span></span>
+<span class="line"><span style="color:#79B8FF">The filesystem on /dev/nvme0n1p2 is now 125001041 (4k) blocks long.</span></span></code></pre>
+<p>再起動し、問題なく起動することを確認する。</p>
+<h3 id="ブート設定の削除">ブート設定の削除</h3>
+<p>EFI にある Windows のブート設定を削除する。この作業は Live の Ubuntu ではなく、<code>p2</code> にある Ubuntu を起動し、ログインした状態で実施する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> mount</span><span style="color:#9ECBFF"> /dev/nvme0n1p1</span><span style="color:#9ECBFF"> /mnt</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> rm</span><span style="color:#79B8FF"> -rf</span><span style="color:#9ECBFF"> /mnt/EFI/Microsoft</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> umount</span><span style="color:#9ECBFF"> /mnt</span></span></code></pre>
+<p>GRUB を再生成する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> update-grub</span></span></code></pre>
+<p>これでブートローダの選択肢から不要な OS が消え、パーティション <code>p2</code> の Ubuntu が起動する。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://man.archlinux.org/man/parted.8">parted(8) — Arch manual pages</a></li>
+<li><a href="https://man.archlinux.org/man/e2fsck.8">e2fsck(8) — Arch manual pages</a></li>
+<li><a href="https://man.archlinux.org/man/resize2fs.8">resize2fs(8) — Arch manual pages</a></li>
+<li><a href="https://man.archlinux.org/man/grub-install.8">grub-install(8) — Arch manual pages</a></li>
+<li><a href="https://man.archlinux.org/man/efibootmgr.8.en">efibootmgr(8) — Arch manual pages</a></li>
+</ul>  </div> </article> </main> <footer class="site-footer" data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte>
+&copy; 2026 h10i.
+</div> </footer></body></html>

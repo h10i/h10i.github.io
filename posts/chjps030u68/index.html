@@ -1,0 +1,206 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="h10i" href="https://example.com/rss.xml"><meta name="generator" content="Astro v6.0.8"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/posts/chjps030u68/"><!-- Primary Meta Tags --><title>Git における過去コミットの修正</title><meta name="title" content="Git における過去コミットの修正"><meta name="description"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/posts/chjps030u68/"><meta property="og:title" content="Git における過去コミットの修正"><meta property="og:description"><!-- Twitter --><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://example.com/posts/chjps030u68/"><meta property="twitter:title" content="Git における過去コミットの修正"><meta property="twitter:description"><style>:root{--color-bg: #ffffff;--color-text: #333333;--color-text-muted: #666666;--color-link: #0056b3;--color-link-hover: #003d82;--color-border: #e5e5e5;--color-code-bg: #f4f4f4;--max-width: 800px;--container-padding: 1rem;--space-xs: .5rem;--space-sm: 1rem;--space-md: 1.5rem;--space-lg: 2rem;--space-xl: 3rem;--font-family: system-ui, -apple-system, sans-serif;--font-size-base: 1rem;--line-height-base: 1.6}[data-theme=dark]{--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}}*,*:before,*:after{box-sizing:border-box}html{font-size:16px}body{font-family:var(--font-family);margin:0;padding:0;background-color:var(--color-bg);color:var(--color-text);line-height:var(--line-height-base);display:flex;flex-direction:column;min-height:100vh}main{flex:1}.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 var(--container-padding)}a{color:var(--color-link);text-decoration:none}a:hover{color:var(--color-link-hover);text-decoration:underline}h1,h2,h3,h4,h5,h6{margin-top:1.5em;margin-bottom:.5em;line-height:1.2;font-weight:700}h1{font-size:2rem;margin-top:0}h2{font-size:1.5rem}h3{font-size:1.25rem}p{margin-top:0;margin-bottom:var(--space-sm)}img{max-width:100%;height:auto;display:block}code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;background-color:var(--color-code-bg);padding:.2em .4em;border-radius:4px;font-size:.9em}pre{background-color:var(--color-code-bg);padding:var(--space-sm);border-radius:4px;overflow-x:auto;margin-bottom:var(--space-sm)}pre code{background-color:transparent;padding:0;font-size:.85em}blockquote{margin:0 0 var(--space-sm) 0;padding-left:var(--space-sm);border-left:4px solid var(--color-border);color:var(--color-text-muted);font-style:italic}.text-muted{color:var(--color-text-muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}@media(max-width:640px){html{font-size:15px}h1{font-size:1.75rem}h2{font-size:1.4rem}}.site-footer[data-astro-cid-sz7xmlte]{text-align:center;padding:var(--space-xl) 0;margin-top:var(--space-xl);border-top:1px solid var(--color-border);color:var(--color-text-muted);font-size:.875rem}.theme-toggle[data-astro-cid-x3pjskd3]{background:none;border:none;cursor:pointer;color:var(--color-text);padding:var(--space-xs);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:background-color .2s}.theme-toggle[data-astro-cid-x3pjskd3]:hover{background-color:var(--color-code-bg)}.sun[data-astro-cid-x3pjskd3]{display:none}.moon[data-astro-cid-x3pjskd3],[data-theme=dark] .sun[data-astro-cid-x3pjskd3]{display:block}[data-theme=dark] .moon[data-astro-cid-x3pjskd3]{display:none}.site-header[data-astro-cid-3ef6ksr2]{border-bottom:1px solid var(--color-border);margin-bottom:var(--space-lg)}.header-container[data-astro-cid-3ef6ksr2]{display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:var(--space-sm);padding-bottom:var(--space-sm)}.site-title[data-astro-cid-3ef6ksr2]{margin:0;font-size:1.5rem;font-weight:700}.site-title[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--color-text);text-decoration:none}.header-right[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;gap:var(--space-md)}.site-nav[data-astro-cid-3ef6ksr2]{display:flex;gap:var(--space-md)}@media(max-width:640px){.header-container[data-astro-cid-3ef6ksr2]{flex-direction:column;gap:var(--space-sm);align-items:flex-start}.header-right[data-astro-cid-3ef6ksr2]{width:100%;justify-content:space-between;flex-direction:row-reverse}.site-nav[data-astro-cid-3ef6ksr2]{width:auto;justify-content:flex-start;gap:var(--space-sm);font-size:.95rem;overflow-x:auto}}
+.post-header[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xl);padding-bottom:var(--space-md);border-bottom:1px solid var(--color-border)}.post-title[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xs);font-size:2.5rem}.post-meta[data-astro-cid-bvzihdzo]{display:flex;flex-direction:column;gap:var(--space-sm);font-size:.875rem}.post-tags[data-astro-cid-bvzihdzo]{display:flex;flex-wrap:wrap;gap:var(--space-xs);list-style:none;padding:0;margin:0}.post-tag[data-astro-cid-bvzihdzo]{background-color:var(--color-code-bg);padding:.2rem .5rem;border-radius:4px;color:var(--color-text);text-decoration:none;font-size:.75rem}.post-tag[data-astro-cid-bvzihdzo]:hover{background-color:var(--color-border)}.post-content[data-astro-cid-bvzihdzo]{line-height:1.8}@media(max-width:640px){.post-title[data-astro-cid-bvzihdzo]{font-size:2rem}}
+</style></head> <body data-astro-cid-bvzihdzo> <header class="site-header" data-astro-cid-3ef6ksr2> <div class="header-container container" data-astro-cid-3ef6ksr2> <h1 class="site-title" data-astro-cid-3ef6ksr2><a href="/" data-astro-cid-3ef6ksr2>h10i</a></h1> <div class="header-right" data-astro-cid-3ef6ksr2> <nav class="site-nav" data-astro-cid-3ef6ksr2> <a href="/posts" class="active" data-astro-cid-3ef6ksr2="true"> posts </a> <a href="/archives" data-astro-cid-3ef6ksr2="true"> archives </a> <a href="/tags" data-astro-cid-3ef6ksr2="true"> tags </a> <a href="/search" data-astro-cid-3ef6ksr2="true"> search </a> </nav> <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle" data-astro-cid-x3pjskd3> <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <circle cx="12" cy="12" r="5" data-astro-cid-x3pjskd3></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-x3pjskd3></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-x3pjskd3></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-x3pjskd3></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-x3pjskd3></line> </svg> <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-x3pjskd3></path> </svg> </button> <script type="module">const m=document.getElementById("theme-toggle");function o(){return typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}function t(e){document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e)}t(o());m?.addEventListener("click",()=>{const n=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";t(n)});</script> </div> </div> </header> <main class="container" data-astro-cid-bvzihdzo> <article class="post" data-pagefind-body data-astro-cid-bvzihdzo> <header class="post-header" data-astro-cid-bvzihdzo> <h1 class="post-title" data-pagefind-meta="title" data-astro-cid-bvzihdzo>Git における過去コミットの修正</h1> <div class="post-meta" data-astro-cid-bvzihdzo> <div class="post-date text-muted" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Published: <time datetime="2023-01-05T14:09:35.000Z"> 2023-01-05 </time></span>  </div> <ul class="post-tags" data-astro-cid-bvzihdzo> <li data-astro-cid-bvzihdzo> <a href="/tags/git/" class="post-tag" data-astro-cid-bvzihdzo>#Git</a> </li> </ul> </div> </header> <div class="post-content" data-astro-cid-bvzihdzo>  <h3 id="注意点">注意点</h3>
+<p>過去のコミットを修正すると、修正したコミット以降のハッシュ値が変わる。そのため、GitHub 等のリモートリポジトリに <code>push</code> するときは、<code>push -f</code> とする必要がある。これは強制的に上書きする行為なので、複数人で管理しているときなどは注意すること。</p>
+<h3 id="初期状態">初期状態</h3>
+<p>以下のファイルを上から順番にコミットしたとする。</p>
+<ul>
+<li>hello</li>
+<li>morning</li>
+<li>night</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> ls</span></span>
+<span class="line"><span style="color:#B392F0">hello</span><span style="color:#9ECBFF">  morning</span><span style="color:#9ECBFF">  night</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> cat</span><span style="color:#9ECBFF"> hello</span></span>
+<span class="line"><span style="color:#B392F0">hallo,</span><span style="color:#9ECBFF"> world!</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> cat</span><span style="color:#9ECBFF"> morning</span></span>
+<span class="line"><span style="color:#B392F0">god</span><span style="color:#9ECBFF"> morning!</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> cat</span><span style="color:#9ECBFF"> night</span></span>
+<span class="line"><span style="color:#B392F0">good</span><span style="color:#9ECBFF"> night</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> log</span><span style="color:#79B8FF"> --oneline</span></span>
+<span class="line"><span style="color:#B392F0">564bd9c</span><span style="color:#E1E4E8"> (HEAD -</span><span style="color:#F97583">></span><span style="color:#9ECBFF"> main</span><span style="color:#E1E4E8">) Add night</span></span>
+<span class="line"><span style="color:#B392F0">97e326f</span><span style="color:#9ECBFF"> Add</span><span style="color:#9ECBFF"> morning</span></span>
+<span class="line"><span style="color:#B392F0">b739670</span><span style="color:#9ECBFF"> first</span><span style="color:#9ECBFF"> commit</span></span></code></pre>
+<h3 id="直前のコミットを修正">直前のコミットを修正</h3>
+<p>直前のコミットを修正したい場合は、<code>commit</code> コマンドに <code>--amend</code> オプションを付ける。</p>
+<p>以下の例では、<code>night</code> ファイルに <code>sweet dreams</code> というメッセージを追加し、コミットメッセージも変更している。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> echo</span><span style="color:#9ECBFF"> 'sweet dreams'</span><span style="color:#F97583"> >></span><span style="color:#9ECBFF"> night</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> diff</span></span>
+<span class="line"><span style="color:#B392F0">diff</span><span style="color:#79B8FF"> --git</span><span style="color:#9ECBFF"> a/night</span><span style="color:#9ECBFF"> b/night</span></span>
+<span class="line"><span style="color:#B392F0">index</span><span style="color:#9ECBFF"> d55621b..461a258</span><span style="color:#79B8FF"> 100644</span></span>
+<span class="line"><span style="color:#B392F0">---</span><span style="color:#9ECBFF"> a/night</span></span>
+<span class="line"><span style="color:#B392F0">+++</span><span style="color:#9ECBFF"> b/night</span></span>
+<span class="line"><span style="color:#B392F0">@@</span><span style="color:#79B8FF"> -1</span><span style="color:#9ECBFF"> +1,2</span><span style="color:#9ECBFF"> @@</span></span>
+<span class="line"><span style="color:#B392F0"> good</span><span style="color:#9ECBFF"> night</span></span>
+<span class="line"><span style="color:#B392F0">+sweet</span><span style="color:#9ECBFF"> dreams</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> night</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> --amend</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> "Add night messages"</span></span>
+<span class="line"><span style="color:#E1E4E8">[main a8e822b] Add night messages</span></span>
+<span class="line"><span style="color:#B392F0"> pubDatetime:</span><span style="color:#9ECBFF"> Fri</span><span style="color:#9ECBFF"> Apr</span><span style="color:#79B8FF"> 16</span><span style="color:#9ECBFF"> 01:13:50</span><span style="color:#79B8FF"> 2021</span><span style="color:#9ECBFF"> +0900</span></span>
+<span class="line"><span style="color:#B392F0"> 1</span><span style="color:#9ECBFF"> file</span><span style="color:#9ECBFF"> changed,</span><span style="color:#79B8FF"> 2</span><span style="color:#9ECBFF"> insertions</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">+</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0"> create</span><span style="color:#9ECBFF"> mode</span><span style="color:#79B8FF"> 100644</span><span style="color:#9ECBFF"> night</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> log</span><span style="color:#79B8FF"> --oneline</span></span>
+<span class="line"><span style="color:#B392F0">a8e822b</span><span style="color:#E1E4E8"> (HEAD -</span><span style="color:#F97583">></span><span style="color:#9ECBFF"> main</span><span style="color:#E1E4E8">) Add night messages</span></span>
+<span class="line"><span style="color:#B392F0">97e326f</span><span style="color:#9ECBFF"> Add</span><span style="color:#9ECBFF"> morning</span></span>
+<span class="line"><span style="color:#B392F0">b739670</span><span style="color:#9ECBFF"> first</span><span style="color:#9ECBFF"> commit</span></span></code></pre>
+<h3 id="2つ以上前のコミットを修正">2つ以上前のコミットを修正</h3>
+<p>2つ前にコミットした <code>morning</code> ファイルの内容が <code>god morning</code> になっているので <code>good morning</code> に修正する。</p>
+<p><code>commit --amend</code> は直前のコミットにしか使えないので、<code>rebase</code> コマンドを用いる。</p>
+<p><code>git log</code> でコミットログを出力し、修正したいコミットの1つ前のコミットを指定して <code>rebase</code> を実行する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> log</span><span style="color:#79B8FF"> --oneline</span></span>
+<span class="line"><span style="color:#B392F0">a8e822b</span><span style="color:#E1E4E8"> (HEAD -</span><span style="color:#F97583">></span><span style="color:#9ECBFF"> main</span><span style="color:#E1E4E8">) Add night messages</span></span>
+<span class="line"><span style="color:#B392F0">97e326f</span><span style="color:#9ECBFF"> Add</span><span style="color:#9ECBFF"> morning</span></span>
+<span class="line"><span style="color:#B392F0">b739670</span><span style="color:#9ECBFF"> first</span><span style="color:#9ECBFF"> commit</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> rebase</span><span style="color:#79B8FF"> -i</span><span style="color:#9ECBFF"> b739670</span></span>
+<span class="line"><span style="color:#B392F0">Stopped</span><span style="color:#9ECBFF"> at</span><span style="color:#9ECBFF"> 97e326f...</span><span style="color:#9ECBFF">  Add</span><span style="color:#9ECBFF"> morning</span></span>
+<span class="line"><span style="color:#B392F0">You</span><span style="color:#9ECBFF"> can</span><span style="color:#9ECBFF"> amend</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> commit</span><span style="color:#9ECBFF"> now,</span><span style="color:#9ECBFF"> with</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> --amend</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Once</span><span style="color:#9ECBFF"> you</span><span style="color:#9ECBFF"> are</span><span style="color:#9ECBFF"> satisfied</span><span style="color:#9ECBFF"> with</span><span style="color:#9ECBFF"> your</span><span style="color:#9ECBFF"> changes,</span><span style="color:#9ECBFF"> run</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  git</span><span style="color:#9ECBFF"> rebase</span><span style="color:#79B8FF"> --continue</span></span></code></pre>
+<p>以下のファイルが開かれるので、修正したいコミットの <code>pick</code> を <code>edit</code> に変更して保存する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="txt"><code><span class="line"><span>- pick 97e326f Add morning</span></span>
+<span class="line"><span>+ edit 97e326f Add morning</span></span>
+<span class="line"><span>pick a8e822b Add night messages</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Rebase b739670..a8e822b onto b739670 (2 commands)</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># Commands:</span></span>
+<span class="line"><span># p, pick &#x3C;commit> = use commit</span></span>
+<span class="line"><span># r, reword &#x3C;commit> = use commit, but edit the commit message</span></span>
+<span class="line"><span># e, edit &#x3C;commit> = use commit, but stop for amending</span></span>
+<span class="line"><span># s, squash &#x3C;commit> = use commit, but meld into previous commit</span></span>
+<span class="line"><span># f, fixup &#x3C;commit> = like "squash", but discard this commit's log message</span></span>
+<span class="line"><span># x, exec &#x3C;command> = run command (the rest of the line) using shell</span></span>
+<span class="line"><span># b, break = stop here (continue rebase later with 'git rebase --continue')</span></span>
+<span class="line"><span># d, drop &#x3C;commit> = remove commit</span></span>
+<span class="line"><span># l, label &#x3C;label> = label current HEAD with a name</span></span>
+<span class="line"><span># t, reset &#x3C;label> = reset HEAD to a label</span></span>
+<span class="line"><span># m, merge [-C &#x3C;commit> | -c &#x3C;commit>] &#x3C;label> [# &#x3C;oneline>]</span></span>
+<span class="line"><span># .       create a merge commit using the original merge commit's</span></span>
+<span class="line"><span># .       message (or the oneline, if no original merge commit was</span></span>
+<span class="line"><span># .       specified). Use -c &#x3C;commit> to reword the commit message.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># These lines can be re-ordered; they are executed from top to bottom.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># If you remove a line here THAT COMMIT WILL BE LOST.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># However, if you remove everything, the rebase will be aborted.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># Note that empty commits are commented out</span></span></code></pre>
+<p>ファイルを閉じると、修正したいコミットをした直後の状態になる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> log</span><span style="color:#79B8FF"> --oneline</span></span>
+<span class="line"><span style="color:#B392F0">97e326f</span><span style="color:#E1E4E8"> (HEAD) Add morning</span></span>
+<span class="line"><span style="color:#B392F0">b739670</span><span style="color:#9ECBFF"> first</span><span style="color:#9ECBFF"> commit</span></span></code></pre>
+<p>あとは直前のコミットを修正するのと同じように修正する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> diff</span></span>
+<span class="line"><span style="color:#B392F0">diff</span><span style="color:#79B8FF"> --git</span><span style="color:#9ECBFF"> a/morning</span><span style="color:#9ECBFF"> b/morning</span></span>
+<span class="line"><span style="color:#B392F0">index</span><span style="color:#9ECBFF"> c94a8fd..527cb14</span><span style="color:#79B8FF"> 100644</span></span>
+<span class="line"><span style="color:#B392F0">---</span><span style="color:#9ECBFF"> a/morning</span></span>
+<span class="line"><span style="color:#B392F0">+++</span><span style="color:#9ECBFF"> b/morning</span></span>
+<span class="line"><span style="color:#B392F0">@@</span><span style="color:#79B8FF"> -1</span><span style="color:#9ECBFF"> +1</span><span style="color:#9ECBFF"> @@</span></span>
+<span class="line"><span style="color:#B392F0">-god</span><span style="color:#9ECBFF"> morning!</span></span>
+<span class="line"><span style="color:#B392F0">+good</span><span style="color:#9ECBFF"> morning!</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> morning</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> --amend</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> "Add morning"</span></span>
+<span class="line"><span style="color:#E1E4E8">[detached HEAD 4667fe5] Add morning</span></span>
+<span class="line"><span style="color:#B392F0"> pubDatetime:</span><span style="color:#9ECBFF"> Fri</span><span style="color:#9ECBFF"> Apr</span><span style="color:#79B8FF"> 16</span><span style="color:#9ECBFF"> 01:12:51</span><span style="color:#79B8FF"> 2021</span><span style="color:#9ECBFF"> +0900</span></span>
+<span class="line"><span style="color:#B392F0"> 1</span><span style="color:#9ECBFF"> file</span><span style="color:#9ECBFF"> changed,</span><span style="color:#79B8FF"> 1</span><span style="color:#9ECBFF"> insertion</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">+</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0"> create</span><span style="color:#9ECBFF"> mode</span><span style="color:#79B8FF"> 100644</span><span style="color:#9ECBFF"> morning</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> status</span></span>
+<span class="line"><span style="color:#B392F0">interactive</span><span style="color:#9ECBFF"> rebase</span><span style="color:#9ECBFF"> in</span><span style="color:#9ECBFF"> progress</span><span style="color:#E1E4E8">; </span><span style="color:#B392F0">onto</span><span style="color:#9ECBFF"> b739670</span></span>
+<span class="line"><span style="color:#B392F0">Last</span><span style="color:#9ECBFF"> command</span><span style="color:#9ECBFF"> done</span><span style="color:#E1E4E8"> (1 </span><span style="color:#9ECBFF">command</span><span style="color:#9ECBFF"> done</span><span style="color:#E1E4E8">):</span></span>
+<span class="line"><span style="color:#B392F0">   edit</span><span style="color:#9ECBFF"> 97e326f</span><span style="color:#9ECBFF"> Add</span><span style="color:#9ECBFF"> morning</span></span>
+<span class="line"><span style="color:#B392F0">Next</span><span style="color:#9ECBFF"> command</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> do</span><span style="color:#E1E4E8"> (1 </span><span style="color:#9ECBFF">remaining</span><span style="color:#9ECBFF"> command</span><span style="color:#E1E4E8">):</span></span>
+<span class="line"><span style="color:#B392F0">   pick</span><span style="color:#9ECBFF"> a8e822b</span><span style="color:#9ECBFF"> Add</span><span style="color:#9ECBFF"> night</span><span style="color:#9ECBFF"> messages</span></span>
+<span class="line"><span style="color:#E1E4E8">  (</span><span style="color:#B392F0">use</span><span style="color:#9ECBFF"> "git rebase --edit-todo"</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> view</span><span style="color:#9ECBFF"> and</span><span style="color:#9ECBFF"> edit</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">You</span><span style="color:#9ECBFF"> are</span><span style="color:#9ECBFF"> currently</span><span style="color:#9ECBFF"> editing</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> commit</span><span style="color:#9ECBFF"> while</span><span style="color:#9ECBFF"> rebasing</span><span style="color:#9ECBFF"> branch</span><span style="color:#9ECBFF"> 'main'</span><span style="color:#9ECBFF"> on</span><span style="color:#9ECBFF"> 'b739670'.</span></span>
+<span class="line"><span style="color:#E1E4E8">  (</span><span style="color:#B392F0">use</span><span style="color:#9ECBFF"> "git commit --amend"</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> amend</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> current</span><span style="color:#9ECBFF"> commit</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">  (</span><span style="color:#B392F0">use</span><span style="color:#9ECBFF"> "git rebase --continue"</span><span style="color:#9ECBFF"> once</span><span style="color:#9ECBFF"> you</span><span style="color:#9ECBFF"> are</span><span style="color:#9ECBFF"> satisfied</span><span style="color:#9ECBFF"> with</span><span style="color:#9ECBFF"> your</span><span style="color:#9ECBFF"> changes</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">nothing</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> commit,</span><span style="color:#9ECBFF"> working</span><span style="color:#9ECBFF"> tree</span><span style="color:#9ECBFF"> clean</span></span></code></pre>
+<p>このコミット以外は修正しないので、以下コマンドで最新コミットまで進める。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> rebase</span><span style="color:#79B8FF"> --continue</span></span>
+<span class="line"><span style="color:#B392F0">Successfully</span><span style="color:#9ECBFF"> rebased</span><span style="color:#9ECBFF"> and</span><span style="color:#9ECBFF"> updated</span><span style="color:#9ECBFF"> refs/heads/main.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> status</span></span>
+<span class="line"><span style="color:#B392F0">On</span><span style="color:#9ECBFF"> branch</span><span style="color:#9ECBFF"> main</span></span>
+<span class="line"><span style="color:#B392F0">nothing</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> commit,</span><span style="color:#9ECBFF"> working</span><span style="color:#9ECBFF"> tree</span><span style="color:#9ECBFF"> clean</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> log</span><span style="color:#79B8FF"> --oneline</span></span>
+<span class="line"><span style="color:#B392F0">63c4c92</span><span style="color:#E1E4E8"> (HEAD -</span><span style="color:#F97583">></span><span style="color:#9ECBFF"> main</span><span style="color:#E1E4E8">) Add night messages</span></span>
+<span class="line"><span style="color:#B392F0">4667fe5</span><span style="color:#9ECBFF"> Add</span><span style="color:#9ECBFF"> morning</span></span>
+<span class="line"><span style="color:#B392F0">b739670</span><span style="color:#9ECBFF"> first</span><span style="color:#9ECBFF"> commit</span></span></code></pre>
+<h3 id="初回コミットを修正">初回コミットを修正</h3>
+<p>初回にコミットした <code>hello</code> ファイルの内容を <code>hallo world!</code> から <code>hello, world!</code> に修正する。</p>
+<p>しかし、<code>rebase -i</code> では初回コミットの前のコミットハッシュを指定することができない。</p>
+<p>この場合は、<code>rebase -i --root</code> とすると、初回コミットを修正することができる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> rebase</span><span style="color:#79B8FF"> -i</span><span style="color:#79B8FF"> --root</span></span>
+<span class="line"><span style="color:#B392F0">Stopped</span><span style="color:#9ECBFF"> at</span><span style="color:#9ECBFF"> b739670...</span><span style="color:#9ECBFF">  first</span><span style="color:#9ECBFF"> commit</span></span>
+<span class="line"><span style="color:#B392F0">You</span><span style="color:#9ECBFF"> can</span><span style="color:#9ECBFF"> amend</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> commit</span><span style="color:#9ECBFF"> now,</span><span style="color:#9ECBFF"> with</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> --amend</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Once</span><span style="color:#9ECBFF"> you</span><span style="color:#9ECBFF"> are</span><span style="color:#9ECBFF"> satisfied</span><span style="color:#9ECBFF"> with</span><span style="color:#9ECBFF"> your</span><span style="color:#9ECBFF"> changes,</span><span style="color:#9ECBFF"> run</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  git</span><span style="color:#9ECBFF"> rebase</span><span style="color:#79B8FF"> --continue</span></span></code></pre>
+<p>初回コミットを <code>edit</code> に変更し、保存して閉じる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="txt"><code><span class="line"><span>- pick b739670 first commit</span></span>
+<span class="line"><span>+ edit b739670 first commit</span></span>
+<span class="line"><span>pick 4667fe5 Add morning</span></span>
+<span class="line"><span>pick 63c4c92 Add night messages</span></span></code></pre>
+<p>初回コミット直後の状態になるので、先ほどと同じような手順で修正を反映する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> diff</span></span>
+<span class="line"><span style="color:#B392F0">diff</span><span style="color:#79B8FF"> --git</span><span style="color:#9ECBFF"> a/hello</span><span style="color:#9ECBFF"> b/hello</span></span>
+<span class="line"><span style="color:#B392F0">index</span><span style="color:#9ECBFF"> 7ed9b8c..270c611</span><span style="color:#79B8FF"> 100644</span></span>
+<span class="line"><span style="color:#B392F0">---</span><span style="color:#9ECBFF"> a/hello</span></span>
+<span class="line"><span style="color:#B392F0">+++</span><span style="color:#9ECBFF"> b/hello</span></span>
+<span class="line"><span style="color:#B392F0">@@</span><span style="color:#79B8FF"> -1</span><span style="color:#9ECBFF"> +1</span><span style="color:#9ECBFF"> @@</span></span>
+<span class="line"><span style="color:#B392F0">-hallo,</span><span style="color:#9ECBFF"> world!</span></span>
+<span class="line"><span style="color:#B392F0">+hello,</span><span style="color:#9ECBFF"> world!</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> hello</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> --amend</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> "Add hello"</span></span>
+<span class="line"><span style="color:#E1E4E8">[detached HEAD 2390055] Add hello</span></span>
+<span class="line"><span style="color:#B392F0"> pubDatetime:</span><span style="color:#9ECBFF"> Fri</span><span style="color:#9ECBFF"> Apr</span><span style="color:#79B8FF"> 16</span><span style="color:#9ECBFF"> 01:11:31</span><span style="color:#79B8FF"> 2021</span><span style="color:#9ECBFF"> +0900</span></span>
+<span class="line"><span style="color:#B392F0"> 1</span><span style="color:#9ECBFF"> file</span><span style="color:#9ECBFF"> changed,</span><span style="color:#79B8FF"> 1</span><span style="color:#9ECBFF"> insertion</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">+</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0"> create</span><span style="color:#9ECBFF"> mode</span><span style="color:#79B8FF"> 100644</span><span style="color:#9ECBFF"> hello</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> status</span></span>
+<span class="line"><span style="color:#B392F0">interactive</span><span style="color:#9ECBFF"> rebase</span><span style="color:#9ECBFF"> in</span><span style="color:#9ECBFF"> progress</span><span style="color:#E1E4E8">; </span><span style="color:#B392F0">onto</span><span style="color:#9ECBFF"> dc37feb</span></span>
+<span class="line"><span style="color:#B392F0">Last</span><span style="color:#9ECBFF"> command</span><span style="color:#9ECBFF"> done</span><span style="color:#E1E4E8"> (1 </span><span style="color:#9ECBFF">command</span><span style="color:#9ECBFF"> done</span><span style="color:#E1E4E8">):</span></span>
+<span class="line"><span style="color:#B392F0">   edit</span><span style="color:#9ECBFF"> b739670</span><span style="color:#9ECBFF"> first</span><span style="color:#9ECBFF"> commit</span></span>
+<span class="line"><span style="color:#B392F0">Next</span><span style="color:#9ECBFF"> commands</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> do</span><span style="color:#E1E4E8"> (2 </span><span style="color:#9ECBFF">remaining</span><span style="color:#9ECBFF"> commands</span><span style="color:#E1E4E8">):</span></span>
+<span class="line"><span style="color:#B392F0">   pick</span><span style="color:#9ECBFF"> 4667fe5</span><span style="color:#9ECBFF"> Add</span><span style="color:#9ECBFF"> morning</span></span>
+<span class="line"><span style="color:#B392F0">   pick</span><span style="color:#9ECBFF"> 63c4c92</span><span style="color:#9ECBFF"> Add</span><span style="color:#9ECBFF"> night</span><span style="color:#9ECBFF"> messages</span></span>
+<span class="line"><span style="color:#E1E4E8">  (</span><span style="color:#B392F0">use</span><span style="color:#9ECBFF"> "git rebase --edit-todo"</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> view</span><span style="color:#9ECBFF"> and</span><span style="color:#9ECBFF"> edit</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#B392F0">You</span><span style="color:#9ECBFF"> are</span><span style="color:#9ECBFF"> currently</span><span style="color:#9ECBFF"> editing</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> commit</span><span style="color:#9ECBFF"> while</span><span style="color:#9ECBFF"> rebasing</span><span style="color:#9ECBFF"> branch</span><span style="color:#9ECBFF"> 'main'</span><span style="color:#9ECBFF"> on</span><span style="color:#9ECBFF"> 'dc37feb'.</span></span>
+<span class="line"><span style="color:#E1E4E8">  (</span><span style="color:#B392F0">use</span><span style="color:#9ECBFF"> "git commit --amend"</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> amend</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> current</span><span style="color:#9ECBFF"> commit</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">  (</span><span style="color:#B392F0">use</span><span style="color:#9ECBFF"> "git rebase --continue"</span><span style="color:#9ECBFF"> once</span><span style="color:#9ECBFF"> you</span><span style="color:#9ECBFF"> are</span><span style="color:#9ECBFF"> satisfied</span><span style="color:#9ECBFF"> with</span><span style="color:#9ECBFF"> your</span><span style="color:#9ECBFF"> changes</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">nothing</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> commit,</span><span style="color:#9ECBFF"> working</span><span style="color:#9ECBFF"> tree</span><span style="color:#9ECBFF"> clean</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> rebase</span><span style="color:#79B8FF"> --continue</span></span>
+<span class="line"><span style="color:#B392F0">Successfully</span><span style="color:#9ECBFF"> rebased</span><span style="color:#9ECBFF"> and</span><span style="color:#9ECBFF"> updated</span><span style="color:#9ECBFF"> refs/heads/main.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> log</span><span style="color:#79B8FF"> --oneline</span></span>
+<span class="line"><span style="color:#B392F0">078325e</span><span style="color:#E1E4E8"> (HEAD -</span><span style="color:#F97583">></span><span style="color:#9ECBFF"> main</span><span style="color:#E1E4E8">) Add night messages</span></span>
+<span class="line"><span style="color:#B392F0">f56e0d9</span><span style="color:#9ECBFF"> Add</span><span style="color:#9ECBFF"> morning</span></span>
+<span class="line"><span style="color:#B392F0">2390055</span><span style="color:#9ECBFF"> Add</span><span style="color:#9ECBFF"> hello</span></span></code></pre>  </div> </article> </main> <footer class="site-footer" data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte>
+&copy; 2026 h10i.
+</div> </footer></body></html>

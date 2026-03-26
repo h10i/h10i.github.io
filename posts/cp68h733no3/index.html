@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="h10i" href="https://example.com/rss.xml"><meta name="generator" content="Astro v6.0.8"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/posts/cp68h733no3/"><!-- Primary Meta Tags --><title>OpenCode を WSL で動かしてみる</title><meta name="title" content="OpenCode を WSL で動かしてみる"><meta name="description"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/posts/cp68h733no3/"><meta property="og:title" content="OpenCode を WSL で動かしてみる"><meta property="og:description"><!-- Twitter --><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://example.com/posts/cp68h733no3/"><meta property="twitter:title" content="OpenCode を WSL で動かしてみる"><meta property="twitter:description"><style>:root{--color-bg: #ffffff;--color-text: #333333;--color-text-muted: #666666;--color-link: #0056b3;--color-link-hover: #003d82;--color-border: #e5e5e5;--color-code-bg: #f4f4f4;--max-width: 800px;--container-padding: 1rem;--space-xs: .5rem;--space-sm: 1rem;--space-md: 1.5rem;--space-lg: 2rem;--space-xl: 3rem;--font-family: system-ui, -apple-system, sans-serif;--font-size-base: 1rem;--line-height-base: 1.6}[data-theme=dark]{--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}}*,*:before,*:after{box-sizing:border-box}html{font-size:16px}body{font-family:var(--font-family);margin:0;padding:0;background-color:var(--color-bg);color:var(--color-text);line-height:var(--line-height-base);display:flex;flex-direction:column;min-height:100vh}main{flex:1}.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 var(--container-padding)}a{color:var(--color-link);text-decoration:none}a:hover{color:var(--color-link-hover);text-decoration:underline}h1,h2,h3,h4,h5,h6{margin-top:1.5em;margin-bottom:.5em;line-height:1.2;font-weight:700}h1{font-size:2rem;margin-top:0}h2{font-size:1.5rem}h3{font-size:1.25rem}p{margin-top:0;margin-bottom:var(--space-sm)}img{max-width:100%;height:auto;display:block}code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;background-color:var(--color-code-bg);padding:.2em .4em;border-radius:4px;font-size:.9em}pre{background-color:var(--color-code-bg);padding:var(--space-sm);border-radius:4px;overflow-x:auto;margin-bottom:var(--space-sm)}pre code{background-color:transparent;padding:0;font-size:.85em}blockquote{margin:0 0 var(--space-sm) 0;padding-left:var(--space-sm);border-left:4px solid var(--color-border);color:var(--color-text-muted);font-style:italic}.text-muted{color:var(--color-text-muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}@media(max-width:640px){html{font-size:15px}h1{font-size:1.75rem}h2{font-size:1.4rem}}.site-footer[data-astro-cid-sz7xmlte]{text-align:center;padding:var(--space-xl) 0;margin-top:var(--space-xl);border-top:1px solid var(--color-border);color:var(--color-text-muted);font-size:.875rem}.theme-toggle[data-astro-cid-x3pjskd3]{background:none;border:none;cursor:pointer;color:var(--color-text);padding:var(--space-xs);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:background-color .2s}.theme-toggle[data-astro-cid-x3pjskd3]:hover{background-color:var(--color-code-bg)}.sun[data-astro-cid-x3pjskd3]{display:none}.moon[data-astro-cid-x3pjskd3],[data-theme=dark] .sun[data-astro-cid-x3pjskd3]{display:block}[data-theme=dark] .moon[data-astro-cid-x3pjskd3]{display:none}.site-header[data-astro-cid-3ef6ksr2]{border-bottom:1px solid var(--color-border);margin-bottom:var(--space-lg)}.header-container[data-astro-cid-3ef6ksr2]{display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:var(--space-sm);padding-bottom:var(--space-sm)}.site-title[data-astro-cid-3ef6ksr2]{margin:0;font-size:1.5rem;font-weight:700}.site-title[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--color-text);text-decoration:none}.header-right[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;gap:var(--space-md)}.site-nav[data-astro-cid-3ef6ksr2]{display:flex;gap:var(--space-md)}@media(max-width:640px){.header-container[data-astro-cid-3ef6ksr2]{flex-direction:column;gap:var(--space-sm);align-items:flex-start}.header-right[data-astro-cid-3ef6ksr2]{width:100%;justify-content:space-between;flex-direction:row-reverse}.site-nav[data-astro-cid-3ef6ksr2]{width:auto;justify-content:flex-start;gap:var(--space-sm);font-size:.95rem;overflow-x:auto}}
+.post-header[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xl);padding-bottom:var(--space-md);border-bottom:1px solid var(--color-border)}.post-title[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xs);font-size:2.5rem}.post-meta[data-astro-cid-bvzihdzo]{display:flex;flex-direction:column;gap:var(--space-sm);font-size:.875rem}.post-tags[data-astro-cid-bvzihdzo]{display:flex;flex-wrap:wrap;gap:var(--space-xs);list-style:none;padding:0;margin:0}.post-tag[data-astro-cid-bvzihdzo]{background-color:var(--color-code-bg);padding:.2rem .5rem;border-radius:4px;color:var(--color-text);text-decoration:none;font-size:.75rem}.post-tag[data-astro-cid-bvzihdzo]:hover{background-color:var(--color-border)}.post-content[data-astro-cid-bvzihdzo]{line-height:1.8}@media(max-width:640px){.post-title[data-astro-cid-bvzihdzo]{font-size:2rem}}
+</style></head> <body data-astro-cid-bvzihdzo> <header class="site-header" data-astro-cid-3ef6ksr2> <div class="header-container container" data-astro-cid-3ef6ksr2> <h1 class="site-title" data-astro-cid-3ef6ksr2><a href="/" data-astro-cid-3ef6ksr2>h10i</a></h1> <div class="header-right" data-astro-cid-3ef6ksr2> <nav class="site-nav" data-astro-cid-3ef6ksr2> <a href="/posts" class="active" data-astro-cid-3ef6ksr2="true"> posts </a> <a href="/archives" data-astro-cid-3ef6ksr2="true"> archives </a> <a href="/tags" data-astro-cid-3ef6ksr2="true"> tags </a> <a href="/search" data-astro-cid-3ef6ksr2="true"> search </a> </nav> <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle" data-astro-cid-x3pjskd3> <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <circle cx="12" cy="12" r="5" data-astro-cid-x3pjskd3></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-x3pjskd3></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-x3pjskd3></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-x3pjskd3></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-x3pjskd3></line> </svg> <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-x3pjskd3></path> </svg> </button> <script type="module">const m=document.getElementById("theme-toggle");function o(){return typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}function t(e){document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e)}t(o());m?.addEventListener("click",()=>{const n=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";t(n)});</script> </div> </div> </header> <main class="container" data-astro-cid-bvzihdzo> <article class="post" data-pagefind-body data-astro-cid-bvzihdzo> <header class="post-header" data-astro-cid-bvzihdzo> <h1 class="post-title" data-pagefind-meta="title" data-astro-cid-bvzihdzo>OpenCode を WSL で動かしてみる</h1> <div class="post-meta" data-astro-cid-bvzihdzo> <div class="post-date text-muted" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Published: <time datetime="2025-10-31T12:03:59.000Z"> 2025-10-31 </time></span>  </div> <ul class="post-tags" data-astro-cid-bvzihdzo> <li data-astro-cid-bvzihdzo> <a href="/tags/opencode/" class="post-tag" data-astro-cid-bvzihdzo>#OpenCode</a> </li><li data-astro-cid-bvzihdzo> <a href="/tags/wsl/" class="post-tag" data-astro-cid-bvzihdzo>#WSL</a> </li> </ul> </div> </header> <div class="post-content" data-astro-cid-bvzihdzo>  <h2 id="概要">概要</h2>
+<ul>
+<li>OpenCode とは、任意の LLM プロバイダを選べる OSS の AI エージェントである。</li>
+<li>Claude Code や Gemini CLI のように、ターミナル上で動作する。</li>
+</ul>
+<h2 id="環境">環境</h2>
+<ul>
+<li>WSL (Ubuntu 24.04 LTS)</li>
+<li>opencode 0.15.30</li>
+</ul>
+<h2 id="手順">手順</h2>
+<h3 id="インストール">インストール</h3>
+<p>OpenCode を npm でインストールする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> i</span><span style="color:#79B8FF"> -g</span><span style="color:#9ECBFF"> opencode-ai@latest</span></span></code></pre>
+<p>OpenCode のバージョンを確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">opencode</span><span style="color:#79B8FF"> -version</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">0.15.30</span></span></code></pre>
+<h3 id="プロバイダの設定">プロバイダの設定</h3>
+<p>次のコマンドを実行し、プロバイダと API キーを入力する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">opencode</span><span style="color:#9ECBFF"> auth</span><span style="color:#9ECBFF"> login</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">┌  Add credential</span></span>
+<span class="line"><span style="color:#79B8FF">│</span></span>
+<span class="line"><span style="color:#79B8FF">◆  Select provider</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">│  Search: g (13 matches)</span></span>
+<span class="line"><span style="color:#79B8FF">│  ○ GitHub Copilot</span></span>
+<span class="line"><span style="color:#79B8FF">│  ● Google</span></span>
+<span class="line"><span style="color:#79B8FF">│  ○ Vercel AI Gateway</span></span>
+<span class="line"><span style="color:#79B8FF">│  ○ GitHub Models</span></span>
+<span class="line"><span style="color:#79B8FF">│  ○ Groq</span></span>
+<span class="line"><span style="color:#79B8FF">│  ○ Hugging Face</span></span>
+<span class="line"><span style="color:#79B8FF">│  ○ Together AI</span></span>
+<span class="line"><span style="color:#79B8FF">│  ...</span></span>
+<span class="line"><span style="color:#79B8FF">│  ↑/↓ to select • Enter: confirm • Type: to search</span></span>
+<span class="line"><span style="color:#79B8FF">└</span></span></code></pre>
+<p>今回は Google を選んでみる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">┌  Add credential</span></span>
+<span class="line"><span style="color:#79B8FF">│</span></span>
+<span class="line"><span style="color:#79B8FF">◇  Select provider</span></span>
+<span class="line"><span style="color:#79B8FF">│  Google</span></span>
+<span class="line"><span style="color:#79B8FF">│</span></span>
+<span class="line"><span style="color:#79B8FF">◇  Enter your API key</span></span>
+<span class="line"><span style="color:#79B8FF">│  ▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪</span></span>
+<span class="line"><span style="color:#79B8FF">│</span></span>
+<span class="line"><span style="color:#79B8FF">└  Done</span></span></code></pre>
+<p>選択肢にないプロバイダを設定したい場合は、設定ファイルに記載する。</p>
+<p>例えば、ローカルで動かしている ollama をプロバイダとして使用する場合は、次の設定を設定ファイルに記載する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">vi</span><span style="color:#9ECBFF"> ~/.config/opencode/opencode.json</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "$schema"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"https://opencode.ai/config.json"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "provider"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "ollama"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      "npm"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"@ai-sdk/openai-compatible"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      "options"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">        "baseURL"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"http://localhost:11434/v1"</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#79B8FF">      "models"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">        "gpt-oss:20b"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">          "name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"gpt-oss:20b"</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>ollama は認証を必要としないためこのまま使える。認証が必要なプロバイダを追加した場合は <code>opencode auth login</code> から <code>Other</code> を選択し、登録した provider ID を入力する。</p>
+<h3 id="動作確認">動作確認</h3>
+<p>OpenCode を起動する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">opencode</span></span></code></pre>
+<p>モデルを選択する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">/models</span></span></code></pre>
+<p>指示を出してみる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">C言語で Hello World を出力するファイルを作成してください。</span></span>
+<span class="line"><span style="color:#79B8FF">h10i (08:39 PM)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">C言語で "Hello World" を出力するプログラムを hello.c というファイル名で作成します。</span></span>
+<span class="line"><span style="color:#79B8FF">Build gemini-flash-latest (08:39 PM)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Write hello.c</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">#include &#x3C;stdio.h></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">int main() {</span></span>
+<span class="line"><span style="color:#79B8FF">    printf("Hello World\n");</span></span>
+<span class="line"><span style="color:#79B8FF">    return 0;</span></span>
+<span class="line"><span style="color:#79B8FF">}</span></span></code></pre>
+<p>実際にファイルが作成されている。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ls</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">hello.c</span></span></code></pre>
+<p>opencode を終了する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">/exit</span></span></code></pre>
+<p>コンパイルして実行してみる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">gcc</span><span style="color:#79B8FF"> -o</span><span style="color:#9ECBFF"> hello</span><span style="color:#9ECBFF"> hello.c</span></span>
+<span class="line"><span style="color:#B392F0">./hello</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">Hello World</span></span></code></pre>
+<p><code>opencode run</code> コマンドを使うと、プログラム的に動かせる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">opencode</span><span style="color:#9ECBFF"> run</span><span style="color:#9ECBFF"> "このコードの内容を説明して"</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF"> hello.c</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">このプログラムは、C 言語で書かれた「Hello World」を画面に表示する最も基本的な例です。行ごとの意味は以下の通りです。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">```c</span></span>
+<span class="line"><span style="color:#79B8FF">#include &#x3C;stdio.h></span></span>
+<span class="line"><span style="color:#79B8FF">```</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">- 標準入出力ライブラリをインクルードします。`printf` 関数はこのヘッダーで定義されているので、文字列を画面に出力できるようになります。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">```c</span></span>
+<span class="line"><span style="color:#79B8FF">int main() {</span></span>
+<span class="line"><span style="color:#79B8FF">```</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">- プログラムのエントリーポイント（入口）となる `main` 関数です。戻り値の型は `int` で、実行結果を OS に返すために使われます。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">```c</span></span>
+<span class="line"><span style="color:#79B8FF">    printf("Hello World\n");</span></span>
+<span class="line"><span style="color:#79B8FF">```</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">- `printf` 関数を呼び出し、文字列 **Hello World** と改行文字 `\n` を標準出力（通常はコンソール）に表示します。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">```c</span></span>
+<span class="line"><span style="color:#79B8FF">    return 0;</span></span>
+<span class="line"><span style="color:#79B8FF">```</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">- `main` 関数から整数 `0` を返します。`0` は「正常終了」を意味し、OS に対してプログラムがエラーなく終わったことを伝えます。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">```c</span></span>
+<span class="line"><span style="color:#79B8FF">}</span></span>
+<span class="line"><span style="color:#79B8FF">```</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">- `main` 関数の終端です。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">### 実行手順（参考）</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">1. ソースコードを `hello.c` のようなファイルに保存します。</span></span>
+<span class="line"><span style="color:#79B8FF">2. コンパイル：`gcc hello.c -o hello`（または `clang` でも同様）</span></span>
+<span class="line"><span style="color:#79B8FF">3. 実行：`./hello`</span></span>
+<span class="line"><span style="color:#79B8FF">   → 画面に `Hello World` と表示されます。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">要するに、このプログラムは「Hello World」を画面に出力し、正常に終了するだけの最小限の C プログラムです。</span></span></code></pre>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://opencode.ai/">OpenCode ｜ The AI coding agent built for the terminal</a></li>
+<li><a href="https://opencode.ai/docs/config/">Config ｜ opencode</a></li>
+<li><a href="https://opencode.ai/docs/providers/#ollama">Providers ｜ opencode</a></li>
+<li><a href="https://opencode.ai/docs/cli/">CLI ｜ opencode</a></li>
+</ul>  </div> </article> </main> <footer class="site-footer" data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte>
+&copy; 2026 h10i.
+</div> </footer></body></html>

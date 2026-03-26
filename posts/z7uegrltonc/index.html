@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="h10i" href="https://example.com/rss.xml"><meta name="generator" content="Astro v6.0.8"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/posts/z7uegrltonc/"><!-- Primary Meta Tags --><title>Ubuntu 22.04 LTS を Ubuntu 24.04 LTS にアップグレードする</title><meta name="title" content="Ubuntu 22.04 LTS を Ubuntu 24.04 LTS にアップグレードする"><meta name="description"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/posts/z7uegrltonc/"><meta property="og:title" content="Ubuntu 22.04 LTS を Ubuntu 24.04 LTS にアップグレードする"><meta property="og:description"><!-- Twitter --><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://example.com/posts/z7uegrltonc/"><meta property="twitter:title" content="Ubuntu 22.04 LTS を Ubuntu 24.04 LTS にアップグレードする"><meta property="twitter:description"><style>:root{--color-bg: #ffffff;--color-text: #333333;--color-text-muted: #666666;--color-link: #0056b3;--color-link-hover: #003d82;--color-border: #e5e5e5;--color-code-bg: #f4f4f4;--max-width: 800px;--container-padding: 1rem;--space-xs: .5rem;--space-sm: 1rem;--space-md: 1.5rem;--space-lg: 2rem;--space-xl: 3rem;--font-family: system-ui, -apple-system, sans-serif;--font-size-base: 1rem;--line-height-base: 1.6}[data-theme=dark]{--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}}*,*:before,*:after{box-sizing:border-box}html{font-size:16px}body{font-family:var(--font-family);margin:0;padding:0;background-color:var(--color-bg);color:var(--color-text);line-height:var(--line-height-base);display:flex;flex-direction:column;min-height:100vh}main{flex:1}.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 var(--container-padding)}a{color:var(--color-link);text-decoration:none}a:hover{color:var(--color-link-hover);text-decoration:underline}h1,h2,h3,h4,h5,h6{margin-top:1.5em;margin-bottom:.5em;line-height:1.2;font-weight:700}h1{font-size:2rem;margin-top:0}h2{font-size:1.5rem}h3{font-size:1.25rem}p{margin-top:0;margin-bottom:var(--space-sm)}img{max-width:100%;height:auto;display:block}code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;background-color:var(--color-code-bg);padding:.2em .4em;border-radius:4px;font-size:.9em}pre{background-color:var(--color-code-bg);padding:var(--space-sm);border-radius:4px;overflow-x:auto;margin-bottom:var(--space-sm)}pre code{background-color:transparent;padding:0;font-size:.85em}blockquote{margin:0 0 var(--space-sm) 0;padding-left:var(--space-sm);border-left:4px solid var(--color-border);color:var(--color-text-muted);font-style:italic}.text-muted{color:var(--color-text-muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}@media(max-width:640px){html{font-size:15px}h1{font-size:1.75rem}h2{font-size:1.4rem}}.site-footer[data-astro-cid-sz7xmlte]{text-align:center;padding:var(--space-xl) 0;margin-top:var(--space-xl);border-top:1px solid var(--color-border);color:var(--color-text-muted);font-size:.875rem}.theme-toggle[data-astro-cid-x3pjskd3]{background:none;border:none;cursor:pointer;color:var(--color-text);padding:var(--space-xs);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:background-color .2s}.theme-toggle[data-astro-cid-x3pjskd3]:hover{background-color:var(--color-code-bg)}.sun[data-astro-cid-x3pjskd3]{display:none}.moon[data-astro-cid-x3pjskd3],[data-theme=dark] .sun[data-astro-cid-x3pjskd3]{display:block}[data-theme=dark] .moon[data-astro-cid-x3pjskd3]{display:none}.site-header[data-astro-cid-3ef6ksr2]{border-bottom:1px solid var(--color-border);margin-bottom:var(--space-lg)}.header-container[data-astro-cid-3ef6ksr2]{display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:var(--space-sm);padding-bottom:var(--space-sm)}.site-title[data-astro-cid-3ef6ksr2]{margin:0;font-size:1.5rem;font-weight:700}.site-title[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--color-text);text-decoration:none}.header-right[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;gap:var(--space-md)}.site-nav[data-astro-cid-3ef6ksr2]{display:flex;gap:var(--space-md)}@media(max-width:640px){.header-container[data-astro-cid-3ef6ksr2]{flex-direction:column;gap:var(--space-sm);align-items:flex-start}.header-right[data-astro-cid-3ef6ksr2]{width:100%;justify-content:space-between;flex-direction:row-reverse}.site-nav[data-astro-cid-3ef6ksr2]{width:auto;justify-content:flex-start;gap:var(--space-sm);font-size:.95rem;overflow-x:auto}}
+.post-header[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xl);padding-bottom:var(--space-md);border-bottom:1px solid var(--color-border)}.post-title[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xs);font-size:2.5rem}.post-meta[data-astro-cid-bvzihdzo]{display:flex;flex-direction:column;gap:var(--space-sm);font-size:.875rem}.post-tags[data-astro-cid-bvzihdzo]{display:flex;flex-wrap:wrap;gap:var(--space-xs);list-style:none;padding:0;margin:0}.post-tag[data-astro-cid-bvzihdzo]{background-color:var(--color-code-bg);padding:.2rem .5rem;border-radius:4px;color:var(--color-text);text-decoration:none;font-size:.75rem}.post-tag[data-astro-cid-bvzihdzo]:hover{background-color:var(--color-border)}.post-content[data-astro-cid-bvzihdzo]{line-height:1.8}@media(max-width:640px){.post-title[data-astro-cid-bvzihdzo]{font-size:2rem}}
+</style></head> <body data-astro-cid-bvzihdzo> <header class="site-header" data-astro-cid-3ef6ksr2> <div class="header-container container" data-astro-cid-3ef6ksr2> <h1 class="site-title" data-astro-cid-3ef6ksr2><a href="/" data-astro-cid-3ef6ksr2>h10i</a></h1> <div class="header-right" data-astro-cid-3ef6ksr2> <nav class="site-nav" data-astro-cid-3ef6ksr2> <a href="/posts" class="active" data-astro-cid-3ef6ksr2="true"> posts </a> <a href="/archives" data-astro-cid-3ef6ksr2="true"> archives </a> <a href="/tags" data-astro-cid-3ef6ksr2="true"> tags </a> <a href="/search" data-astro-cid-3ef6ksr2="true"> search </a> </nav> <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle" data-astro-cid-x3pjskd3> <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <circle cx="12" cy="12" r="5" data-astro-cid-x3pjskd3></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-x3pjskd3></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-x3pjskd3></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-x3pjskd3></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-x3pjskd3></line> </svg> <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-x3pjskd3></path> </svg> </button> <script type="module">const m=document.getElementById("theme-toggle");function o(){return typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}function t(e){document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e)}t(o());m?.addEventListener("click",()=>{const n=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";t(n)});</script> </div> </div> </header> <main class="container" data-astro-cid-bvzihdzo> <article class="post" data-pagefind-body data-astro-cid-bvzihdzo> <header class="post-header" data-astro-cid-bvzihdzo> <h1 class="post-title" data-pagefind-meta="title" data-astro-cid-bvzihdzo>Ubuntu 22.04 LTS を Ubuntu 24.04 LTS にアップグレードする</h1> <div class="post-meta" data-astro-cid-bvzihdzo> <div class="post-date text-muted" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Published: <time datetime="2025-02-05T12:09:53.000Z"> 2025-02-05 </time></span>  </div> <ul class="post-tags" data-astro-cid-bvzihdzo> <li data-astro-cid-bvzihdzo> <a href="/tags/ubuntu/" class="post-tag" data-astro-cid-bvzihdzo>#Ubuntu</a> </li> </ul> </div> </header> <div class="post-content" data-astro-cid-bvzihdzo>  <h2 id="概要">概要</h2>
+<ul>
+<li>Ubuntu 22.04 LTS を Ubuntu 24.04 LTS にアップグレードする。</li>
+</ul>
+<h2 id="環境">環境</h2>
+<ul>
+<li>Ubuntu 22.04 LTS</li>
+</ul>
+<h2 id="手順">手順</h2>
+<h3 id="バックアップ">バックアップ</h3>
+<p>最悪動かなくなる場合を想定し、必要なデータをバックアップする。</p>
+<h3 id="ubuntu-2204-lts-の最新化">Ubuntu 22.04 LTS の最新化</h3>
+<p>現在のシステムを最新化する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> apt</span><span style="color:#9ECBFF"> update</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> apt</span><span style="color:#9ECBFF"> upgrade</span><span style="color:#79B8FF"> -y</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> apt</span><span style="color:#9ECBFF"> full-upgrade</span><span style="color:#79B8FF"> -y</span></span></code></pre>
+<p>不要なパッケージ及びキャッシュを削除する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> apt</span><span style="color:#9ECBFF"> autoremove</span><span style="color:#79B8FF"> -y</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> apt</span><span style="color:#9ECBFF"> clean</span></span></code></pre>
+<p>再起動する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> reboot</span></span></code></pre>
+<h3 id="ubuntu-2404-lts-への更新">Ubuntu 24.04 LTS への更新</h3>
+<h4 id="ssh-接続で実施する場合">SSH 接続で実施する場合</h4>
+<p>SSH 接続で更新作業を実施する場合、1022 ポートを開放しておく。</p>
+<p>アップグレード中に障害が起きたとき、1022 ポートでもう 1 つの sshd が実行される。このとき、1022 ポートで SSH 接続できるようにしておく。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> ufw</span><span style="color:#9ECBFF"> allow</span><span style="color:#9ECBFF"> 1022/tcp</span></span></code></pre>
+<p>可能であれば、SSH ではなく直接端末に接続して実施することが望ましい。</p>
+<h4 id="アップグレードツールのインストール">アップグレードツールのインストール</h4>
+<p>デフォルトでインストールされているが、念のためアップグレードツールをインストールする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> apt</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> ubuntu-release-upgrader-core</span><span style="color:#79B8FF"> -y</span></span></code></pre>
+<h4 id="lts-リリースのアップグレードを有効化">LTS リリースのアップグレードを有効化</h4>
+<p><code>Prompt</code> の値を確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">cat</span><span style="color:#9ECBFF"> /etc/update-manager/release-upgrades</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> grep</span><span style="color:#9ECBFF"> Prompt=</span></span></code></pre>
+<p><code>lts</code> となっていることを確認する。なっていない場合は、<code>lts</code> に更新する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Prompt=lts</span></span></code></pre>
+<h4 id="アップグレード">アップグレード</h4>
+<p>以下コマンドを実行し、アップグレードする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> do-release-upgrade</span></span></code></pre>
+<p>Ubuntu 24.04 LTS の情報が表示されることを確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">Checking for a new Ubuntu release</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">= Welcome to Ubuntu 24.04 LTS 'Noble Numbat' =</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">The Ubuntu team is proud to announce Ubuntu 24.04 LTS 'Noble Numbat'.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">To see what's new in this release, visit:</span></span>
+<span class="line"><span style="color:#79B8FF">  https://wiki.ubuntu.com/NobleNumbat/ReleaseNotes</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Ubuntu is a Linux distribution for your desktop or server, with a fast</span></span>
+<span class="line"><span style="color:#79B8FF">and easy install, regular releases, a tight selection of excellent</span></span>
+<span class="line"><span style="color:#79B8FF">applications installed by default, and almost any other software you</span></span>
+<span class="line"><span style="color:#79B8FF">can imagine available through the network.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">We hope you enjoy Ubuntu.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">== Feedback and Helping ==</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">If you would like to help shape Ubuntu, take a look at the list of</span></span>
+<span class="line"><span style="color:#79B8FF">ways you can participate at</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">  http://www.ubuntu.com/community/participate/</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Your comments, bug reports, patches and suggestions will help ensure</span></span>
+<span class="line"><span style="color:#79B8FF">that our next release is the best release of Ubuntu ever.  If you feel</span></span>
+<span class="line"><span style="color:#79B8FF">that you have found a bug please read:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">  http://help.ubuntu.com/community/ReportingBugs</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Then report bugs using apport in Ubuntu.  For example:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">  ubuntu-bug linux</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">will open a bug report in Launchpad regarding the linux package.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">If you have a question, or if you think you may have found a bug but</span></span>
+<span class="line"><span style="color:#79B8FF">aren't sure, first try asking on the #ubuntu or #ubuntu-bugs IRC</span></span>
+<span class="line"><span style="color:#79B8FF">channels on Libera.Chat, on the Ubuntu Users mailing list, or on the</span></span>
+<span class="line"><span style="color:#79B8FF">Ubuntu forums:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">  http://help.ubuntu.com/community/InternetRelayChat</span></span>
+<span class="line"><span style="color:#79B8FF">  http://lists.ubuntu.com/mailman/listinfo/ubuntu-users</span></span>
+<span class="line"><span style="color:#79B8FF">  http://www.ubuntuforums.org/</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">== More Information ==</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">You can find out more about Ubuntu on our website, IRC channel and wiki.</span></span>
+<span class="line"><span style="color:#79B8FF">If you're new to Ubuntu, please visit:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">  http://www.ubuntu.com/</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">To sign up for future Ubuntu announcements, please subscribe to Ubuntu's</span></span>
+<span class="line"><span style="color:#79B8FF">very low volume announcement list at:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">  http://lists.ubuntu.com/mailman/listinfo/ubuntu-announce</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Continue [yN]</span></span></code></pre>
+<p><code>Continue [yN]</code> と表示されるため、<code>y</code> を入力する。</p>
+<p>SSH 接続で続けるかの確認が表示される。続ける場合、1022 ポートで追加の sshd を開始する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">Reading cache</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Checking package manager</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Continue running under SSH?</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">This session appears to be running under ssh. It is not recommended</span></span>
+<span class="line"><span style="color:#79B8FF">to perform a upgrade over ssh currently because in case of failure it</span></span>
+<span class="line"><span style="color:#79B8FF">is harder to recover.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">If you continue, an additional ssh daemon will be started at port</span></span>
+<span class="line"><span style="color:#79B8FF">'1022'.</span></span>
+<span class="line"><span style="color:#79B8FF">Do you want to continue?</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Continue [yN]</span></span></code></pre>
+<p><code>Continue [yN]</code> と表示されるため、<code>y</code> を入力する。</p>
+<p>失敗時には 1022 ポートで sshd を開始するため、ファイアウォールを許可するようにとの説明が表示される。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">Starting additional sshd</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">To make recovery in case of failure easier, an additional sshd will</span></span>
+<span class="line"><span style="color:#79B8FF">be started on port '1022'. If anything goes wrong with the running</span></span>
+<span class="line"><span style="color:#79B8FF">ssh you can still connect to the additional one.</span></span>
+<span class="line"><span style="color:#79B8FF">If you run a firewall, you may need to temporarily open this port. As</span></span>
+<span class="line"><span style="color:#79B8FF">this is potentially dangerous it's not done automatically. You can</span></span>
+<span class="line"><span style="color:#79B8FF">open the port with e.g.:</span></span>
+<span class="line"><span style="color:#79B8FF">'iptables -I INPUT -p tcp --dport 1022 -j ACCEPT'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">To continue please press [ENTER]</span></span></code></pre>
+<p><code>To continue please press [ENTER]</code> と表示されるため、Enter キーを押すと、アップグレード処理が始まる。</p>
+<p>途中でパッケージのインストールや削除の確認が表示される。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">Do you want to start the upgrade?</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">53 packages are going to be removed. 170 new packages are going to be</span></span>
+<span class="line"><span style="color:#79B8FF">installed. 652 packages are going to be upgraded.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">You have to download a total of 1,160 M. This download will take</span></span>
+<span class="line"><span style="color:#79B8FF">about 3 minutes with a 40Mbit connection and about 30 minutes with a</span></span>
+<span class="line"><span style="color:#79B8FF">5Mbit connection.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Fetching and installing the upgrade can take several hours. Once the</span></span>
+<span class="line"><span style="color:#79B8FF">download has finished, the process cannot be canceled.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF"> Continue [yN]  Details [d]</span></span></code></pre>
+<p><code>Continue [yN]  Details [d]</code> と表示されるため、<code>y</code> を入力する。</p>
+<p>途中でキーボードレイアウトを聞かれるため、使用するレイアウトを選択する。</p>
+<p><code>crontab</code> の設定変更に関して聞かれる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">Configuration file '/etc/crontab'</span></span>
+<span class="line"><span style="color:#79B8FF"> ==> Modified (by you or by a script) since installation.</span></span>
+<span class="line"><span style="color:#79B8FF"> ==> Package distributor has shipped an updated version.</span></span>
+<span class="line"><span style="color:#79B8FF">   What would you like to do about it ?  Your options are:</span></span>
+<span class="line"><span style="color:#79B8FF">    Y or I  : install the package maintainer's version</span></span>
+<span class="line"><span style="color:#79B8FF">    N or O  : keep your currently-installed version</span></span>
+<span class="line"><span style="color:#79B8FF">      D     : show the differences between the versions</span></span>
+<span class="line"><span style="color:#79B8FF">      Z     : start a shell to examine the situation</span></span>
+<span class="line"><span style="color:#79B8FF"> The default action is to keep your current version.</span></span>
+<span class="line"><span style="color:#79B8FF">*** crontab (Y/I/N/O/D/Z) [default=N] ?</span></span></code></pre>
+<p><code>crontab (Y/I/N/O/D/Z) [default=N] ?</code> と表示されるため、<code>D</code> を入力する。</p>
+<p>更新内容の差分が表示される。</p>
+<p>更新を反映する場合は、 <code>Y</code> を入力する。更新を反映しない場合は、<code>N</code> を入力する。独自にカスタマイズしていた場合は、<code>N</code> としておいて後で判断した方が安全である。</p>
+<p>同様に、他サービスの設定も更新される場合は似たような選択肢が表示される。基本的に、独自カスタマイズした設定は現行維持にしておく。</p>
+<p>古いパッケージを削除するか聞かれる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">Remove obsolete packages?</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">120 packages are going to be removed.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Removing the packages can take several hours.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF"> Continue [yN]  Details [d]</span></span></code></pre>
+<p><code>Continue [yN]  Details [d]</code> と表示されるため、<code>y</code> を入力する。</p>
+<p><code>System upgrade is complete.</code> と表示されたら、アップグレード完了となる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">System</span><span style="color:#9ECBFF"> upgrade</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> complete.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Restart</span><span style="color:#9ECBFF"> required</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">To</span><span style="color:#9ECBFF"> finish</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> upgrade,</span><span style="color:#9ECBFF"> a</span><span style="color:#9ECBFF"> restart</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> required.</span></span>
+<span class="line"><span style="color:#B392F0">If</span><span style="color:#9ECBFF"> you</span><span style="color:#9ECBFF"> select</span><span style="color:#9ECBFF"> 'y'</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> system</span><span style="color:#9ECBFF"> will</span><span style="color:#9ECBFF"> be</span><span style="color:#9ECBFF"> restarted.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Continue</span><span style="color:#E1E4E8"> [yN]</span></span></code></pre>
+<p>最後に再起動が必要であり、<code>Continue [yN]</code> と表示されるため、<code>y</code> を入力する。直ぐに再起動しない場合は <code>N</code> を入力する。</p>
+<h4 id="バージョン確認">バージョン確認</h4>
+<p>以下のコマンドを実行し、バージョンを確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">lsb_release</span><span style="color:#79B8FF"> -a</span></span></code></pre>
+<p>Ubuntu 24.04.1 LTS になっていることを確認する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="console"><code><span class="line"><span style="color:#79B8FF">No LSB modules are available.</span></span>
+<span class="line"><span style="color:#79B8FF">Distributor ID: Ubuntu</span></span>
+<span class="line"><span style="color:#79B8FF">Description:    Ubuntu 24.04.1 LTS</span></span>
+<span class="line"><span style="color:#79B8FF">Release:        24.04</span></span>
+<span class="line"><span style="color:#79B8FF">Codename:       noble</span></span></code></pre>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://documentation.ubuntu.com/server/how-to/software/upgrade-your-release/">How to upgrade your Ubuntu release - Ubuntu Server documentation</a></li>
+</ul>  </div> </article> </main> <footer class="site-footer" data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte>
+&copy; 2026 h10i.
+</div> </footer></body></html>

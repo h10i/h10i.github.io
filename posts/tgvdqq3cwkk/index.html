@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="h10i" href="https://example.com/rss.xml"><meta name="generator" content="Astro v6.0.8"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/posts/tgvdqq3cwkk/"><!-- Primary Meta Tags --><title>GitHub への SSH 接続を再設定する</title><meta name="title" content="GitHub への SSH 接続を再設定する"><meta name="description"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/posts/tgvdqq3cwkk/"><meta property="og:title" content="GitHub への SSH 接続を再設定する"><meta property="og:description"><!-- Twitter --><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://example.com/posts/tgvdqq3cwkk/"><meta property="twitter:title" content="GitHub への SSH 接続を再設定する"><meta property="twitter:description"><style>:root{--color-bg: #ffffff;--color-text: #333333;--color-text-muted: #666666;--color-link: #0056b3;--color-link-hover: #003d82;--color-border: #e5e5e5;--color-code-bg: #f4f4f4;--max-width: 800px;--container-padding: 1rem;--space-xs: .5rem;--space-sm: 1rem;--space-md: 1.5rem;--space-lg: 2rem;--space-xl: 3rem;--font-family: system-ui, -apple-system, sans-serif;--font-size-base: 1rem;--line-height-base: 1.6}[data-theme=dark]{--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}}*,*:before,*:after{box-sizing:border-box}html{font-size:16px}body{font-family:var(--font-family);margin:0;padding:0;background-color:var(--color-bg);color:var(--color-text);line-height:var(--line-height-base);display:flex;flex-direction:column;min-height:100vh}main{flex:1}.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 var(--container-padding)}a{color:var(--color-link);text-decoration:none}a:hover{color:var(--color-link-hover);text-decoration:underline}h1,h2,h3,h4,h5,h6{margin-top:1.5em;margin-bottom:.5em;line-height:1.2;font-weight:700}h1{font-size:2rem;margin-top:0}h2{font-size:1.5rem}h3{font-size:1.25rem}p{margin-top:0;margin-bottom:var(--space-sm)}img{max-width:100%;height:auto;display:block}code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;background-color:var(--color-code-bg);padding:.2em .4em;border-radius:4px;font-size:.9em}pre{background-color:var(--color-code-bg);padding:var(--space-sm);border-radius:4px;overflow-x:auto;margin-bottom:var(--space-sm)}pre code{background-color:transparent;padding:0;font-size:.85em}blockquote{margin:0 0 var(--space-sm) 0;padding-left:var(--space-sm);border-left:4px solid var(--color-border);color:var(--color-text-muted);font-style:italic}.text-muted{color:var(--color-text-muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}@media(max-width:640px){html{font-size:15px}h1{font-size:1.75rem}h2{font-size:1.4rem}}.site-footer[data-astro-cid-sz7xmlte]{text-align:center;padding:var(--space-xl) 0;margin-top:var(--space-xl);border-top:1px solid var(--color-border);color:var(--color-text-muted);font-size:.875rem}.theme-toggle[data-astro-cid-x3pjskd3]{background:none;border:none;cursor:pointer;color:var(--color-text);padding:var(--space-xs);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:background-color .2s}.theme-toggle[data-astro-cid-x3pjskd3]:hover{background-color:var(--color-code-bg)}.sun[data-astro-cid-x3pjskd3]{display:none}.moon[data-astro-cid-x3pjskd3],[data-theme=dark] .sun[data-astro-cid-x3pjskd3]{display:block}[data-theme=dark] .moon[data-astro-cid-x3pjskd3]{display:none}.site-header[data-astro-cid-3ef6ksr2]{border-bottom:1px solid var(--color-border);margin-bottom:var(--space-lg)}.header-container[data-astro-cid-3ef6ksr2]{display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:var(--space-sm);padding-bottom:var(--space-sm)}.site-title[data-astro-cid-3ef6ksr2]{margin:0;font-size:1.5rem;font-weight:700}.site-title[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--color-text);text-decoration:none}.header-right[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;gap:var(--space-md)}.site-nav[data-astro-cid-3ef6ksr2]{display:flex;gap:var(--space-md)}@media(max-width:640px){.header-container[data-astro-cid-3ef6ksr2]{flex-direction:column;gap:var(--space-sm);align-items:flex-start}.header-right[data-astro-cid-3ef6ksr2]{width:100%;justify-content:space-between;flex-direction:row-reverse}.site-nav[data-astro-cid-3ef6ksr2]{width:auto;justify-content:flex-start;gap:var(--space-sm);font-size:.95rem;overflow-x:auto}}
+.post-header[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xl);padding-bottom:var(--space-md);border-bottom:1px solid var(--color-border)}.post-title[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xs);font-size:2.5rem}.post-meta[data-astro-cid-bvzihdzo]{display:flex;flex-direction:column;gap:var(--space-sm);font-size:.875rem}.post-tags[data-astro-cid-bvzihdzo]{display:flex;flex-wrap:wrap;gap:var(--space-xs);list-style:none;padding:0;margin:0}.post-tag[data-astro-cid-bvzihdzo]{background-color:var(--color-code-bg);padding:.2rem .5rem;border-radius:4px;color:var(--color-text);text-decoration:none;font-size:.75rem}.post-tag[data-astro-cid-bvzihdzo]:hover{background-color:var(--color-border)}.post-content[data-astro-cid-bvzihdzo]{line-height:1.8}@media(max-width:640px){.post-title[data-astro-cid-bvzihdzo]{font-size:2rem}}
+</style></head> <body data-astro-cid-bvzihdzo> <header class="site-header" data-astro-cid-3ef6ksr2> <div class="header-container container" data-astro-cid-3ef6ksr2> <h1 class="site-title" data-astro-cid-3ef6ksr2><a href="/" data-astro-cid-3ef6ksr2>h10i</a></h1> <div class="header-right" data-astro-cid-3ef6ksr2> <nav class="site-nav" data-astro-cid-3ef6ksr2> <a href="/posts" class="active" data-astro-cid-3ef6ksr2="true"> posts </a> <a href="/archives" data-astro-cid-3ef6ksr2="true"> archives </a> <a href="/tags" data-astro-cid-3ef6ksr2="true"> tags </a> <a href="/search" data-astro-cid-3ef6ksr2="true"> search </a> </nav> <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle" data-astro-cid-x3pjskd3> <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <circle cx="12" cy="12" r="5" data-astro-cid-x3pjskd3></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-x3pjskd3></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-x3pjskd3></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-x3pjskd3></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-x3pjskd3></line> </svg> <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-x3pjskd3></path> </svg> </button> <script type="module">const m=document.getElementById("theme-toggle");function o(){return typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}function t(e){document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e)}t(o());m?.addEventListener("click",()=>{const n=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";t(n)});</script> </div> </div> </header> <main class="container" data-astro-cid-bvzihdzo> <article class="post" data-pagefind-body data-astro-cid-bvzihdzo> <header class="post-header" data-astro-cid-bvzihdzo> <h1 class="post-title" data-pagefind-meta="title" data-astro-cid-bvzihdzo>GitHub への SSH 接続を再設定する</h1> <div class="post-meta" data-astro-cid-bvzihdzo> <div class="post-date text-muted" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Published: <time datetime="2023-03-27T12:44:51.000Z"> 2023-03-27 </time></span>  </div> <ul class="post-tags" data-astro-cid-bvzihdzo> <li data-astro-cid-bvzihdzo> <a href="/tags/git/" class="post-tag" data-astro-cid-bvzihdzo>#Git</a> </li> </ul> </div> </header> <div class="post-content" data-astro-cid-bvzihdzo>  <h2 id="背景">背景</h2>
+<ul>
+<li>GitHub の RSA SSH のホストキーが変更されたため、以下に沿ってキーを更新した。
+<ul>
+<li><a href="https://github.blog/2023-03-23-we-updated-our-rsa-ssh-host-key/">We updated our RSA SSH host key | The GitHub Blog</a></li>
+<li>これは GitHub 側が作成した鍵に関する設定である。</li>
+</ul>
+</li>
+<li>ついでに自分が設定している SSH 接続の鍵ペアを確認したら、RSA を使用していた。
+<ul>
+<li>これは自分が GitHub に SSH 接続するときに作成した鍵に関する設定である。</li>
+<li>セキュリティやパフォーマンスの面で Ed25519 の方が推奨されているらしいので、この機会に変更しておくことにした。</li>
+<li>この変更は前述した GitHub の RSA SSH のホストキー変更とは関係なく、自分が GitHub に接続するときの鍵ペアを交換するというだけである。</li>
+</ul>
+</li>
+</ul>
+<h2 id="概要">概要</h2>
+<ul>
+<li>RSA で作成した鍵ペアによる GitHub への接続設定を削除する。</li>
+<li>Ed25519 で作成した鍵ペアによる GitHub への接続設定を追加する。</li>
+</ul>
+<h2 id="前提">前提</h2>
+<ul>
+<li>WSL 2 (Ubuntu 20.04.6 LTS)</li>
+</ul>
+<h2 id="手順">手順</h2>
+<h3 id="古い鍵ペアを削除する">古い鍵ペアを削除する</h3>
+<ol>
+<li>GitHub に登録した公開鍵を削除する。
+<ul>
+<li><a href="https://github.com/settings/keys">SSH and GPG keys</a> より、登録済みの SSH Key を削除する。</li>
+</ul>
+</li>
+<li>クライアントに保存している鍵を削除する。
+<ul>
+<li>特に指定してなければ、 <code>~/.ssh/</code> 配下に格納されている。</li>
+</ul>
+</li>
+</ol>
+<h3 id="新しい鍵ペアを追加する">新しい鍵ペアを追加する</h3>
+<ol>
+<li>
+<p><code>ssh-keygen</code> で新たな鍵ペアを生成する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> ssh-keygen</span><span style="color:#79B8FF"> -t</span><span style="color:#9ECBFF"> ed25519</span><span style="color:#79B8FF"> -C</span><span style="color:#9ECBFF"> "user@example.com"</span></span>
+<span class="line"><span style="color:#B392F0">Generating</span><span style="color:#9ECBFF"> public/private</span><span style="color:#9ECBFF"> ed25519</span><span style="color:#9ECBFF"> key</span><span style="color:#9ECBFF"> pair.</span></span>
+<span class="line"><span style="color:#B392F0">Enter</span><span style="color:#9ECBFF"> file</span><span style="color:#9ECBFF"> in</span><span style="color:#9ECBFF"> which</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> save</span><span style="color:#9ECBFF"> the</span><span style="color:#9ECBFF"> key</span><span style="color:#E1E4E8"> (/home/user/.ssh/id_ed25519): id_ed25519_github</span></span>
+<span class="line"><span style="color:#B392F0">Enter</span><span style="color:#9ECBFF"> passphrase</span><span style="color:#E1E4E8"> (empty </span><span style="color:#9ECBFF">for</span><span style="color:#9ECBFF"> no</span><span style="color:#9ECBFF"> passphrase</span><span style="color:#E1E4E8">):</span></span>
+<span class="line"><span style="color:#B392F0">Enter</span><span style="color:#9ECBFF"> same</span><span style="color:#9ECBFF"> passphrase</span><span style="color:#9ECBFF"> again:</span></span>
+<span class="line"><span style="color:#B392F0">Your</span><span style="color:#9ECBFF"> identification</span><span style="color:#9ECBFF"> has</span><span style="color:#9ECBFF"> been</span><span style="color:#9ECBFF"> saved</span><span style="color:#9ECBFF"> in</span><span style="color:#9ECBFF"> id_ed25519_github</span></span>
+<span class="line"><span style="color:#B392F0">Your</span><span style="color:#9ECBFF"> public</span><span style="color:#9ECBFF"> key</span><span style="color:#9ECBFF"> has</span><span style="color:#9ECBFF"> been</span><span style="color:#9ECBFF"> saved</span><span style="color:#9ECBFF"> in</span><span style="color:#9ECBFF"> id_ed25519_github.pub</span></span>
+<span class="line"><span style="color:#B392F0">The</span><span style="color:#9ECBFF"> key</span><span style="color:#9ECBFF"> fingerprint</span><span style="color:#9ECBFF"> is:</span></span>
+<span class="line"><span style="color:#B392F0">SHA256:...</span><span style="color:#9ECBFF"> user@example.com</span></span>
+<span class="line"><span style="color:#B392F0">The</span><span style="color:#9ECBFF"> key's randomart image is:</span></span>
+<span class="line"><span style="color:#9ECBFF">+--[ED25519 256]--+</span></span>
+<span class="line"><span style="color:#9ECBFF">...</span></span>
+<span class="line"><span style="color:#9ECBFF">+----[SHA256]-----+</span></span></code></pre>
+</li>
+<li>
+<p>作成した公開鍵をコピーする。</p>
+<ul>
+<li>
+<p><code>id_ed25519_github.pub</code> の中身を全てコピーする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> cat</span><span style="color:#9ECBFF"> ~/.ssh/id_ed25519_github.pub</span></span>
+<span class="line"><span style="color:#B392F0">ssh-ed25519</span><span style="color:#9ECBFF"> ...</span><span style="color:#9ECBFF"> user@example.com</span></span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>GitHub に公開鍵を登録する。</p>
+<ul>
+<li><a href="https://github.com/settings/keys">SSH and GPG keys</a> より、「New SSH key」をクリックする。</li>
+<li>以下項目を入力する。
+<ul>
+<li>Title: 任意</li>
+<li>Key type: Authentication Key</li>
+<li>Key: コピーした公開鍵を貼り付ける。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>SSH のコンフィグを設定する。</p>
+<ul>
+<li>
+<p><code>~/.ssh/config</code> ファイルを作成し、GitHub への SSH 接続で使う鍵を指定する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="txt"><code><span class="line"><span>Host github.com</span></span>
+<span class="line"><span>  User git</span></span>
+<span class="line"><span>  Hostname github.com</span></span>
+<span class="line"><span>  IdentityFile ~/.ssh/id_ed25519_github</span></span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>SSH 接続できることを確認する。</p>
+</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> ssh</span><span style="color:#79B8FF"> -T</span><span style="color:#9ECBFF"> git@github.com</span></span>
+<span class="line"><span style="color:#B392F0">Hi</span><span style="color:#9ECBFF"> user!</span><span style="color:#9ECBFF"> You've successfully authenticated, but GitHub does not provide shell access.</span></span></code></pre>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">Connecting to GitHub with SSH - GitHub Docs</a></li>
+</ul>  </div> </article> </main> <footer class="site-footer" data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte>
+&copy; 2026 h10i.
+</div> </footer></body></html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="h10i" href="https://example.com/rss.xml"><meta name="generator" content="Astro v6.0.8"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/posts/yrfm9nkl553/"><!-- Primary Meta Tags --><title>Java の Stream メモ</title><meta name="title" content="Java の Stream メモ"><meta name="description"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/posts/yrfm9nkl553/"><meta property="og:title" content="Java の Stream メモ"><meta property="og:description"><!-- Twitter --><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://example.com/posts/yrfm9nkl553/"><meta property="twitter:title" content="Java の Stream メモ"><meta property="twitter:description"><style>:root{--color-bg: #ffffff;--color-text: #333333;--color-text-muted: #666666;--color-link: #0056b3;--color-link-hover: #003d82;--color-border: #e5e5e5;--color-code-bg: #f4f4f4;--max-width: 800px;--container-padding: 1rem;--space-xs: .5rem;--space-sm: 1rem;--space-md: 1.5rem;--space-lg: 2rem;--space-xl: 3rem;--font-family: system-ui, -apple-system, sans-serif;--font-size-base: 1rem;--line-height-base: 1.6}[data-theme=dark]{--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}}*,*:before,*:after{box-sizing:border-box}html{font-size:16px}body{font-family:var(--font-family);margin:0;padding:0;background-color:var(--color-bg);color:var(--color-text);line-height:var(--line-height-base);display:flex;flex-direction:column;min-height:100vh}main{flex:1}.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 var(--container-padding)}a{color:var(--color-link);text-decoration:none}a:hover{color:var(--color-link-hover);text-decoration:underline}h1,h2,h3,h4,h5,h6{margin-top:1.5em;margin-bottom:.5em;line-height:1.2;font-weight:700}h1{font-size:2rem;margin-top:0}h2{font-size:1.5rem}h3{font-size:1.25rem}p{margin-top:0;margin-bottom:var(--space-sm)}img{max-width:100%;height:auto;display:block}code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;background-color:var(--color-code-bg);padding:.2em .4em;border-radius:4px;font-size:.9em}pre{background-color:var(--color-code-bg);padding:var(--space-sm);border-radius:4px;overflow-x:auto;margin-bottom:var(--space-sm)}pre code{background-color:transparent;padding:0;font-size:.85em}blockquote{margin:0 0 var(--space-sm) 0;padding-left:var(--space-sm);border-left:4px solid var(--color-border);color:var(--color-text-muted);font-style:italic}.text-muted{color:var(--color-text-muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}@media(max-width:640px){html{font-size:15px}h1{font-size:1.75rem}h2{font-size:1.4rem}}.site-footer[data-astro-cid-sz7xmlte]{text-align:center;padding:var(--space-xl) 0;margin-top:var(--space-xl);border-top:1px solid var(--color-border);color:var(--color-text-muted);font-size:.875rem}.theme-toggle[data-astro-cid-x3pjskd3]{background:none;border:none;cursor:pointer;color:var(--color-text);padding:var(--space-xs);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:background-color .2s}.theme-toggle[data-astro-cid-x3pjskd3]:hover{background-color:var(--color-code-bg)}.sun[data-astro-cid-x3pjskd3]{display:none}.moon[data-astro-cid-x3pjskd3],[data-theme=dark] .sun[data-astro-cid-x3pjskd3]{display:block}[data-theme=dark] .moon[data-astro-cid-x3pjskd3]{display:none}.site-header[data-astro-cid-3ef6ksr2]{border-bottom:1px solid var(--color-border);margin-bottom:var(--space-lg)}.header-container[data-astro-cid-3ef6ksr2]{display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:var(--space-sm);padding-bottom:var(--space-sm)}.site-title[data-astro-cid-3ef6ksr2]{margin:0;font-size:1.5rem;font-weight:700}.site-title[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--color-text);text-decoration:none}.header-right[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;gap:var(--space-md)}.site-nav[data-astro-cid-3ef6ksr2]{display:flex;gap:var(--space-md)}@media(max-width:640px){.header-container[data-astro-cid-3ef6ksr2]{flex-direction:column;gap:var(--space-sm);align-items:flex-start}.header-right[data-astro-cid-3ef6ksr2]{width:100%;justify-content:space-between;flex-direction:row-reverse}.site-nav[data-astro-cid-3ef6ksr2]{width:auto;justify-content:flex-start;gap:var(--space-sm);font-size:.95rem;overflow-x:auto}}
+.post-header[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xl);padding-bottom:var(--space-md);border-bottom:1px solid var(--color-border)}.post-title[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xs);font-size:2.5rem}.post-meta[data-astro-cid-bvzihdzo]{display:flex;flex-direction:column;gap:var(--space-sm);font-size:.875rem}.post-tags[data-astro-cid-bvzihdzo]{display:flex;flex-wrap:wrap;gap:var(--space-xs);list-style:none;padding:0;margin:0}.post-tag[data-astro-cid-bvzihdzo]{background-color:var(--color-code-bg);padding:.2rem .5rem;border-radius:4px;color:var(--color-text);text-decoration:none;font-size:.75rem}.post-tag[data-astro-cid-bvzihdzo]:hover{background-color:var(--color-border)}.post-content[data-astro-cid-bvzihdzo]{line-height:1.8}@media(max-width:640px){.post-title[data-astro-cid-bvzihdzo]{font-size:2rem}}
+</style></head> <body data-astro-cid-bvzihdzo> <header class="site-header" data-astro-cid-3ef6ksr2> <div class="header-container container" data-astro-cid-3ef6ksr2> <h1 class="site-title" data-astro-cid-3ef6ksr2><a href="/" data-astro-cid-3ef6ksr2>h10i</a></h1> <div class="header-right" data-astro-cid-3ef6ksr2> <nav class="site-nav" data-astro-cid-3ef6ksr2> <a href="/posts" class="active" data-astro-cid-3ef6ksr2="true"> posts </a> <a href="/archives" data-astro-cid-3ef6ksr2="true"> archives </a> <a href="/tags" data-astro-cid-3ef6ksr2="true"> tags </a> <a href="/search" data-astro-cid-3ef6ksr2="true"> search </a> </nav> <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle" data-astro-cid-x3pjskd3> <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <circle cx="12" cy="12" r="5" data-astro-cid-x3pjskd3></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-x3pjskd3></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-x3pjskd3></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-x3pjskd3></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-x3pjskd3></line> </svg> <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-x3pjskd3></path> </svg> </button> <script type="module">const m=document.getElementById("theme-toggle");function o(){return typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}function t(e){document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e)}t(o());m?.addEventListener("click",()=>{const n=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";t(n)});</script> </div> </div> </header> <main class="container" data-astro-cid-bvzihdzo> <article class="post" data-pagefind-body data-astro-cid-bvzihdzo> <header class="post-header" data-astro-cid-bvzihdzo> <h1 class="post-title" data-pagefind-meta="title" data-astro-cid-bvzihdzo>Java の Stream メモ</h1> <div class="post-meta" data-astro-cid-bvzihdzo> <div class="post-date text-muted" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Published: <time datetime="2022-01-24T13:00:00.000Z"> 2022-01-24 </time></span>  </div> <ul class="post-tags" data-astro-cid-bvzihdzo> <li data-astro-cid-bvzihdzo> <a href="/tags/java/" class="post-tag" data-astro-cid-bvzihdzo>#Java</a> </li><li data-astro-cid-bvzihdzo> <a href="/tags/java 8/" class="post-tag" data-astro-cid-bvzihdzo>#Java 8</a> </li> </ul> </div> </header> <div class="post-content" data-astro-cid-bvzihdzo>  <h2 id="stream-とは">Stream とは</h2>
+<p>Java 8 から追加され、コレクションに対する集約操作をサポートした機能を持つ。</p>
+<p>中間操作と終端操作を組み合わせてパイプラインにできるため、for 文による繰り返し処理を簡潔に記述できる。</p>
+<h2 id="サンプルクラス">サンプルクラス</h2>
+<h3 id="user-クラス">User クラス</h3>
+<p>年齢と名前の情報のみを持つ、以下のユーザクラスを用いる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">public</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> User</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    private</span><span style="color:#E1E4E8"> String name;</span></span>
+<span class="line"><span style="color:#F97583">    private</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8"> age;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    public</span><span style="color:#B392F0"> User</span><span style="color:#E1E4E8">(String </span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> age</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.name </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> name;</span></span>
+<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.age </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> age;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    public</span><span style="color:#E1E4E8"> String </span><span style="color:#B392F0">getName</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> name;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    public</span><span style="color:#F97583"> void</span><span style="color:#B392F0"> setName</span><span style="color:#E1E4E8">(String </span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.name </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> name;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    public</span><span style="color:#F97583"> int</span><span style="color:#B392F0"> getAge</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> age;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    public</span><span style="color:#F97583"> void</span><span style="color:#B392F0"> setAge</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> age</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.age </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> age;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    public</span><span style="color:#E1E4E8"> String </span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#9ECBFF"> "name: "</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> name </span><span style="color:#F97583">+</span><span style="color:#9ECBFF"> ", age: "</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> age;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="user-のコレクション">User のコレクション</h3>
+<p>コレクションは以下とする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">List&#x3C;</span><span style="color:#F97583">User</span><span style="color:#E1E4E8">> userList </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#E1E4E8"> ArrayList&#x3C;</span><span style="color:#F97583">User</span><span style="color:#E1E4E8">>();</span></span>
+<span class="line"><span style="color:#E1E4E8">userList.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">new</span><span style="color:#B392F0"> User</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"John"</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">40</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">userList.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">new</span><span style="color:#B392F0"> User</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Paul"</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">79</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">userList.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">new</span><span style="color:#B392F0"> User</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"George"</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">58</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">userList.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">new</span><span style="color:#B392F0"> User</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Ringo"</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">81</span><span style="color:#E1E4E8">));</span></span></code></pre>
+<h2 id="要素を順番に処理">要素を順番に処理</h2>
+<h3 id="foreach">forEach</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(u </span><span style="color:#F97583">-></span><span style="color:#E1E4E8"> System.out.</span><span style="color:#B392F0">println</span><span style="color:#E1E4E8">(u));</span></span>
+<span class="line"><span style="color:#6A737D">// name: John, age: 40</span></span>
+<span class="line"><span style="color:#6A737D">// name: Paul, age: 79</span></span>
+<span class="line"><span style="color:#6A737D">// name: George, age: 58</span></span>
+<span class="line"><span style="color:#6A737D">// name: Ringo, age: 81</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 以下も同じ結果</span></span>
+<span class="line"><span style="color:#E1E4E8">userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(System.out</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">println);</span></span></code></pre>
+<p>ラムダ式を受け取るが、別のメソッドをそのまま呼び出す場合、メソッドのみを渡すこともできる。</p>
+<h2 id="順次並列">順次/並列</h2>
+<h3 id="stream">stream</h3>
+<p>ストリームは明示的に並列を指定しない限り、順次で実行される。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// stream</span></span>
+<span class="line"><span style="color:#E1E4E8">userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(System.out</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">println);</span></span>
+<span class="line"><span style="color:#6A737D">// name: John, age: 40</span></span>
+<span class="line"><span style="color:#6A737D">// name: Paul, age: 79</span></span>
+<span class="line"><span style="color:#6A737D">// name: George, age: 58</span></span>
+<span class="line"><span style="color:#6A737D">// name: Ringo, age: 81</span></span></code></pre>
+<h3 id="parallelstream">parallelStream</h3>
+<p>並列で実行する場合は、並列のストリームを生成する必要がある。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// parallelStream</span></span>
+<span class="line"><span style="color:#E1E4E8">userList.</span><span style="color:#B392F0">parallelStream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(System.out</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">println);</span></span>
+<span class="line"><span style="color:#6A737D">// name: George, age: 58</span></span>
+<span class="line"><span style="color:#6A737D">// name: Ringo, age: 81</span></span>
+<span class="line"><span style="color:#6A737D">// name: John, age: 40</span></span>
+<span class="line"><span style="color:#6A737D">// name: Paul, age: 79</span></span></code></pre>
+<h2 id="絞り込み">絞り込み</h2>
+<h3 id="filter">filter</h3>
+<p>与えられたラムダ式が true となる要素から構成された stream を返す。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// 60歳未満のみ出力</span></span>
+<span class="line"><span style="color:#E1E4E8">userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">(u </span><span style="color:#F97583">-></span><span style="color:#E1E4E8"> u.</span><span style="color:#B392F0">getAge</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 60</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(System.out</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">println);</span></span>
+<span class="line"><span style="color:#6A737D">// name: John, age: 40</span></span>
+<span class="line"><span style="color:#6A737D">// name: George, age: 58</span></span></code></pre>
+<h2 id="加工">加工</h2>
+<h3 id="map">map</h3>
+<p>与えられたラムダ式で加工した結果から構成される stream を返す。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// "My name is XX" の文字列に加工して出力</span></span>
+<span class="line"><span style="color:#E1E4E8">userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(u </span><span style="color:#F97583">-></span><span style="color:#9ECBFF"> "My name is"</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> u.</span><span style="color:#B392F0">getName</span><span style="color:#E1E4E8">())</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(System.out</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">println);</span></span>
+<span class="line"><span style="color:#6A737D">// My name isJohn</span></span>
+<span class="line"><span style="color:#6A737D">// My name isPaul</span></span>
+<span class="line"><span style="color:#6A737D">// My name isGeorge</span></span>
+<span class="line"><span style="color:#6A737D">// My name isRingo</span></span></code></pre>
+<h2 id="スキップ">スキップ</h2>
+<h3 id="skip">skip</h3>
+<p>先頭から n 番目の要素を除いた stream を返す。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">skip</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(System.out</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">println);</span></span>
+<span class="line"><span style="color:#6A737D">// name: George, age: 58</span></span>
+<span class="line"><span style="color:#6A737D">// name: Ringo, age: 81</span></span></code></pre>
+<p>この例の場合、John と Paul の2人がスキップされている。</p>
+<h2 id="要素数の制限">要素数の制限</h2>
+<h3 id="limit">limit</h3>
+<p>指定した要素数の stream を返す。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">limit</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(System.out</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">println);</span></span>
+<span class="line"><span style="color:#6A737D">// name: John, age: 40</span></span>
+<span class="line"><span style="color:#6A737D">// name: Paul, age: 79</span></span></code></pre>
+<h2 id="並べ替え">並べ替え</h2>
+<h3 id="sorted">sorted</h3>
+<p>指定したルールでソートした stream を返す。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// 年齢の昇順</span></span>
+<span class="line"><span style="color:#E1E4E8">userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">sorted</span><span style="color:#E1E4E8">(Comparator.</span><span style="color:#B392F0">comparing</span><span style="color:#E1E4E8">(User</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">getAge))</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(System.out</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">println);</span></span>
+<span class="line"><span style="color:#6A737D">// name: John, age: 40</span></span>
+<span class="line"><span style="color:#6A737D">// name: George, age: 58</span></span>
+<span class="line"><span style="color:#6A737D">// name: Paul, age: 79</span></span>
+<span class="line"><span style="color:#6A737D">// name: Ringo, age: 81</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 年齢の降順</span></span>
+<span class="line"><span style="color:#E1E4E8">userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">sorted</span><span style="color:#E1E4E8">(Comparator.</span><span style="color:#B392F0">comparing</span><span style="color:#E1E4E8">(User</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">getAge).</span><span style="color:#B392F0">reversed</span><span style="color:#E1E4E8">())</span></span>
+<span class="line"><span style="color:#E1E4E8">        .</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(System.out</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">println);</span></span>
+<span class="line"><span style="color:#6A737D">// name: Ringo, age: 81</span></span>
+<span class="line"><span style="color:#6A737D">// name: Paul, age: 79</span></span>
+<span class="line"><span style="color:#6A737D">// name: George, age: 58</span></span>
+<span class="line"><span style="color:#6A737D">// name: John, age: 40</span></span></code></pre>
+<h2 id="条件判定">条件判定</h2>
+<h3 id="anymatch">anyMatch</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// いずれかの要素が指定した条件を満たせば true</span></span>
+<span class="line"><span style="color:#F97583">boolean</span><span style="color:#E1E4E8"> anyMatch </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">                           .</span><span style="color:#B392F0">anyMatch</span><span style="color:#E1E4E8">(u </span><span style="color:#F97583">-></span><span style="color:#E1E4E8"> u.</span><span style="color:#B392F0">getAge</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 60</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">System.out.</span><span style="color:#B392F0">println</span><span style="color:#E1E4E8">(anyMatch);</span></span>
+<span class="line"><span style="color:#6A737D">// true</span></span></code></pre>
+<h3 id="allmatch">allMatch</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// 全ての要素が指定した条件を満たせば true</span></span>
+<span class="line"><span style="color:#F97583">boolean</span><span style="color:#E1E4E8"> allMatch </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">                           .</span><span style="color:#B392F0">anyMatch</span><span style="color:#E1E4E8">(u </span><span style="color:#F97583">-></span><span style="color:#E1E4E8"> u.</span><span style="color:#B392F0">getAge</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 60</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">System.out.</span><span style="color:#B392F0">println</span><span style="color:#E1E4E8">(allMatch);</span></span>
+<span class="line"><span style="color:#6A737D">// false</span></span></code></pre>
+<h3 id="nonematch">noneMatch</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// 全ての要素が指定した条件を満たさなければ true</span></span>
+<span class="line"><span style="color:#F97583">boolean</span><span style="color:#E1E4E8"> noneMatch </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">                           .</span><span style="color:#B392F0">noneMatch</span><span style="color:#E1E4E8">(u </span><span style="color:#F97583">-></span><span style="color:#E1E4E8"> u.</span><span style="color:#B392F0">getName</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">equals</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Pete"</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">System.out.</span><span style="color:#B392F0">println</span><span style="color:#E1E4E8">(noneMatch);</span></span></code></pre>
+<h2 id="先頭の要素を取得">先頭の要素を取得</h2>
+<h3 id="findfirst">findFirst</h3>
+<p>Optional 型を返すので、orElse などが必要となる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">User user </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">                    .</span><span style="color:#B392F0">findFirst</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">                    .</span><span style="color:#B392F0">orElse</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">System.out.</span><span style="color:#B392F0">println</span><span style="color:#E1E4E8">(user);</span></span></code></pre>
+<h2 id="集計">集計</h2>
+<h3 id="max">max</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// 年齢が最大のユーザ</span></span>
+<span class="line"><span style="color:#E1E4E8">User maxAgeUser </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">                          .</span><span style="color:#B392F0">max</span><span style="color:#E1E4E8">(Comparator.</span><span style="color:#B392F0">comparing</span><span style="color:#E1E4E8">(User</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">getAge))</span></span>
+<span class="line"><span style="color:#E1E4E8">                          .</span><span style="color:#B392F0">orElse</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">System.out.</span><span style="color:#B392F0">println</span><span style="color:#E1E4E8">(maxAgeUser);</span></span>
+<span class="line"><span style="color:#6A737D">// name: Ringo, age: 81</span></span></code></pre>
+<h3 id="min">min</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// 年齢が最小のユーザ</span></span>
+<span class="line"><span style="color:#E1E4E8">User minAgeUser </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">                          .</span><span style="color:#B392F0">min</span><span style="color:#E1E4E8">(Comparator.</span><span style="color:#B392F0">comparing</span><span style="color:#E1E4E8">(User</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">getAge))</span></span>
+<span class="line"><span style="color:#E1E4E8">                          .</span><span style="color:#B392F0">orElse</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">System.out.</span><span style="color:#B392F0">println</span><span style="color:#E1E4E8">(minAgeUser);</span></span>
+<span class="line"><span style="color:#6A737D">// name: John, age: 40</span></span></code></pre>
+<h3 id="count">count</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// 要素の個数</span></span>
+<span class="line"><span style="color:#F97583">long</span><span style="color:#E1E4E8"> count </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">                     .</span><span style="color:#B392F0">count</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">System.out.</span><span style="color:#B392F0">println</span><span style="color:#E1E4E8">(count);</span></span>
+<span class="line"><span style="color:#6A737D">// 4</span></span></code></pre>
+<h3 id="average">average</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// 年齢の平均</span></span>
+<span class="line"><span style="color:#F97583">double</span><span style="color:#E1E4E8"> average </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">                     .</span><span style="color:#B392F0">mapToInt</span><span style="color:#E1E4E8">(User</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">getAge)</span></span>
+<span class="line"><span style="color:#E1E4E8">                     .</span><span style="color:#B392F0">average</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">                     .</span><span style="color:#B392F0">orElse</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">System.out.</span><span style="color:#B392F0">println</span><span style="color:#E1E4E8">(average);</span></span>
+<span class="line"><span style="color:#6A737D">// 64.5</span></span></code></pre>
+<h3 id="sum">sum</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// 年齢の合計</span></span>
+<span class="line"><span style="color:#F97583">int</span><span style="color:#E1E4E8"> sum </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">                  .</span><span style="color:#B392F0">mapToInt</span><span style="color:#E1E4E8">(User</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">getAge)</span></span>
+<span class="line"><span style="color:#E1E4E8">                  .</span><span style="color:#B392F0">sum</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">System.out.</span><span style="color:#B392F0">println</span><span style="color:#E1E4E8">(sum);</span></span>
+<span class="line"><span style="color:#6A737D">// 258</span></span></code></pre>
+<h2 id="値をまとめる">値をまとめる</h2>
+<h3 id="reduce">reduce</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// 全員の名前をカンマ区切りで並べた文字列を取得</span></span>
+<span class="line"><span style="color:#E1E4E8">String result </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> userList.</span><span style="color:#B392F0">stream</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">                        .</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(User</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">getName)</span></span>
+<span class="line"><span style="color:#E1E4E8">                        .</span><span style="color:#B392F0">reduce</span><span style="color:#E1E4E8">((res, u) </span><span style="color:#F97583">-></span><span style="color:#E1E4E8"> res </span><span style="color:#F97583">+=</span><span style="color:#9ECBFF"> ", "</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> u)</span></span>
+<span class="line"><span style="color:#E1E4E8">                        .</span><span style="color:#B392F0">orElse</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">""</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">System.out.</span><span style="color:#B392F0">println</span><span style="color:#E1E4E8">(result);</span></span>
+<span class="line"><span style="color:#6A737D">// John, Paul, George, Ringo</span></span></code></pre>  </div> </article> </main> <footer class="site-footer" data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte>
+&copy; 2026 h10i.
+</div> </footer></body></html>

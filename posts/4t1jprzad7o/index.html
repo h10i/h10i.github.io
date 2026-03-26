@@ -1,0 +1,614 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="h10i" href="https://example.com/rss.xml"><meta name="generator" content="Astro v6.0.8"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/posts/4t1jprzad7o/"><!-- Primary Meta Tags --><title>JUnit 5 の動的テスト @ParameterizedTest を整理する</title><meta name="title" content="JUnit 5 の動的テスト @ParameterizedTest を整理する"><meta name="description"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/posts/4t1jprzad7o/"><meta property="og:title" content="JUnit 5 の動的テスト @ParameterizedTest を整理する"><meta property="og:description"><!-- Twitter --><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://example.com/posts/4t1jprzad7o/"><meta property="twitter:title" content="JUnit 5 の動的テスト @ParameterizedTest を整理する"><meta property="twitter:description"><style>:root{--color-bg: #ffffff;--color-text: #333333;--color-text-muted: #666666;--color-link: #0056b3;--color-link-hover: #003d82;--color-border: #e5e5e5;--color-code-bg: #f4f4f4;--max-width: 800px;--container-padding: 1rem;--space-xs: .5rem;--space-sm: 1rem;--space-md: 1.5rem;--space-lg: 2rem;--space-xl: 3rem;--font-family: system-ui, -apple-system, sans-serif;--font-size-base: 1rem;--line-height-base: 1.6}[data-theme=dark]{--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}}*,*:before,*:after{box-sizing:border-box}html{font-size:16px}body{font-family:var(--font-family);margin:0;padding:0;background-color:var(--color-bg);color:var(--color-text);line-height:var(--line-height-base);display:flex;flex-direction:column;min-height:100vh}main{flex:1}.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 var(--container-padding)}a{color:var(--color-link);text-decoration:none}a:hover{color:var(--color-link-hover);text-decoration:underline}h1,h2,h3,h4,h5,h6{margin-top:1.5em;margin-bottom:.5em;line-height:1.2;font-weight:700}h1{font-size:2rem;margin-top:0}h2{font-size:1.5rem}h3{font-size:1.25rem}p{margin-top:0;margin-bottom:var(--space-sm)}img{max-width:100%;height:auto;display:block}code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;background-color:var(--color-code-bg);padding:.2em .4em;border-radius:4px;font-size:.9em}pre{background-color:var(--color-code-bg);padding:var(--space-sm);border-radius:4px;overflow-x:auto;margin-bottom:var(--space-sm)}pre code{background-color:transparent;padding:0;font-size:.85em}blockquote{margin:0 0 var(--space-sm) 0;padding-left:var(--space-sm);border-left:4px solid var(--color-border);color:var(--color-text-muted);font-style:italic}.text-muted{color:var(--color-text-muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}@media(max-width:640px){html{font-size:15px}h1{font-size:1.75rem}h2{font-size:1.4rem}}.site-footer[data-astro-cid-sz7xmlte]{text-align:center;padding:var(--space-xl) 0;margin-top:var(--space-xl);border-top:1px solid var(--color-border);color:var(--color-text-muted);font-size:.875rem}.theme-toggle[data-astro-cid-x3pjskd3]{background:none;border:none;cursor:pointer;color:var(--color-text);padding:var(--space-xs);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:background-color .2s}.theme-toggle[data-astro-cid-x3pjskd3]:hover{background-color:var(--color-code-bg)}.sun[data-astro-cid-x3pjskd3]{display:none}.moon[data-astro-cid-x3pjskd3],[data-theme=dark] .sun[data-astro-cid-x3pjskd3]{display:block}[data-theme=dark] .moon[data-astro-cid-x3pjskd3]{display:none}.site-header[data-astro-cid-3ef6ksr2]{border-bottom:1px solid var(--color-border);margin-bottom:var(--space-lg)}.header-container[data-astro-cid-3ef6ksr2]{display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:var(--space-sm);padding-bottom:var(--space-sm)}.site-title[data-astro-cid-3ef6ksr2]{margin:0;font-size:1.5rem;font-weight:700}.site-title[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--color-text);text-decoration:none}.header-right[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;gap:var(--space-md)}.site-nav[data-astro-cid-3ef6ksr2]{display:flex;gap:var(--space-md)}@media(max-width:640px){.header-container[data-astro-cid-3ef6ksr2]{flex-direction:column;gap:var(--space-sm);align-items:flex-start}.header-right[data-astro-cid-3ef6ksr2]{width:100%;justify-content:space-between;flex-direction:row-reverse}.site-nav[data-astro-cid-3ef6ksr2]{width:auto;justify-content:flex-start;gap:var(--space-sm);font-size:.95rem;overflow-x:auto}}
+.post-header[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xl);padding-bottom:var(--space-md);border-bottom:1px solid var(--color-border)}.post-title[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xs);font-size:2.5rem}.post-meta[data-astro-cid-bvzihdzo]{display:flex;flex-direction:column;gap:var(--space-sm);font-size:.875rem}.post-tags[data-astro-cid-bvzihdzo]{display:flex;flex-wrap:wrap;gap:var(--space-xs);list-style:none;padding:0;margin:0}.post-tag[data-astro-cid-bvzihdzo]{background-color:var(--color-code-bg);padding:.2rem .5rem;border-radius:4px;color:var(--color-text);text-decoration:none;font-size:.75rem}.post-tag[data-astro-cid-bvzihdzo]:hover{background-color:var(--color-border)}.post-content[data-astro-cid-bvzihdzo]{line-height:1.8}@media(max-width:640px){.post-title[data-astro-cid-bvzihdzo]{font-size:2rem}}
+</style></head> <body data-astro-cid-bvzihdzo> <header class="site-header" data-astro-cid-3ef6ksr2> <div class="header-container container" data-astro-cid-3ef6ksr2> <h1 class="site-title" data-astro-cid-3ef6ksr2><a href="/" data-astro-cid-3ef6ksr2>h10i</a></h1> <div class="header-right" data-astro-cid-3ef6ksr2> <nav class="site-nav" data-astro-cid-3ef6ksr2> <a href="/posts" class="active" data-astro-cid-3ef6ksr2="true"> posts </a> <a href="/archives" data-astro-cid-3ef6ksr2="true"> archives </a> <a href="/tags" data-astro-cid-3ef6ksr2="true"> tags </a> <a href="/search" data-astro-cid-3ef6ksr2="true"> search </a> </nav> <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle" data-astro-cid-x3pjskd3> <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <circle cx="12" cy="12" r="5" data-astro-cid-x3pjskd3></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-x3pjskd3></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-x3pjskd3></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-x3pjskd3></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-x3pjskd3></line> </svg> <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-x3pjskd3></path> </svg> </button> <script type="module">const m=document.getElementById("theme-toggle");function o(){return typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}function t(e){document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e)}t(o());m?.addEventListener("click",()=>{const n=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";t(n)});</script> </div> </div> </header> <main class="container" data-astro-cid-bvzihdzo> <article class="post" data-pagefind-body data-astro-cid-bvzihdzo> <header class="post-header" data-astro-cid-bvzihdzo> <h1 class="post-title" data-pagefind-meta="title" data-astro-cid-bvzihdzo>JUnit 5 の動的テスト @ParameterizedTest を整理する</h1> <div class="post-meta" data-astro-cid-bvzihdzo> <div class="post-date text-muted" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Published: <time datetime="2024-09-23T03:40:01.000Z"> 2024-09-23 </time></span>  </div> <ul class="post-tags" data-astro-cid-bvzihdzo> <li data-astro-cid-bvzihdzo> <a href="/tags/junit/" class="post-tag" data-astro-cid-bvzihdzo>#JUnit</a> </li><li data-astro-cid-bvzihdzo> <a href="/tags/java/" class="post-tag" data-astro-cid-bvzihdzo>#Java</a> </li><li data-astro-cid-bvzihdzo> <a href="/tags/junit 5/" class="post-tag" data-astro-cid-bvzihdzo>#JUnit 5</a> </li> </ul> </div> </header> <div class="post-content" data-astro-cid-bvzihdzo>  <h2 id="概要">概要</h2>
+<ul>
+<li>JUnit 5 の動的テストを整理する。
+<ul>
+<li><code>@ParameterizedTest</code>
+<ul>
+<li><code>@ValueSource</code></li>
+<li><code>@EnumSource</code></li>
+<li><code>@MethodSource</code></li>
+<li><code>@CsvSource</code></li>
+<li><code>@CsvFileSource</code></li>
+<li><code>@ArgumentsSource</code></li>
+<li><code>@ArgumentsSources</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="前提">前提</h2>
+<ul>
+<li>JUnit 5</li>
+</ul>
+<h2 id="解説">解説</h2>
+<h3 id="parameterizedtest"><code>@ParameterizedTest</code></h3>
+<p><code>@ParameterizedTest</code> は、単一のテストメソッドを複数の入力値またはパラメーターで実行できるようにするアノテーションである。</p>
+<p>以下のようなテストメソッドを定義している場合、<code>@ParameterizedTest</code> が役立つ。</p>
+<ul>
+<li>静的テスト <code>@Test</code> 内に異なるパラメータで同じアサーションを実行している。</li>
+<li>パラメータが異なるだけの静的テスト <code>@Test</code> が複数ある。</li>
+</ul>
+<p>例えば、偶数であるかを判定する <code>isEven</code> メソッドのテストを考える。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">public</span><span style="color:#F97583"> boolean</span><span style="color:#B392F0"> isEven</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#E1E4E8"> x) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">%</span><span style="color:#79B8FF"> 2</span><span style="color:#F97583"> ==</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>いくつかの数でテストしたい場合、次のようなテストを作成したとする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#F97583">Test</span></span>
+<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> testIsEven</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">  assertTrue</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">isEven</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">)); </span><span style="color:#6A737D">// [passed]</span></span>
+<span class="line"><span style="color:#B392F0">  assertTrue</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">isEven</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">)); </span><span style="color:#6A737D">// [failed]</span></span>
+<span class="line"><span style="color:#B392F0">  assertTrue</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">isEven</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>このテストは、2 つ目の <code>assertTrue(isEven(3));</code> にて、本来はパラメータに <code>4</code> を指定するところ、誤って <code>3</code> を指定してしまった。そのため、2 つ目のアサーションで失敗するが、次のような問題点がある。</p>
+<ul>
+<li>どのアサーションで失敗したかが、ログを確認しなければわからない。</li>
+<li>失敗した時点でテストが終了してしまうため、失敗した箇所を改善するまで、後続の <code>assertTrue(isEven(6));</code> の結果がわからない。</li>
+</ul>
+<p>パラメータの数だけテストメソッドを作成すると、上記の問題は発生しなくなる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#F97583">Test</span></span>
+<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> testIsEven1</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">  assertTrue</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">isEven</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">)); </span><span style="color:#6A737D">// [passed]</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">@</span><span style="color:#F97583">Test</span></span>
+<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> testIsEven2</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">  assertTrue</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">isEven</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">)); </span><span style="color:#6A737D">// [failed]</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">@</span><span style="color:#F97583">Test</span></span>
+<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> testIsEven3</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">  assertTrue</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">isEven</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">)); </span><span style="color:#6A737D">// [passed]</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>この形であれば、<code>testIsEven2</code> が誤っていることがすぐにわかり、<code>assertTrue(isEven(3));</code> が失敗しても、<code>testIsEven3</code> で <code>assertTrue(isEven(6));</code> の結果がわかる。</p>
+<p>しかし、この方針だと、パラメータの数だけ同じテストメソッドを作成しなければならない。また、テストメソッドの実装を変える場合、全てのテストメソッドを修正しなければならず、保守性や拡張性が悪い。</p>
+<p>このような場合に <code>@ParameterizedTest</code> を使うと、1 つのテストメソッドで複数のパラメータをテストできる。</p>
+<p><code>@ParameterizedTest</code> では、引数に渡すソースを設定するため、次のアノテーションを用いる。</p>
+<ul>
+<li><code>@ValueSource</code></li>
+<li><code>@EnumSource</code></li>
+<li><code>@CsvSource</code></li>
+<li><code>@CsvFileSource</code></li>
+<li><code>@MethodSource</code></li>
+<li><code>@ArgumentsSource</code></li>
+<li><code>@ArgumentsSources</code></li>
+</ul>
+<h3 id="valuesource"><code>@ValueSource</code></h3>
+<p><code>@ValueSource</code> は、指定したリテラル値をテストメソッドの引数に直接提供する。</p>
+<p>テストメソッドは、<code>@ValueSource</code> に指定したリテラル値の数だけ実行される。</p>
+<p><code>@ValueSource</code> で指定できるパラメータは次の通りである。</p>
+<ul>
+<li>booleans (<code>boolean[]</code>)</li>
+<li>bytes (<code>byte[]</code>)</li>
+<li>chars (<code>char[]</code>)</li>
+<li>classes (<code>Class&#x3C;?>[]</code>)</li>
+<li>doubles (<code>double[]</code>)</li>
+<li>floats (<code>float[]</code>)</li>
+<li>ints (<code>int[]</code>)</li>
+<li>longs (<code>long[]</code>)</li>
+<li>shorts (<code>short[]</code>)</li>
+<li>strings (<code>String[]</code>)</li>
+</ul>
+<p>例えば、パラメータに <code>int</code> を渡したい場合、次のように <code>@ValueSource(ints = {2, 3, 6})</code> を指定する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> ExampleParameterizedTest</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ParameterizedTest</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ValueSource</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">ints</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> parameterizedTest</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> argument</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">        assertEquals</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, argument </span><span style="color:#F97583">%</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>ここでは <code>ints = {2, 3, 6}</code> を指定しており、この値は <code>parameterizedTest</code> メソッドの引数である <code>argument</code> に渡される。</p>
+<p>実行結果は次の通りである。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ExampleParameterizedTest.parameterizedTest: 3 total, 1 failed, 2 passed</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ExampleParameterizedTest</span></span>
+<span class="line"><span>  parameterizedTest</span></span>
+<span class="line"><span>    [1] 2 [passed]</span></span>
+<span class="line"><span>    [2] 3 [failed]</span></span>
+<span class="line"><span>    [3] 6 [passed]</span></span></code></pre>
+<p>指定した値の数だけ独立したテストが実行されていることがわかる。</p>
+<h3 id="enumsource"><code>@EnumSource</code></h3>
+<p><code>@EnumSource</code> は、指定した <code>enum</code> の値をテストメソッドの引数に直接提供する。</p>
+<p>テストメソッドは、指定した <code>enum</code> の値の数だけ実行される。</p>
+<p>例えば、以下の <code>Season</code> を指定すると、<code>SPRING</code>, <code>SUMMER</code>, <code>AUTUMN</code>, <code>WINTER</code> の 4 つの値が引数に渡され、4 回分テストメソッドが実行される。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">enum</span><span style="color:#B392F0"> Season</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">    SPRING</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">SUMMER</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">AUTUMN</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">WINTER</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>テストに使う <code>enum</code> の値は、<a href="https://junit.org/junit5/docs/current/api/org.junit.jupiter.params/org/junit/jupiter/params/provider/EnumSource.Mode.html">EnumSource.Mode</a> を指定することで、フィルタできる。</p>
+<ul>
+<li><code>EXCLUDE</code>
+<ul>
+<li>指定した値を除く。</li>
+<li>ex. <code>names = {"SPRING","SUMMER"}</code> を指定した場合、<code>SPRING</code>, <code>SUMMER</code> 以外 (<code>AUTUMN</code>, <code>WINTER</code>) が対象となる。</li>
+</ul>
+</li>
+<li><code>INCLUDE</code>:
+<ul>
+<li>指定した値のみを含める。</li>
+<li>ex. <code>names = {"SPRING","SUMMER"}</code> を指定した場合、<code>SPRING</code>, <code>SUMMER</code> のみが対象となる。</li>
+</ul>
+</li>
+<li><code>MATCH_ALL</code>:
+<ul>
+<li>指定したパターンの全てに一致する値のみを含める。</li>
+<li>ex. <code>names = {"^S.+", ".*R.*"}</code> を指定した場合、先頭が <code>S</code> かつどこかに <code>R</code> が含まれている値 (<code>SPRING</code>, <code>SUMMER</code>) が対象となる。</li>
+</ul>
+</li>
+<li><code>MATCH_ANY</code>:
+<ul>
+<li>指定したパターンのいずれかに一致する値のみを含める。</li>
+<li>ex. <code>names = {"^S.+", ".*R.*"}</code> を指定した場合、先頭が <code>S</code> またはどこかに <code>R</code> が含まれている値 (<code>SPRING</code>, <code>SUMMER</code>, <code>WINTER</code>) が対象となる。</li>
+</ul>
+</li>
+<li><code>MATCH_NONE</code>:
+<ul>
+<li>指定したパターンのいずれかにも一致しない値のみを含める。</li>
+<li>ex. <code>names = {"^S.+", ".*R.*"}</code> を指定した場合、先頭が <code>S</code> またはどこかに <code>R</code> が含まれている値<strong>以外</strong> (<code>AUTUMN</code>) が対象となる。</li>
+</ul>
+</li>
+</ul>
+<p>まず、特にモードは指定せず、<code>@EnumSource(Season.class)</code> を設定する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> ExampleParameterizedTest</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ParameterizedTest</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">EnumSource</span><span style="color:#E1E4E8">(Season.class)</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> parameterizedTestWithEnumSource1</span><span style="color:#E1E4E8">(Season </span><span style="color:#FFAB70">season</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">        assertTrue</span><span style="color:#E1E4E8">(EnumSet.</span><span style="color:#B392F0">allOf</span><span style="color:#E1E4E8">(Season.class).</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(season));</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>実行結果は次の通りである。<code>Season</code> の全ての値でテストメソッドが実行されている。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ExampleParameterizedTest.parameterizedTestWithEnumSource1: 4 total, 4 passed</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ExampleParameterizedTest</span></span>
+<span class="line"><span>  parameterizedTestWithEnumSource1</span></span>
+<span class="line"><span>    [1] SPRING [passed]</span></span>
+<span class="line"><span>    [2] SUMMER [passed]</span></span>
+<span class="line"><span>    [3] AUTUMN [passed]</span></span>
+<span class="line"><span>    [4] WINTER [passed]</span></span></code></pre>
+<p>次に、モードを指定する。指定した内容は、先述したモードの説明</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> ExampleParameterizedTest</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ParameterizedTest</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">EnumSource</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">value</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Season.class, </span><span style="color:#79B8FF">mode</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> EnumSource.Mode.EXCLUDE, </span><span style="color:#79B8FF">names</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span><span style="color:#9ECBFF">"SPRING"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"SUMMER"</span><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> parameterizedTestWithEnumSource2</span><span style="color:#E1E4E8">(Season </span><span style="color:#FFAB70">season</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">        assertTrue</span><span style="color:#E1E4E8">(EnumSet.</span><span style="color:#B392F0">of</span><span style="color:#E1E4E8">(Season.AUTUMN, Season.WINTER).</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(season));</span></span>
+<span class="line"><span style="color:#B392F0">        assertFalse</span><span style="color:#E1E4E8">(EnumSet.</span><span style="color:#B392F0">of</span><span style="color:#E1E4E8">(Season.SPRING, Season.SUMMER).</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(season));</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ParameterizedTest</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">EnumSource</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">value</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Season.class, </span><span style="color:#79B8FF">mode</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> EnumSource.Mode.INCLUDE, </span><span style="color:#79B8FF">names</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span><span style="color:#9ECBFF">"SPRING"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"SUMMER"</span><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> parameterizedTestWithEnumSource3</span><span style="color:#E1E4E8">(Season </span><span style="color:#FFAB70">season</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">        assertTrue</span><span style="color:#E1E4E8">(EnumSet.</span><span style="color:#B392F0">of</span><span style="color:#E1E4E8">(Season.SPRING, Season.SUMMER).</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(season));</span></span>
+<span class="line"><span style="color:#B392F0">        assertFalse</span><span style="color:#E1E4E8">(EnumSet.</span><span style="color:#B392F0">of</span><span style="color:#E1E4E8">(Season.AUTUMN, Season.WINTER).</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(season));</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ParameterizedTest</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">EnumSource</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">value</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Season.class, </span><span style="color:#79B8FF">mode</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> EnumSource.Mode.MATCH_ALL, </span><span style="color:#79B8FF">names</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span><span style="color:#9ECBFF">"^S.+"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">".*R.*"</span><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> parameterizedTestWithEnumSource4</span><span style="color:#E1E4E8">(Season </span><span style="color:#FFAB70">season</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">        assertTrue</span><span style="color:#E1E4E8">(EnumSet.</span><span style="color:#B392F0">of</span><span style="color:#E1E4E8">(Season.SPRING, Season.SUMMER).</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(season));</span></span>
+<span class="line"><span style="color:#B392F0">        assertFalse</span><span style="color:#E1E4E8">(EnumSet.</span><span style="color:#B392F0">of</span><span style="color:#E1E4E8">(Season.AUTUMN, Season.WINTER).</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(season));</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ParameterizedTest</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">EnumSource</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">value</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Season.class, </span><span style="color:#79B8FF">mode</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> EnumSource.Mode.MATCH_ANY, </span><span style="color:#79B8FF">names</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span><span style="color:#9ECBFF">"^S.+"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">".*R.*"</span><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> parameterizedTestWithEnumSource5</span><span style="color:#E1E4E8">(Season </span><span style="color:#FFAB70">season</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">        assertTrue</span><span style="color:#E1E4E8">(EnumSet.</span><span style="color:#B392F0">of</span><span style="color:#E1E4E8">(Season.SPRING, Season.SUMMER, Season.WINTER).</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(season));</span></span>
+<span class="line"><span style="color:#B392F0">        assertFalse</span><span style="color:#E1E4E8">(EnumSet.</span><span style="color:#B392F0">of</span><span style="color:#E1E4E8">(Season.AUTUMN).</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(season));</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ParameterizedTest</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">EnumSource</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">value</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Season.class, </span><span style="color:#79B8FF">mode</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> EnumSource.Mode.MATCH_NONE, </span><span style="color:#79B8FF">names</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span><span style="color:#9ECBFF">"^S.+"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">".*R.*"</span><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> parameterizedTestWithEnumSource6</span><span style="color:#E1E4E8">(Season </span><span style="color:#FFAB70">season</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">        assertTrue</span><span style="color:#E1E4E8">(EnumSet.</span><span style="color:#B392F0">of</span><span style="color:#E1E4E8">(Season.AUTUMN).</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(season));</span></span>
+<span class="line"><span style="color:#B392F0">        assertFalse</span><span style="color:#E1E4E8">(EnumSet.</span><span style="color:#B392F0">of</span><span style="color:#E1E4E8">(Season.SPRING, Season.SUMMER, Season.WINTER).</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(season));</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>実行結果は次の通りである。フィルタ通りの値を使ったテストが実行されていることがわかる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ExampleParameterizedTest: 10 total, 10 passed</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ExampleParameterizedTest</span></span>
+<span class="line"><span>  parameterizedTestWithEnumSource2</span></span>
+<span class="line"><span>    [1] AUTUMN [passed]</span></span>
+<span class="line"><span>    [2] WINTER [passed]</span></span>
+<span class="line"><span>  parameterizedTestWithEnumSource3</span></span>
+<span class="line"><span>    [1] SPRING [passed]</span></span>
+<span class="line"><span>    [2] SUMMER [passed]</span></span>
+<span class="line"><span>  parameterizedTestWithEnumSource4</span></span>
+<span class="line"><span>    [1] SPRING [passed]</span></span>
+<span class="line"><span>    [2] SUMMER [passed]</span></span>
+<span class="line"><span>  parameterizedTestWithEnumSource5</span></span>
+<span class="line"><span>    [1] SPRING [passed]</span></span>
+<span class="line"><span>    [2] SUMMER [passed]</span></span>
+<span class="line"><span>    [3] WINTER [passed]</span></span>
+<span class="line"><span>  parameterizedTestWithEnumSource6</span></span>
+<span class="line"><span>    [1] AUTUMN [passed]</span></span></code></pre>
+<h3 id="methodsource"><code>@MethodSource</code></h3>
+<p><code>@MethodSource</code> は、指定したファクトリメソッド経由でテストメソッドの引数に値を提供する。</p>
+<p>テストメソッドは、指定したファクトリメソッドが返すストリームの値の数だけ実行される。</p>
+<p>テストメソッドの引数とファクトリメソッドの戻り値は、次のような対応となる。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><code>@ParameterizedTest method</code></th><th><code>Factory method</code></th></tr></thead><tbody><tr><td><code>void test(int)</code></td><td><code>static int[] factory()</code></td></tr><tr><td><code>void test(int)</code></td><td><code>static IntStream factory()</code></td></tr><tr><td><code>void test(String)</code></td><td><code>static String[] factory()</code></td></tr><tr><td><code>void test(String)</code></td><td><code>static List&#x3C;String> factory()</code></td></tr><tr><td><code>void test(String)</code></td><td><code>static Stream&#x3C;String> factory()</code></td></tr><tr><td><code>void test(String, String)</code></td><td><code>static String[][] factory()</code></td></tr><tr><td><code>void test(String, int)</code></td><td><code>static Object[][] factory()</code></td></tr><tr><td><code>void test(String, int)</code></td><td><code>static Stream&#x3C;Object[]> factory()</code></td></tr><tr><td><code>void test(String, int)</code></td><td><code>static Stream&#x3C;Arguments> factory()</code></td></tr><tr><td><code>void test(int[])</code></td><td><code>static int[][] factory()</code></td></tr><tr><td><code>void test(int[])</code></td><td><code>static Stream&#x3C;int[]> factory()</code></td></tr><tr><td><code>void test(int[][])</code></td><td><code>static Stream&#x3C;int[][]> factory()</code></td></tr><tr><td><code>void test(Object[][])</code></td><td><code>static Stream&#x3C;Object[][]> factory()</code></td></tr></tbody></table>
+<p>例えば、<code>Stream&#x3C;String></code> を返す <code>stringFactoryMethod</code> を使う場合、<code>@MethodSource("stringFactoryMethod")</code> を付与する。なお、外部のファクトリメソッドを参照する場合は、メソッドの完全修飾名 (パッケージも含めた形) を指定する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> ExampleParameterizedTest</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    static</span><span style="color:#E1E4E8"> Stream&#x3C;</span><span style="color:#F97583">String</span><span style="color:#E1E4E8">> </span><span style="color:#B392F0">stringFactoryMethod</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> Stream.</span><span style="color:#B392F0">of</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"morning"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"evening"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ParameterizedTest</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">MethodSource</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"stringFactoryMethod"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> parameterizedTestWithMethodSource</span><span style="color:#E1E4E8">(String </span><span style="color:#FFAB70">argument</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">        assertNotEquals</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"afternoon"</span><span style="color:#E1E4E8">, argument);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>実行結果は次の通りである。指定したファクトリメソッドのストリームが提供する値の数だけテストが実行されていることがわかる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ExampleParameterizedTest.parameterizedTestWithMethodSource: 2 total, 2 passed</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ExampleParameterizedTest</span></span>
+<span class="line"><span>  parameterizedTestWithMethodSource</span></span>
+<span class="line"><span>    [1] morning [passed]</span></span>
+<span class="line"><span>    [2] evening [passed]</span></span></code></pre>
+<p>複数のテストでパラメータの値が共通している場合や、パラメータの値を動的に生成したい場合に役立つ。</p>
+<h3 id="csvsource"><code>@CsvSource</code></h3>
+<p><code>@CsvSource</code> は、指定した CSV レコード形式の値をテストメソッドの引数に直接提供する。外部の CSV ファイルを読み込んで提供したい場合は、後述する <code>@CsvFileSource</code> を使用する。</p>
+<p>テストメソッドは、<code>@CsvSource</code> に指定した CSV レコードの行数だけ実行される。</p>
+<p><code>@CsvSource</code> に指定できるオプションは、次の通りである。</p>
+<ul>
+<li>value (<code>String[]</code>)
+<ul>
+<li>引数のソースとして使用する CSV レコードを指定する。</li>
+</ul>
+</li>
+<li>textBlock (<code>String</code>)
+<ul>
+<li>引数のソースとして使用する CSV レコードを 1 つのテキスト・ブロックとして設定する。</li>
+<li>テキストブロックは Java SE 15 以降で使用できる。</li>
+<li>行頭が <code>#</code> の行はコメント行として扱われ、無視される。</li>
+<li>テキストブロックの区切り記号 <code>"""</code> は、入力の最終行の末尾か、次の行に、入力の残りの部分と垂直に並ぶように配置することが推奨される。</li>
+</ul>
+</li>
+</ul>
+<p><code>@CsvSource</code> と <code>@CsvFileSource</code> の両方に共通するオプションは、次の通りである。</p>
+<ul>
+<li>useHeadersInDisplayName (<code>boolean</code>)
+<ul>
+<li>最初の CSV レコードをカラムのヘッダ名として扱うかどうかを指定する。</li>
+<li>デフォルトでは <code>false</code> が指定されている。</li>
+</ul>
+</li>
+<li>quoteCharacter (<code>char</code>)
+<ul>
+<li>引用符の文字を指定する。</li>
+<li>デフォルトでは <code>'</code> が指定されている。</li>
+</ul>
+</li>
+<li>delimiter (<code>char</code>)
+<ul>
+<li>列の区切り文字を指定する。</li>
+<li>デフォルトは <code>,</code> が区切り文字として指定されている。</li>
+</ul>
+</li>
+<li>delimiterString (<code>String</code>)
+<ul>
+<li>列の区切り文字列を指定する。</li>
+</ul>
+</li>
+<li>emptyValue (<code>String</code>)
+<ul>
+<li>値が空だった場合の文字列を指定する。</li>
+<li>デフォルトは <code>""</code> が空文字として指定されている。</li>
+</ul>
+</li>
+<li>nullValues (<code>String[]</code>)
+<ul>
+<li><code>null</code> として解釈する文字列を指定する。</li>
+<li>デフォルトでは <code>{}</code> (指定なし) が指定されている。</li>
+<li>引用符で囲まれていない空の値は、nullValues の設定に関わらず <code>null</code> に変換される。</li>
+</ul>
+</li>
+<li>maxCharsPerColumn (<code>int</code>)
+<ul>
+<li>カラム毎の値の最大幅を指定する。</li>
+<li>デフォルトでは <code>4096</code> が設定されている。</li>
+</ul>
+</li>
+<li>ignoreLeadingAndTrailingWhitespace (<code>boolean</code>)
+<ul>
+<li>引用符に囲まれていない前後のスペースを削除するかどうか指定する。</li>
+<li>デフォルトでは <code>true</code> が設定されている。</li>
+</ul>
+</li>
+</ul>
+<p>まず、value のみを指定した例を試す。この例では、以下の CSV レコードを設定している。</p>
+<ul>
+<li>カラム 1: 数値 1</li>
+<li>カラム 2: 数値 2</li>
+<li>カラム 3: 数値 1 と数値 2 の合計数値</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> ExampleParameterizedTest</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ParameterizedTest</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">CsvSource</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#9ECBFF">            "1, 1, 2"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            "1, 2, 3"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            "-2, 2, 0"</span></span>
+<span class="line"><span style="color:#E1E4E8">    })</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> parameterizedTestWithCsvSource1</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> num1</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> num2</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> expectedSum</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">        assertEquals</span><span style="color:#E1E4E8">(expectedSum, num1 </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> num2);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>実行結果は次の通りである。CSV レコードの行数だけテストが実行されていることがわかる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ExampleParameterizedTest.parameterizedTestWithCsvSource1: 3 total, 3 passed</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ExampleParameterizedTest</span></span>
+<span class="line"><span>  parameterizedTestWithCsvSource1</span></span>
+<span class="line"><span>    [1] 1, 1, 2 [passed]</span></span>
+<span class="line"><span>    [2] 1, 2, 3 [passed]</span></span>
+<span class="line"><span>    [3] -2, 2, 0 [passed]</span></span></code></pre>
+<p>次に、オプションをいくつか指定し、デフォルト形式以外の CSV レコードを処理してみる。</p>
+<p>この例では、以下の CSV を処理するよう設定している。</p>
+<ul>
+<li><code>useHeadersInDisplayName = true</code>
+<ul>
+<li>1 行目はヘッダ行として扱う。</li>
+</ul>
+</li>
+<li><code>quoteCharacter = '"'</code>
+<ul>
+<li><code>"</code> を引用符とする。</li>
+</ul>
+</li>
+<li><code>delimiter = '|'</code>
+<ul>
+<li><code>|</code> を区切り文字とする。</li>
+</ul>
+</li>
+<li><code>emptyValue = "empty"</code>
+<ul>
+<li>値が空のときは文字列 <code>"empty"</code> として処理する。</li>
+</ul>
+</li>
+<li><code>textBlock = """ ...</code>
+<ul>
+<li>先頭行にヘッダ行を記載している。</li>
+<li>引用符に <code>"</code> 、区切り文字に <code>|</code> を使用している。</li>
+<li>最後の行は <code>#</code> で始まるため、コメント行として無視される。</li>
+</ul>
+</li>
+</ul>
+<p>CSV 内の空文字は、文字列 <code>"empty"</code> として処理される。そのため、CSV の length 列の値が <code>0</code> のとき、<code>length</code> を <code>5</code> に更新してからアサーションを実行している。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> ExampleParameterizedTest</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ParameterizedTest</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">CsvSource</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">useHeadersInDisplayName</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">            quoteCharacter</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> '"'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">            delimiter</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> '|'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">            emptyValue</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "empty"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">            textBlock</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> """</span></span>
+<span class="line"><span style="color:#9ECBFF">                    message|length</span></span>
+<span class="line"><span style="color:#9ECBFF">                    "Hello, world!"|13</span></span>
+<span class="line"><span style="color:#9ECBFF">                    "garbage in, garbage out"|23</span></span>
+<span class="line"><span style="color:#9ECBFF">                    ""|0</span></span>
+<span class="line"><span style="color:#9ECBFF">                    #|</span></span>
+<span class="line"><span style="color:#9ECBFF">                    """</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> parameterizedTestWithCsvSource2</span><span style="color:#E1E4E8">(String </span><span style="color:#FFAB70">message</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> length</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (length </span><span style="color:#F97583">==</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">            // if message is emptyValue, then message becomes "empty"</span></span>
+<span class="line"><span style="color:#E1E4E8">            length </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 5</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">        assertEquals</span><span style="color:#E1E4E8">(length, message.</span><span style="color:#B392F0">length</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>実行結果は次の通りである。最初と最後の行を除いた CSV レコードの行数だけテストが実行されていることがわかる。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ExampleParameterizedTest.parameterizedTestWithCsvSource2: 3 total, 3 passed</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ExampleParameterizedTest</span></span>
+<span class="line"><span>  parameterizedTestWithCsvSource2</span></span>
+<span class="line"><span>    [1] message = Hello, world!, length = 13 [passed]</span></span>
+<span class="line"><span>    [2] message = garbage in, garbage out, length = 23 [passed]</span></span>
+<span class="line"><span>    [3] message = empty, length = 0 [passed]</span></span></code></pre>
+<h3 id="csvfilesource"><code>@CsvFileSource</code></h3>
+<p><code>@CsvFileSource</code> は、指定した外部の CSV ファイルを読み込み、テストメソッドの引数に提供する。</p>
+<p>テストメソッドは、<code>@CsvFileSource</code> で読み込んだ CSV の行数だけ実行される。</p>
+<p><code>@CsvFileSource</code> に指定できるオプションは、基本的に <code>@CsvFile</code> と同じである。ここでは、<code>@CsvFileSource</code> 固有のオプションのみを説明する。</p>
+<ul>
+<li>resources (<code>String[]</code>)
+<ul>
+<li>引数のソースとして使用する CSV ファイルのクラスパスを指定する。</li>
+</ul>
+</li>
+<li>files (<code>String[]</code>)
+<ul>
+<li>引数のソースとして使用する CSV ファイルのパスを指定する。</li>
+</ul>
+</li>
+<li>encoding (<code>String</code>)
+<ul>
+<li>CSV ファイルを読み込むときに使用するエンコーディングを指定する。</li>
+<li>デフォルトは <code>"UTF-8"</code> が指定されている。</li>
+</ul>
+</li>
+<li>lineSeparator (<code>String</code>)
+<ul>
+<li>CSV ファイルを読み込むときに使用する行区切り文字を指定する。</li>
+<li>デフォルトは <code>"\n"</code> が指定されている。</li>
+</ul>
+</li>
+<li>numLinesToSkip (<code>int</code>)
+<ul>
+<li>CSV ファイルを読み込むときにスキップする行数を指定する。</li>
+<li>デフォルトは <code>0</code> が指定されている。</li>
+</ul>
+</li>
+</ul>
+<p><code>resources</code> で読み込む CSV ファイルは、<code>src/test/resources</code> 配下に作成する。このとき、実行するテストクラスのパッケージと合わせる必要がある。例えば、テストクラスが <code>src/test/java/org/example/ExampleParameterizedTest.java</code> のとき、CSV ファイルは <code>resources</code> 配下の同一パスである <code>src/test/resource/org/example/</code> 配下に配置する。</p>
+<p>今回は、<code>src/test/method/ExampleParameterizedTest.java</code> にテストクラスを作成しているため、テストデータの CSV ファイルを <code>src/test/resources/method/exampleTestData.csv</code> に作成する。</p>
+<p>CSV ファイルの中身は以下の通りとする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="csv"><code><span class="line"><span style="color:#E1E4E8">1,</span><span style="color:#F97583">1,</span><span style="color:#B392F0">2</span></span>
+<span class="line"><span style="color:#E1E4E8">1,</span><span style="color:#F97583">2,</span><span style="color:#B392F0">3</span></span>
+<span class="line"><span style="color:#E1E4E8">-2,</span><span style="color:#F97583">2,</span><span style="color:#B392F0">0</span></span>
+<span class="line"></span></code></pre>
+<p>このファイルを読み込んでテストする場合、次のようになる。(パスの指定方法以外はどちらも同じ。)</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> ExampleParameterizedTest</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ParameterizedTest</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">CsvFileSource</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">resources</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "exampleTestData.csv"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> parameterizedTestWithCsvSource3</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> num1</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> num2</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> expectedSum</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">        assertEquals</span><span style="color:#E1E4E8">(expectedSum, num1 </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> num2);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ParameterizedTest</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">CsvFileSource</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">files</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "src/test/resources/method/exampleTestData.csv"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> parameterizedTestWithCsvSource4</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">int</span><span style="color:#FFAB70"> num1</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> num2</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">int</span><span style="color:#FFAB70"> expectedSum</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">        assertEquals</span><span style="color:#E1E4E8">(expectedSum, num1 </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> num2);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><code>parameterizedTestWithCsvSource3</code> を実行した結果は次の通りである。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ExampleParameterizedTest.parameterizedTestWithCsvSource3: 3 total, 3 passed</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ExampleParameterizedTest</span></span>
+<span class="line"><span>  parameterizedTestWithCsvSource3</span></span>
+<span class="line"><span>    [1] 1, 1, 2 [passed]</span></span>
+<span class="line"><span>    [2] 1, 2, 3 [passed]</span></span>
+<span class="line"><span>    [3] -2, 2, 0 [passed]</span></span></code></pre>
+<p>CSV ファイルを読み込んでテストしていることがわかる。</p>
+<h3 id="argumentssource"><code>@ArgumentsSource</code></h3>
+<p><code>@ArgumentsSource</code> は、再利用可能な <code>ArgumentsProvider</code> クラスをテストメソッドの引数に提供する。<code>ArgumentsProvider</code> の実装は、トップレベルまたは static なネストクラスとして定義しなければならない。</p>
+<p>テストメソッドは、<code>@ArgumentsSource</code> で指定したクラスの <code>provideArguments</code> メソッドの結果を引数として受け取る。</p>
+<p>例えば、<code>ArgumentsProvider</code> インタフェースを実装した <code>ExampleArgumentsProvider</code> クラスを作成する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">public</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> ExampleArgumentsProvider</span><span style="color:#F97583"> implements</span><span style="color:#B392F0"> ArgumentsProvider</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">Override</span></span>
+<span class="line"><span style="color:#F97583">    public</span><span style="color:#E1E4E8"> Stream&#x3C;</span><span style="color:#F97583">?</span><span style="color:#F97583"> extends</span><span style="color:#F97583"> Arguments</span><span style="color:#E1E4E8">> </span><span style="color:#B392F0">provideArguments</span><span style="color:#E1E4E8">(ExtensionContext </span><span style="color:#FFAB70">extensionContext</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> Stream.</span><span style="color:#B392F0">of</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"spring"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"summer"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(Arguments</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">of);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>このクラスで実装する <code>provideArguments</code> メソッドの戻り値が、<code>@ParameterizedTest</code> のテストメソッドに提供される。</p>
+<p><code>@ParameterizedTest</code> を付与したテストメソッドでは、<code>@ArgumentsSource(ExampleArgumentsProvider.class)</code> のようにプロバイダを指定する。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> ExampleParameterizedTest</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ParameterizedTest</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ArgumentsSource</span><span style="color:#E1E4E8">(ExampleArgumentsProvider.class)</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> parameterizedTestWithArgumentsSource</span><span style="color:#E1E4E8">(String </span><span style="color:#FFAB70">arguments</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">        assertEquals</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">, arguments.</span><span style="color:#B392F0">length</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><code>parameterizedTestWithArgumentsSource</code> を実行した結果は次の通りである。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ExampleParameterizedTest.parameterizedTestWithArgumentsSource: 2 total, 2 passed</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ExampleParameterizedTest</span></span>
+<span class="line"><span>  parameterizedTestWithArgumentsSource</span></span>
+<span class="line"><span>    [1] spring [passed]</span></span>
+<span class="line"><span>    [2] summer [passed]</span></span></code></pre>
+<p><code>ExampleArgumentsProvider</code> の <code>provideArguments</code> が提供されていることがわかる。</p>
+<h3 id="argumentssources"><code>@ArgumentsSources</code></h3>
+<p><code>@ArgumentsSource</code> を複数指定するためのアノテーションである。</p>
+<p>例えば、<code>ArgumentsProvider</code> インタフェースの実装として、以下の 2 クラスを作成する。(今回は static なネストクラスとして作成した。)</p>
+<ul>
+<li><code>FirstArgumentsProvider</code></li>
+<li><code>SecondArgumentsProvider</code></li>
+</ul>
+<p>このプロバイダの両方を使う場合、<code>@ArgumentsSources</code> の引数に <code>@ArgumentsSource</code> の配列を渡す。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> ExampleParameterizedTest</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ParameterizedTest</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">ArgumentsSources</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">            @</span><span style="color:#F97583">ArgumentsSource</span><span style="color:#E1E4E8">(FirstArgumentsProvider.class),</span></span>
+<span class="line"><span style="color:#E1E4E8">            @</span><span style="color:#F97583">ArgumentsSource</span><span style="color:#E1E4E8">(SecondArgumentsProvider.class)</span></span>
+<span class="line"><span style="color:#E1E4E8">    })</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> parameterizedTestWithArgumentsSources</span><span style="color:#E1E4E8">(String </span><span style="color:#FFAB70">arguments</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">        assertEquals</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">, arguments.</span><span style="color:#B392F0">length</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    static</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> FirstArgumentsProvider</span><span style="color:#F97583"> implements</span><span style="color:#B392F0"> ArgumentsProvider</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">        @</span><span style="color:#F97583">Override</span></span>
+<span class="line"><span style="color:#F97583">        public</span><span style="color:#E1E4E8"> Stream&#x3C;</span><span style="color:#F97583">?</span><span style="color:#F97583"> extends</span><span style="color:#F97583"> Arguments</span><span style="color:#E1E4E8">> </span><span style="color:#B392F0">provideArguments</span><span style="color:#E1E4E8">(ExtensionContext </span><span style="color:#FFAB70">extensionContext</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">throws</span><span style="color:#E1E4E8"> Exception {</span></span>
+<span class="line"><span style="color:#F97583">            return</span><span style="color:#E1E4E8"> Stream.</span><span style="color:#B392F0">of</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"spring"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"summer"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(Arguments</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">of);</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    static</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> SecondArgumentsProvider</span><span style="color:#F97583"> implements</span><span style="color:#B392F0"> ArgumentsProvider</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">        @</span><span style="color:#F97583">Override</span></span>
+<span class="line"><span style="color:#F97583">        public</span><span style="color:#E1E4E8"> Stream&#x3C;</span><span style="color:#F97583">?</span><span style="color:#F97583"> extends</span><span style="color:#F97583"> Arguments</span><span style="color:#E1E4E8">> </span><span style="color:#B392F0">provideArguments</span><span style="color:#E1E4E8">(ExtensionContext </span><span style="color:#FFAB70">extensionContext</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">throws</span><span style="color:#E1E4E8"> Exception {</span></span>
+<span class="line"><span style="color:#F97583">            return</span><span style="color:#E1E4E8"> Stream.</span><span style="color:#B392F0">of</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"autumn"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"winter"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(Arguments</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">of);</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><code>parameterizedTestWithArgumentsSources</code> を実行した結果は次の通りである。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ExampleParameterizedTest.parameterizedTestWithArgumentsSources: 2 total, 2 passed</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ExampleParameterizedTest</span></span>
+<span class="line"><span>  parameterizedTestWithArgumentsSources</span></span>
+<span class="line"><span>    [1] spring [passed]</span></span>
+<span class="line"><span>    [2] summer [passed]</span></span>
+<span class="line"><span>    [3] autumn [passed]</span></span>
+<span class="line"><span>    [4] winter [passed]</span></span></code></pre>
+<p><code>FirstArgumentsProvider</code> と <code>SecondArgumentsProvider</code> の <code>provideArguments</code> が提供されていることがわかる。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://junit.org/junit5/docs/current/api/org.junit.jupiter.params/org/junit/jupiter/params/ParameterizedTest.html">ParameterizedTest (JUnit 5.11.0 API)</a></li>
+<li><a href="https://junit.org/junit5/docs/current/api/org.junit.jupiter.params/org/junit/jupiter/params/provider/ValueSource.html">ValueSource (JUnit 5.11.0 API)</a></li>
+<li><a href="https://junit.org/junit5/docs/current/api/org.junit.jupiter.params/org/junit/jupiter/params/provider/EnumSource.html">EnumSource (JUnit 5.11.0 API)</a></li>
+<li><a href="https://junit.org/junit5/docs/current/api/org.junit.jupiter.params/org/junit/jupiter/params/provider/MethodSource.html">MethodSource (JUnit 5.11.0 API)</a></li>
+<li><a href="https://junit.org/junit5/docs/current/api/org.junit.jupiter.params/org/junit/jupiter/params/provider/CsvSource.html">CsvSource (JUnit 5.11.0 API)</a></li>
+<li><a href="https://junit.org/junit5/docs/current/api/org.junit.jupiter.params/org/junit/jupiter/params/provider/CsvFileSource.html">CsvFileSource (JUnit 5.11.0 API)</a></li>
+<li><a href="https://junit.org/junit5/docs/current/api/org.junit.jupiter.params/org/junit/jupiter/params/provider/ArgumentsSource.html">ArgumentsSource (JUnit 5.11.0 API)</a></li>
+<li><a href="https://junit.org/junit5/docs/current/api/org.junit.jupiter.params/org/junit/jupiter/params/provider/ArgumentsSources.html">ArgumentsSources (JUnit 5.11.0 API)</a></li>
+</ul>  </div> </article> </main> <footer class="site-footer" data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte>
+&copy; 2026 h10i.
+</div> </footer></body></html>

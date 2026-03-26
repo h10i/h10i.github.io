@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="h10i" href="https://example.com/rss.xml"><meta name="generator" content="Astro v6.0.8"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/posts/36pl11xzbiq/"><!-- Primary Meta Tags --><title>JUnit 5 で Java のテストコードを作成する</title><meta name="title" content="JUnit 5 で Java のテストコードを作成する"><meta name="description"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/posts/36pl11xzbiq/"><meta property="og:title" content="JUnit 5 で Java のテストコードを作成する"><meta property="og:description"><!-- Twitter --><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://example.com/posts/36pl11xzbiq/"><meta property="twitter:title" content="JUnit 5 で Java のテストコードを作成する"><meta property="twitter:description"><style>:root{--color-bg: #ffffff;--color-text: #333333;--color-text-muted: #666666;--color-link: #0056b3;--color-link-hover: #003d82;--color-border: #e5e5e5;--color-code-bg: #f4f4f4;--max-width: 800px;--container-padding: 1rem;--space-xs: .5rem;--space-sm: 1rem;--space-md: 1.5rem;--space-lg: 2rem;--space-xl: 3rem;--font-family: system-ui, -apple-system, sans-serif;--font-size-base: 1rem;--line-height-base: 1.6}[data-theme=dark]{--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--color-bg: #1a1a1a;--color-text: #e0e0e0;--color-text-muted: #a0a0a0;--color-link: #4da3ff;--color-link-hover: #80bfff;--color-border: #333333;--color-code-bg: #2d2d2d}}*,*:before,*:after{box-sizing:border-box}html{font-size:16px}body{font-family:var(--font-family);margin:0;padding:0;background-color:var(--color-bg);color:var(--color-text);line-height:var(--line-height-base);display:flex;flex-direction:column;min-height:100vh}main{flex:1}.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 var(--container-padding)}a{color:var(--color-link);text-decoration:none}a:hover{color:var(--color-link-hover);text-decoration:underline}h1,h2,h3,h4,h5,h6{margin-top:1.5em;margin-bottom:.5em;line-height:1.2;font-weight:700}h1{font-size:2rem;margin-top:0}h2{font-size:1.5rem}h3{font-size:1.25rem}p{margin-top:0;margin-bottom:var(--space-sm)}img{max-width:100%;height:auto;display:block}code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;background-color:var(--color-code-bg);padding:.2em .4em;border-radius:4px;font-size:.9em}pre{background-color:var(--color-code-bg);padding:var(--space-sm);border-radius:4px;overflow-x:auto;margin-bottom:var(--space-sm)}pre code{background-color:transparent;padding:0;font-size:.85em}blockquote{margin:0 0 var(--space-sm) 0;padding-left:var(--space-sm);border-left:4px solid var(--color-border);color:var(--color-text-muted);font-style:italic}.text-muted{color:var(--color-text-muted)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}@media(max-width:640px){html{font-size:15px}h1{font-size:1.75rem}h2{font-size:1.4rem}}.site-footer[data-astro-cid-sz7xmlte]{text-align:center;padding:var(--space-xl) 0;margin-top:var(--space-xl);border-top:1px solid var(--color-border);color:var(--color-text-muted);font-size:.875rem}.theme-toggle[data-astro-cid-x3pjskd3]{background:none;border:none;cursor:pointer;color:var(--color-text);padding:var(--space-xs);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:background-color .2s}.theme-toggle[data-astro-cid-x3pjskd3]:hover{background-color:var(--color-code-bg)}.sun[data-astro-cid-x3pjskd3]{display:none}.moon[data-astro-cid-x3pjskd3],[data-theme=dark] .sun[data-astro-cid-x3pjskd3]{display:block}[data-theme=dark] .moon[data-astro-cid-x3pjskd3]{display:none}.site-header[data-astro-cid-3ef6ksr2]{border-bottom:1px solid var(--color-border);margin-bottom:var(--space-lg)}.header-container[data-astro-cid-3ef6ksr2]{display:flex;flex-direction:row;justify-content:space-between;align-items:center;padding-top:var(--space-sm);padding-bottom:var(--space-sm)}.site-title[data-astro-cid-3ef6ksr2]{margin:0;font-size:1.5rem;font-weight:700}.site-title[data-astro-cid-3ef6ksr2] a[data-astro-cid-3ef6ksr2]{color:var(--color-text);text-decoration:none}.header-right[data-astro-cid-3ef6ksr2]{display:flex;align-items:center;gap:var(--space-md)}.site-nav[data-astro-cid-3ef6ksr2]{display:flex;gap:var(--space-md)}@media(max-width:640px){.header-container[data-astro-cid-3ef6ksr2]{flex-direction:column;gap:var(--space-sm);align-items:flex-start}.header-right[data-astro-cid-3ef6ksr2]{width:100%;justify-content:space-between;flex-direction:row-reverse}.site-nav[data-astro-cid-3ef6ksr2]{width:auto;justify-content:flex-start;gap:var(--space-sm);font-size:.95rem;overflow-x:auto}}
+.post-header[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xl);padding-bottom:var(--space-md);border-bottom:1px solid var(--color-border)}.post-title[data-astro-cid-bvzihdzo]{margin-bottom:var(--space-xs);font-size:2.5rem}.post-meta[data-astro-cid-bvzihdzo]{display:flex;flex-direction:column;gap:var(--space-sm);font-size:.875rem}.post-tags[data-astro-cid-bvzihdzo]{display:flex;flex-wrap:wrap;gap:var(--space-xs);list-style:none;padding:0;margin:0}.post-tag[data-astro-cid-bvzihdzo]{background-color:var(--color-code-bg);padding:.2rem .5rem;border-radius:4px;color:var(--color-text);text-decoration:none;font-size:.75rem}.post-tag[data-astro-cid-bvzihdzo]:hover{background-color:var(--color-border)}.post-content[data-astro-cid-bvzihdzo]{line-height:1.8}@media(max-width:640px){.post-title[data-astro-cid-bvzihdzo]{font-size:2rem}}
+</style></head> <body data-astro-cid-bvzihdzo> <header class="site-header" data-astro-cid-3ef6ksr2> <div class="header-container container" data-astro-cid-3ef6ksr2> <h1 class="site-title" data-astro-cid-3ef6ksr2><a href="/" data-astro-cid-3ef6ksr2>h10i</a></h1> <div class="header-right" data-astro-cid-3ef6ksr2> <nav class="site-nav" data-astro-cid-3ef6ksr2> <a href="/posts" class="active" data-astro-cid-3ef6ksr2="true"> posts </a> <a href="/archives" data-astro-cid-3ef6ksr2="true"> archives </a> <a href="/tags" data-astro-cid-3ef6ksr2="true"> tags </a> <a href="/search" data-astro-cid-3ef6ksr2="true"> search </a> </nav> <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle" data-astro-cid-x3pjskd3> <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <circle cx="12" cy="12" r="5" data-astro-cid-x3pjskd3></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-x3pjskd3></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-x3pjskd3></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-x3pjskd3></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-x3pjskd3></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-x3pjskd3></line> </svg> <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-x3pjskd3></path> </svg> </button> <script type="module">const m=document.getElementById("theme-toggle");function o(){return typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}function t(e){document.documentElement.setAttribute("data-theme",e),localStorage.setItem("theme",e)}t(o());m?.addEventListener("click",()=>{const n=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";t(n)});</script> </div> </div> </header> <main class="container" data-astro-cid-bvzihdzo> <article class="post" data-pagefind-body data-astro-cid-bvzihdzo> <header class="post-header" data-astro-cid-bvzihdzo> <h1 class="post-title" data-pagefind-meta="title" data-astro-cid-bvzihdzo>JUnit 5 で Java のテストコードを作成する</h1> <div class="post-meta" data-astro-cid-bvzihdzo> <div class="post-date text-muted" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Published: <time datetime="2024-09-04T06:36:05.000Z"> 2024-09-04 </time></span>  </div> <ul class="post-tags" data-astro-cid-bvzihdzo> <li data-astro-cid-bvzihdzo> <a href="/tags/java/" class="post-tag" data-astro-cid-bvzihdzo>#Java</a> </li><li data-astro-cid-bvzihdzo> <a href="/tags/junit/" class="post-tag" data-astro-cid-bvzihdzo>#JUnit</a> </li><li data-astro-cid-bvzihdzo> <a href="/tags/testing/" class="post-tag" data-astro-cid-bvzihdzo>#Testing</a> </li><li data-astro-cid-bvzihdzo> <a href="/tags/junit 5/" class="post-tag" data-astro-cid-bvzihdzo>#JUnit 5</a> </li> </ul> </div> </header> <div class="post-content" data-astro-cid-bvzihdzo>  <h2 id="概要">概要</h2>
+<ul>
+<li>JUnit 5 について、最低限の動きを整理する。
+<ul>
+<li><code>@Test</code> アノテーション</li>
+<li><code>assertEquals</code></li>
+<li><code>fail</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="前提">前提</h2>
+<ul>
+<li>JUnit 5</li>
+<li>Java 8 (or higher)
+<ul>
+<li>今回のサンプルは Java 21 で作成</li>
+</ul>
+</li>
+</ul>
+<h2 id="手順">手順</h2>
+<h3 id="ライブラリの設定">ライブラリの設定</h3>
+<p>JUnit 5 User Guide の以下の章を参照し、環境に合わせて JUnit 5 に必要なライブラリを設定する。</p>
+<ul>
+<li><a href="https://junit.org/junit5/docs/current/user-guide/#running-tests-ide">4.1. IDE Support | JUnit 5 User Guide</a></li>
+<li><a href="https://junit.org/junit5/docs/current/user-guide/#running-tests-build">4.2. Build Support | JUnit 5 User Guide</a></li>
+</ul>
+<h3 id="テスト対象クラスの作成">テスト対象クラスの作成</h3>
+<p>以下の <code>Main</code> クラスをテスト対象クラスとする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">public</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> Main</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    public</span><span style="color:#B392F0"> Main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    public</span><span style="color:#E1E4E8"> String </span><span style="color:#B392F0">hello</span><span style="color:#E1E4E8">(String </span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#9ECBFF"> "Hello, %s."</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">formatted</span><span style="color:#E1E4E8">(name);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    public</span><span style="color:#E1E4E8"> String </span><span style="color:#B392F0">bye</span><span style="color:#E1E4E8">(String </span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#9ECBFF"> "Bye, %s."</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">formatted</span><span style="color:#E1E4E8">(name);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>各メソッドは、引数の String を使って、メッセージを作成し、作成したメッセージを返却する。</p>
+<p>例えば、<code>hello</code> メソッドに文字列 <code>"John Smith"</code> を渡すと、文字列 <code>"Hello, John Smith."</code> を返却する。</p>
+<h3 id="テストクラスの作成">テストクラスの作成</h3>
+<p><code>Main</code> クラスに対するテストとして、<code>MainTest</code> クラスを作成する。</p>
+<p>大体の IDE には、<code>Main</code> クラスをもとに自動で <code>MainTest</code> を作成する機能がある。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> MainTest</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">Test</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> testHello</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">Test</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> testBye</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><code>@Test</code> アノテーションが付与されたメソッドは、テストメソッドとして扱われる。</p>
+<p>以下の状態でテストを実行すると、2 件中 2 件のテストがパスする。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> MainTest</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">Test</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> testHello</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">Test</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> testBye</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>テストメソッドは、何もしなくても成功扱いになる。後述するが、未実装のテストコードは失敗するようにしておいた方が良い。</p>
+<h3 id="テストメソッドの実装">テストメソッドの実装</h3>
+<p>今回は <code>hello</code> メソッドのテストメソッド <code>testHello</code> を実装する。</p>
+<p>完成した <code>testHello</code> は、以下の通りである。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#F97583">Test</span></span>
+<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> testHello</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">    // setup</span></span>
+<span class="line"><span style="color:#E1E4E8">    Main main </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Main</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    final</span><span style="color:#E1E4E8"> String name </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "John Smith"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // exercise</span></span>
+<span class="line"><span style="color:#F97583">    final</span><span style="color:#E1E4E8"> String actual </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> main.</span><span style="color:#B392F0">hello</span><span style="color:#E1E4E8">(name);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // verify</span></span>
+<span class="line"><span style="color:#F97583">    final</span><span style="color:#E1E4E8"> String expected </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Hello, John Smith."</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">    assertEquals</span><span style="color:#E1E4E8">(expected, actual);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>テストコードは一度書いたら終わりというものではなく、次のような対応でメンテナンスが必要となる。</p>
+<ul>
+<li>テスト対象コードの変更に伴い、テストコードを修正する。</li>
+<li>あるテストコードと別のテストコードの共通処理をまとめて整理する。</li>
+</ul>
+<p>そのため、テストコードも可読性や保守性を意識して実装する。</p>
+<p>今回は、テストメソッドを以下の 3 段階に分けて記載する。</p>
+<ol>
+<li>setup: テスト対象コード実行前の前処理</li>
+<li>exercise: テスト対象コード実行処理</li>
+<li>verify: テスト対象コード実行結果の検証処理</li>
+</ol>
+<h4 id="setup">setup</h4>
+<p>setup では、テスト対象コードを実行する前の準備処理を書く。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// setup</span></span>
+<span class="line"><span style="color:#E1E4E8">Main main </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Main</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">final</span><span style="color:#E1E4E8"> String name </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "John Smith"</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>テスト対象クラスである <code>Main</code> クラスのインスタンスを作成している。また、<code>hello</code> メソッドの引数に渡す文字列 <code>name</code> を定義している。</p>
+<h4 id="exercise">exercise</h4>
+<p>exercise では、テスト対象メソッドの実行処理を書く。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// exercise</span></span>
+<span class="line"><span style="color:#F97583">final</span><span style="color:#E1E4E8"> String actual </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> main.</span><span style="color:#B392F0">hello</span><span style="color:#E1E4E8">(name);</span></span></code></pre>
+<p>テスト対象クラスのインスタンスである <code>main</code> の <code>hello</code> メソッドを実行している。このとき、setup で準備した <code>name</code> を引数として渡している。</p>
+<p>実行結果は、<code>actual</code> に格納する。</p>
+<h4 id="verify">verify</h4>
+<p>verify では、テスト対象コードの実行結果を検証する処理を書く。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#6A737D">// verify</span></span>
+<span class="line"><span style="color:#F97583">final</span><span style="color:#E1E4E8"> String expected </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Hello, John Smith."</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">assertEquals</span><span style="color:#E1E4E8">(expected, actual);</span></span></code></pre>
+<p><code>hello</code> メソッドは <code>String</code> を返すため、期待する <code>String</code> と 実際の戻り値である String が一致すれば、正しく実装できていることを検証できる。</p>
+<p>期待する結果を <code>expected</code> に格納し、<code>assertEquals</code> メソッドで、期待する結果 <code>expected</code> と実際の結果 <code>actual</code> が等しいか検証する。</p>
+<h3 id="未実装のテストコード">未実装のテストコード</h3>
+<p>テストメソッド <code>testHello</code> は実装したが、<code>testBye</code> は未実装である。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#F97583">Test</span></span>
+<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> testBye</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>しかし、上記のコードだと、実行してもテスト自体はパスしてしまう。そのため、実装忘れを防ぐために、以下のコードを実装しておく。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#F97583">Test</span></span>
+<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> testBye</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">    fail</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Not yet implemented"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><code>fail</code> メソッドは、実行されるとテストが失敗したことになる。</p>
+<h3 id="テストの実行">テストの実行</h3>
+<p>今回は、テストメソッド <code>testHello</code> を実装し、<code>testBye</code> は未実装として常に失敗するようにした。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> MainTest</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">Test</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> testHello</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">        // setup</span></span>
+<span class="line"><span style="color:#E1E4E8">        Main test </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Main</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">        final</span><span style="color:#E1E4E8"> String name </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "John Smith"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">        // exercise</span></span>
+<span class="line"><span style="color:#F97583">        final</span><span style="color:#E1E4E8"> String actual </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> test.</span><span style="color:#B392F0">hello</span><span style="color:#E1E4E8">(name);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">        // verify</span></span>
+<span class="line"><span style="color:#F97583">        final</span><span style="color:#E1E4E8"> String expected </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Hello, John Smith."</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">        assertEquals</span><span style="color:#E1E4E8">(expected, actual);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#F97583">Test</span></span>
+<span class="line"><span style="color:#F97583">    void</span><span style="color:#B392F0"> testBye</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">        fail</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Not yet implemented"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>テストは、クラス単位やメソッド単位でも実行できる。</p>
+<p>今回の <code>MainTest</code> を実行すると、次の結果になる。</p>
+<ul>
+<li><code>testHello</code>: pass</li>
+<li><code>testBye</code>: fail (<code>Not yet implemented</code>)</li>
+</ul>
+<p><code>testHello</code> が失敗している場合、<code>hello</code> メソッドまたは <code>testHello</code> メソッドに誤りがある。テストの実行結果に詳細が出力されるため、その内容をもとに修正する。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://junit.org/junit5/docs/current/user-guide/">JUnit 5 User Guide</a></li>
+</ul>  </div> </article> </main> <footer class="site-footer" data-astro-cid-sz7xmlte> <div class="container" data-astro-cid-sz7xmlte>
+&copy; 2026 h10i.
+</div> </footer></body></html>
