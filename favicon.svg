@@ -1,6 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-  <g id="mini_dot" fill-rule="evenodd">
-    <path fill="#000000" fill-opacity="1" class="c0" d="M4,1h1v1h1v1h3v-1h1v-1h1v1h1v2h1v1h1v3h-1v1h-1v2h1v3h-1v1h-9v-1h-1v-3h1v-2h-1v-1h-1v-3h1v-1h1v-2h1zM4,5h2v1h-2zM9,5h2v1h-2zM7,6h1v1h1v1h-1v-1h-1v1h-1v-1h1zM2,8h1v1h1v2h-1v3h9v-3h-1v-2h1v-1h1v-3h-1v-1h-1v-2h-1v1h-1v1h-3v-1h-1v-1h-1v2h-1v1h-1z" />
-    <path fill="#11b3ff" fill-opacity="1" class="c1" d="M10,2h1v2h1v1h1v2h-4v-1h-1v-2h1v-1h1zM9,6h2v-1h-2zM14,9h1v4h-2v-1h1z" /><path fill="#ffffff" fill-opacity="1" class="c2" d="M4,2h1v1h1v1h2v2h1v1h4v1h-1v1h-1v2h1v3h-9v-3h1v-2h-1v-1h-1v-3h1v-1h1zM4,6h2v-1h-2zM7,7h1v-1h-1v1h-1v1h1zM8,8h1v-1h-1z" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges">
+  <rect x="3" y="0" width="10" height="1" fill="#4A90E2"/>
+  <rect x="2" y="1" width="12" height="1" fill="#4A90E2"/>
+  <rect x="1" y="2" width="14" height="1" fill="#4A90E2"/>
+  <rect x="0" y="3" width="16" height="10" fill="#4A90E2"/>
+  <rect x="1" y="13" width="14" height="1" fill="#4A90E2"/>
+  <rect x="2" y="14" width="12" height="1" fill="#4A90E2"/>
+  <rect x="3" y="15" width="10" height="1" fill="#4A90E2"/>
+
+  <g fill="#FFFFFF">
+    <rect x="3" y="4" width="2" height="1"/>
+    <rect x="8" y="4" width="2" height="1"/>
+    <rect x="2" y="5" width="4" height="1"/>
+    <rect x="7" y="5" width="4" height="1"/>
+    <rect x="4" y="6" width="2" height="2"/>
+    <rect x="9" y="6" width="2" height="2"/>
+    <rect x="2" y="8" width="4" height="1"/>
+    <rect x="7" y="8" width="4" height="1"/>
+    <rect x="3" y="9" width="2" height="1"/>
+    <rect x="8" y="9" width="2" height="1"/>
+  </g>
+
+  <g fill="#1E293B">
+    <rect x="2" y="6" width="2" height="2"/>
+    <rect x="7" y="6" width="2" height="2"/>
   </g>
 </svg>
